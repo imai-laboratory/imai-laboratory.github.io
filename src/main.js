@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch, Link as RouteLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link as RouteLink } from 'react-router-dom';
 import { Provider, Container, Flex, Box, Image, Link, Label } from 'rebass';
 
 import TitleImg from '../res/title.png';
@@ -258,8 +258,8 @@ class App extends React.Component {
 // -------------------------------- Entry Point --------------------------------
 // -----------------------------------------------------------------------------
 ReactDOM.render(
-  <HashRouter hashType='noslash'>
+  <BrowserRouter>
     <App />
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById('content')
 );
