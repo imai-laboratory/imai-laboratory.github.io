@@ -1,0 +1,40 @@
+/* TODO: It is difficult to move the following into menu.js because of hover
+ *       and rebass theme.
+ */
+
+.menu_bar {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #374047;
+}
+
+.menu_item {
+    color: #ffffff;
+}
+
+.menu_item:hover {
+    color: #00bcff;
+    background: transparent;
+}
+
+.menu_parent {
+    position: relative;
+}
+
+.menu_parent .menu_child {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 30px;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    visibility: hidden;
+    background: #4a4a4a;
+}
+
+.menu_parent:hover .menu_child {
+    top: 40px;
+    visibility: visible;
+    opacity: 1;
+}
