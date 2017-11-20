@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link as RouteLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link as RouteLink, Redirect
+} from 'react-router-dom';
 import { Provider, Container, Flex, Box, Image, Link, Label } from 'rebass';
 
 import TitleImg from '../res/title.png';
@@ -14,11 +15,12 @@ import { ContentResearch, ContentResearchHai, ContentResearchHri,
 import { ContentMembers } from './content_members.js';
 import { ContentPublicationsJournal, ContentPublicationsInternational,
   ContentPublicationsDomestic } from './content_publication.js';
+import { ContentActivitiesAward, ContentActivitiesMedia, ContentActivitiesTalk
+} from './content_activities';
 import { ContentAccess } from './content_access.js';
 import { ContentLinks } from './content_links.js';
 import { ContentB3 } from './content_b3.js';
-import { ContentActivitiesAward, ContentActivitiesTalk,
-  ContentActivitiesMedia } from './content_activities';
+import { Content404 } from './content_404.js';
 import { FixedFooter } from './fixed_footer.js';
 
 // -----------------------------------------------------------------------------
@@ -181,6 +183,8 @@ class MainContent extends React.Component {
           render={() => <ContentLinks texts={this.props.text} />} />
         <Route path='/b3'
           render={() => <ContentB3 texts={this.props.text} />} />
+        <Route path='*'
+          render={() => <Content404 />} />
       </Switch>
     );
   }
@@ -192,15 +196,13 @@ function routeInitialUrl() {
     var query = {};
     window.location.search.slice(1).split('&').forEach(function(v) {
       var data = v.split('=');
-      query[data[0]] = data[1]
+      query[data[0]] = data[1];
     });
     // Move to queried page
     if (query.p !== undefined) {
-      console.log(query);
-      return <Redirect to={query.p}/>
+      return <Redirect to={query.p} />;
     }
   }
-  return;
 }
 
 // -----------------------------------------------------------------------------
