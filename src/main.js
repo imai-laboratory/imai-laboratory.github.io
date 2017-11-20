@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link as RouteLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link as RouteLink, Redirect } from 'react-router-dom';
 import { Provider, Container, Flex, Box, Image, Link, Label } from 'rebass';
 
 import TitleImg from '../res/title.png';
@@ -186,6 +186,23 @@ class MainContent extends React.Component {
   }
 }
 
+function routeInitialUrl() {
+  if (window.location.search) {
+    // Parse query
+    var query = {};
+    window.location.search.slice(1).split('&').forEach(function(v) {
+      var data = v.split('=');
+      query[data[0]] = data[1]
+    });
+    // Move to queried page
+    if (query.p !== undefined) {
+      console.log(query);
+      return <Redirect to={query.p}/>
+    }
+  }
+  return;
+}
+
 // -----------------------------------------------------------------------------
 // ------------------------------ Application Main -----------------------------
 // -----------------------------------------------------------------------------
@@ -211,6 +228,9 @@ class App extends React.Component {
     return (
       <Provider theme={this.state.theme}>
         <Container px={[0, 0, 0, 16]} mx={[0, 0, 0, 'auto']}>
+
+          {/* Routing via initial URL */}
+          {routeInitialUrl()}
 
           {/* Header */}
           <Flex align='center' wrap>
