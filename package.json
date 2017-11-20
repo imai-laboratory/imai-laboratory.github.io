@@ -19,7 +19,6 @@
     "gh-pages": "^1.0.0",
     "json-loader": "^0.5.7",
     "style-loader": "^0.18.2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.6.1"
   },

@@ -1,4 +1,4 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require("webpack");
 
 module.exports = {
   entry: './src/main.js',
@@ -37,9 +37,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJsPlugin({
-      sourceMap: true
-    })
+    new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
   ],
   devtool: 'source-map',
   devServer: {
