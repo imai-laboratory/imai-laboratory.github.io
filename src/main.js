@@ -258,7 +258,7 @@ class App extends React.Component {
 // -------------------------------- Entry Point --------------------------------
 // -----------------------------------------------------------------------------
 ReactDOM.render(
-  <HashRouter>
+  <HashRouter hashType='noslash'>
     <App />
   </HashRouter>,
   document.getElementById('content')
