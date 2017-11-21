@@ -29,7 +29,7 @@ import { FixedFooter } from './fixed_footer.js';
 class TitleImage extends React.Component {
   render() {
     return (
-      <RouteLink to={'home'}>
+      <RouteLink to={'/'}>
         <Image src={TitleImg} width={1} />
       </RouteLink>
     );
@@ -99,6 +99,15 @@ class MainMenu extends React.Component {
       </RouteLink>
     );
   }
+  createMenuItemHome(key) {
+    return (
+      <RouteLink to='/' key={key}>
+        <MenuItem>
+          {this.props.texts['menu_' + key]}
+        </MenuItem>
+      </RouteLink>
+    );
+  }
   createNestedMenuItems(keys) {
     if (keys.length === 0) { return null; }
     var parentItem = this.createMenuItem(keys[0]);
@@ -118,7 +127,11 @@ class MainMenu extends React.Component {
     var menuItems = [];
     this.state.menuKeys.forEach((key) => {
       if (typeof (key) === 'string') {
-        menuItems.push(this.createMenuItem(key));
+        if (key === 'home') {
+          menuItems.push(this.createMenuItemHome(key));
+        } else {
+          menuItems.push(this.createMenuItem(key));
+        }
       } else if (typeof (key) === 'object') {
         menuItems.push(this.createNestedMenuItems(key));
       } else {

@@ -34,13 +34,13 @@ function setActivityStatus(component, yearJsonUrl, jsonUrlExp) {
 }
 
 function createActivityText(activity) {
-  const description = <div dangerouslySetInnerHTML={{__html: activity.description}}/>;
+  const description = <div dangerouslySetInnerHTML={{__html: activity.description}} />;
   return (
     <div>
       <h3>{activity.title}</h3>
       {description}
     </div>
-  )
+  );
 }
 
 function createActivityList(activities) {
