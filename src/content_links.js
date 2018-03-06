@@ -13,7 +13,11 @@ const LINK_DATA = [
   {
     title: '『心と脳－認知科学入門』コメント・参考文献',
     url: 'http://www.ayu.ics.keio.ac.jp/references/cognitivescience/'
-  }
+  },
+  {
+    title: 'Cognitive Robot Interaction 参考文献',  // TODO: Fix title
+    url: 'http://www.ailab.ics.keio.ac.jp/webpage_personal/cognitive_robot_interaction/'
+  },
 ];
 
 function createLinkList() {
