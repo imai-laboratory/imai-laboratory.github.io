@@ -40,7 +40,7 @@ function getLangText(elem, lang) {
 class MemberImage extends React.Component {
   constructor(prop) {
     super(prop);
-    this.imgSize = 160;
+    this.imgSize = 180;
     this.state = {
       scale: 1.0
     };
@@ -114,7 +114,7 @@ function createMemberList(members, lang) {
       // first column
       if (members[index] !== undefined) {
         row.push(
-          <Box width={1/2} p={2} key={roleIdx + '_' + index}>
+          <Box width={[1, 1/2]} p={2} key={roleIdx + '_' + index}>
             {createMemberElem(members[index], lang)}
           </Box>
         )
@@ -123,13 +123,13 @@ function createMemberList(members, lang) {
       if (members[index+1] !== undefined) {
         console.log(members[index+1])
         row.push(
-          <Box width={1/2} p={2} key={roleIdx + '_' + (index + 1)}>
+          <Box width={[1, 1/2]} p={2} key={roleIdx + '_' + (index + 1)}>
             {createMemberElem(members[index + 1], lang)}
           </Box>
         )
       }
       roleMemberList.push(
-        <Flex>
+        <Flex wrap>
           {row}
         </Flex>
       )
