@@ -242,7 +242,7 @@ class App extends React.Component {
     // All responsive designs are contained here or content_*.js.
     return (
       <Provider theme={this.state.theme}>
-        <Container px={[0, 0, 0, 16]} mx={[0, 0, 0, 'auto']}>
+        <Container px={[0, 0, 0, 0]} mx={[0, 0, 0, 'auto']} maxWidth='100%'>
 
           {/* Routing via initial URL */}
           {routeInitialUrl()}
