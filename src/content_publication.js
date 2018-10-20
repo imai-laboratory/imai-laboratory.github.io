@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Heading, Subhead, Link } from 'rebass';
+import { Flex, Box, Heading, Subhead, Link, Text } from 'rebass';
 import { fetchJson } from './utility.js';
 
 // Json URLs from publication repository.
@@ -36,28 +36,45 @@ function setPaperStatus(component, yearJsonUrl, jsonUrlExp) {
 function createPaperText(paper) {
   var textList = [];
   if (paper.author) {
-    textList.push(paper.author.join(', '));
+    textList.push(
+      <Text pb={1}>
+        <strong>{paper.author[0].replace(/_/g, ' ')}</strong>
+        <span>,</span>
+        {paper.author.slice(1).join(', ').replace(/_/g, ' ')}
+      </Text>
+    )
   }
   if (paper.title) {
-    textList.push('"' + paper.title + '"');
+    textList.push(
+      <Text pb={1}>
+        "<strong>{paper.title.replace(/_/g, ' ')}</strong>"
+      </Text>
+    )
   }
+  const place = []
   if (paper.book) {
-    textList.push(paper.book);
+    place.push(paper.book);
   }
   if (paper.vol) {
-    textList.push(paper.vol);
+    place.push(paper.vol);
   }
   if (paper.no) {
-    textList.push(paper.no);
+    place.push(paper.no);
   }
   if (paper.page) {
-    textList.push(paper.page);
+    place.push(paper.page);
   }
   if (paper.year) {
-    textList.push(paper.year);
+    place.push(paper.year);
   }
-  return textList.join(', ').replace(/_/g, ' ');
+  textList.push(
+    <Text pb={1}>
+      {place.join(',').replace(/_/g, ' ')}
+    </Text>
+  )
+  return textList
 }
+
 function createPDFLink(paper) {
   if (paper.draft_pdf_url) {
     return <Link href={paper.draft_pdf_url} children={'[PDF]'} />;
@@ -84,9 +101,15 @@ function createPaperList(papers) {
     var yearPaperList = [];
     yearPapers.forEach((paper, paperIdx) => {
       yearPaperList.push(
-        <Box width={1} p={2} key={yearIdx + '_' + paperIdx}>
-          [{paperTotalIdx--}] {createPaperText(paper)} {createPDFLink(paper)}
-        </Box>
+        <tr
+          key={yearIdx + '_' + paperIdx}
+          style={{'border-bottom': '1px solid #95a5a6'}}>
+          <td>{paperTotalIdx--}</td>
+          <td style={{padding: '12px'}}>
+            {createPaperText(paper)}
+            {createPDFLink(paper)}
+          </td>
+        </tr>
       );
     });
 
@@ -94,7 +117,11 @@ function createPaperList(papers) {
     paperList.push(
       <Box width={1} p={3} key={yearIdx}>
         <Subhead>{year}</Subhead>
-        {yearPaperList}
+        <table style={{'border-collapse': 'collapse', width: '100%'}}>
+          <tbody>
+            {yearPaperList}
+          </tbody>
+        </table>
       </Box>
     );
   });
