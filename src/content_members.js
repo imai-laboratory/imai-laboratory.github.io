@@ -40,7 +40,7 @@ function getLangText(elem, lang) {
 class MemberImage extends React.Component {
   constructor(prop) {
     super(prop);
-    this.imgSize = 70;
+    this.imgSize = 160;
     this.state = {
       scale: 1.0
     };
@@ -53,12 +53,14 @@ class MemberImage extends React.Component {
       this.setState({scale: this.imgSize / h});
     }
   }
+
   render() {
     var transformText = 'translate(-50%, -50%) scale(' + this.state.scale + ')';
     return (
       <div style={{overflow: 'hidden',
                    width: this.imgSize,
-                   height: this.imgSize}}>
+                   height: this.imgSize,
+                   margin: 'auto'}}>
         <Image src={this.props.src}
                onLoad={this.onLoadImage.bind(this)}
                style={{position: 'relative',
@@ -66,6 +68,7 @@ class MemberImage extends React.Component {
                        height: 'auto',
                        top: '50%',
                        left: '50%',
+                       borderRadius: '50%',
                        transform: transformText}} />
       </div>
     );
@@ -83,18 +86,13 @@ function createMemberElem(member, lang) {
     : <div dangerouslySetInnerHTML={{__html: option}} />);
 
   return (
-    <Box p={1} style={{background: '#eeeeee'}}>
-      <Flex align='center' wrap>
-        <MemberImage src={imgUrl} />
-        <Box pl={4}>{name}</Box>
-        <Flex ml='auto' align='center' pt={[2, 0, 0, 0]}
-          style={{textAlign: 'center'}} wrap>
-          <Box pr={4} ml='auto'>{optionElement}</Box>
-          <Box pr={3} ml='auto'>
-            <Box>{grade}</Box>
-            <Box>{email}</Box>
-          </Box>
-        </Flex>
+    <Box p={1}>
+      <Flex align='center' style={{textAlign: 'center'}} wrap>
+        <Box width={1}><MemberImage src={imgUrl} /></Box>
+        <Box width={1}>{name}</Box>
+        <Box width={1}>{grade}</Box>
+        <Box width={1}>{email}</Box>
+        <Box width={1}>{optionElement}</Box>
       </Flex>
     </Box>
   );
@@ -108,15 +106,34 @@ function createMemberList(members, lang) {
     var members = memberInfo['members'];
 
     // Create member list of each role
+    // 2 colum member list
     var roleMemberList = [];
-    members.forEach((member, memberIdx) => {
-      // Register
+    for (let i = 0; i < (members.length + 1) / 2; ++i) {
+      const row = []
+      const index =  2 * i
+      // first column
+      if (members[index] !== undefined) {
+        row.push(
+          <Box width={1/2} p={2} key={roleIdx + '_' + index}>
+            {createMemberElem(members[index], lang)}
+          </Box>
+        )
+      }
+      // second column
+      if (members[index+1] !== undefined) {
+        console.log(members[index+1])
+        row.push(
+          <Box width={1/2} p={2} key={roleIdx + '_' + (index + 1)}>
+            {createMemberElem(members[index + 1], lang)}
+          </Box>
+        )
+      }
       roleMemberList.push(
-        <Box width={1} p={2} key={roleIdx + '_' + memberIdx}>
-          {createMemberElem(member, lang)}
-        </Box>
-      );
-    });
+        <Flex>
+          {row}
+        </Flex>
+      )
+    }
 
     // Register to the total list
     membersList.push(
