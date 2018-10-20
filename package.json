@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Imai laboratory webpage.",
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-router-dom": "^4.1.2",
     "rebass": "^1.0.3",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "ajv-keywords": "^3.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
