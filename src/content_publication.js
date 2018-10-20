@@ -33,7 +33,7 @@ function setPaperStatus(component, yearJsonUrl, jsonUrlExp) {
     });
 }
 
-function createPapterText(paper) {
+function createPaperText(paper) {
   var textList = [];
   if (paper.author) {
     textList.push(paper.author.join(', '));
@@ -85,7 +85,7 @@ function createPaperList(papers) {
     yearPapers.forEach((paper, paperIdx) => {
       yearPaperList.push(
         <Box width={1} p={2} key={yearIdx + '_' + paperIdx}>
-          [{paperTotalIdx--}] {createPapterText(paper)} {createPDFLink(paper)}
+          [{paperTotalIdx--}] {createPaperText(paper)} {createPDFLink(paper)}
         </Box>
       );
     });
