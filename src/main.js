@@ -172,9 +172,7 @@ class App extends React.Component {
           <HeadNavBar texts={this.state.texts} changeLang={this.changeLang.bind(this)} langText={this.state.texts.language} />
 
           {/* Content */}
-          <div className="container">
-            <MainContent lang={this.state.lang} text={this.state.texts} />
-          </div>
+          <MainContent lang={this.state.lang} text={this.state.texts} />
 
           {/* Footer */}
           <Footer>
