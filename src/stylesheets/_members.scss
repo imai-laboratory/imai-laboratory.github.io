@@ -1,0 +1,34 @@
+.member-role-text {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: $grey-darker;
+
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.member-avatar {
+  width: 256px;
+  height: 256px;
+  object-fit: cover;
+}
+
+.member-card {
+  margin: 1rem;
+  text-align: center;
+  .name {
+    font-size: 1.25rem;
+    color: $grey-darker;
+  }
+  .info {
+    font-size: 1rem;
+    color: $grey-light;
+  }
+}
+
+.pastmember-year-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $grey-darker;
+}
