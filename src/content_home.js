@@ -2,11 +2,6 @@ import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import { Carousel, CarouselSlide, Image, Heading } from 'rebass';
 
-import HomeImage1 from '../res/home/crsl_mr2_pose.jpg';
-import HomeImage2 from '../res/home/crsl_okazaki_hri.jpg';
-import HomeImage3 from '../res/home/crsl_pepper_conv.jpg';
-import HomeImage4 from '../res/home/crsl_learning_brain.jpg';
-
 // -----------------------------------------------------------------------------
 // ---------------------------- Auto Scroll Carousel ---------------------------
 // -----------------------------------------------------------------------------
@@ -56,15 +51,9 @@ class AutoscrollCarousel extends React.Component {
 // --------------------------------- Component ---------------------------------
 // -----------------------------------------------------------------------------
 export class ContentHome extends React.Component {
-  constructor(prop) {
-    super(prop);
-    this.state = {
-      imgs: [HomeImage1, HomeImage2, HomeImage3, HomeImage4]
-    };
-  }
   render() {
     return (
-      <div id="contents_home">
+      <div id="content_home">
         <section id="hero-welcome" className="hero-img hero is-large is-dark is-bold">
           <div className="hero-body">
             <div className="container has-text-centered">
@@ -92,14 +81,6 @@ export class ContentHome extends React.Component {
             </div>
           </div>
         </section>
-      </div>
-    );
-    return (
-      <div>
-        <AutoscrollCarousel imgs={this.state.imgs} intervalMs={2000} />
-        <div style={{textAlign: 'center'}}>
-          <Heading p={3}>{this.props.texts['home_imailab']}</Heading>
-        </div>
       </div>
     );
   }
