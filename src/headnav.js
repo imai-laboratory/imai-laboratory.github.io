@@ -5,22 +5,22 @@ import { LanguageSwitcher } from './language_switcher.js';
 export class HeadNavBar extends React.Component {
   render() {
     return (
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="/">
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="container">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="/">
               <img src="res/title.png" width="112" height="28" />
             </a>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="headNavbarExpandArea">
+            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="headNavbarExpandArea">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
           </div>
           
-          <div id="headNavbarExpandArea" class="navbar-menu">
-            <div class="navbar-start">
+          <div id="headNavbarExpandArea" className="navbar-menu">
+            <div className="navbar-start">
               <NavItem to="/" name="Home" />
               <NavDropDown key="research" name="Research">
                 <NavItem to="/research" name="About" />
@@ -31,10 +31,10 @@ export class HeadNavBar extends React.Component {
               <NavItem to="/links" name="Links" />
             </div>
 
-            <div class="navbar-end">
-              <div class="navbar-item">
+            <div className="navbar-end">
+              <div className="navbar-item">
                 <LanguageSwitcher changeLang={this.props.changeLang.bind(this)} langText={this.props.langText} />
-                <div class="buttons">
+                <div className="buttons">
                   <NavItemButton to="/b3" name="For B3" />
                 </div>
               </div>
@@ -49,7 +49,7 @@ export class HeadNavBar extends React.Component {
 class NavItem extends React.Component {
   render() {
     return (
-      <RouteLink to={this.props.to} key={this.props.to} class="navbar-item">
+      <RouteLink to={this.props.to} key={this.props.to} className="navbar-item">
         {this.props.name}
       </RouteLink>
     )
@@ -59,7 +59,7 @@ class NavItem extends React.Component {
 class NavItemButton extends React.Component {
   render() {
     return (
-      <RouteLink to={this.props.to} key={this.props.to} class="button is-primary">
+      <RouteLink to={this.props.to} key={this.props.to} className="button is-primary">
         <strong>{this.props.name}</strong>
       </RouteLink>
     )
@@ -69,12 +69,12 @@ class NavItemButton extends React.Component {
 class NavDropDown extends React.Component {
   render() {
     return (
-      <div class="navbar-item has-dropdown is-hoverable" key={this.key + '_parent'}>
-        <a key={this.key} class="navbar-link">
+      <div className="navbar-item has-dropdown is-hoverable" key={this.key + '_parent'}>
+        <a key={this.key} className="navbar-link">
           {this.props.name}
         </a>
 
-        <div class="navbar-dropdown" key={this.key + '_child'}>
+        <div className="navbar-dropdown" key={this.key + '_child'}>
           {this.props.children}
         </div>
       </div>

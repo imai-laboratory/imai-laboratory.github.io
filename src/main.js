@@ -171,7 +171,7 @@ class App extends React.Component {
           <HeadNavBar texts={this.state.texts} changeLang={this.changeLang.bind(this)} langText={this.state.texts.language} />
 
           {/* Content */}
-          <div class="container">
+          <div className="container">
             <MainContent lang={this.state.lang} text={this.state.texts} />
           </div>
 

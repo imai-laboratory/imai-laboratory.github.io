@@ -13,14 +13,14 @@ export class LanguageSwitcher extends React.Component {
       ));
   
       return (
-        <div class="control has-icons-left">
-          <div class="select">
+        <div className="control has-icons-left">
+          <div className="select">
             <select onChange={e => this.props.changeLang(e.target.value)}>
               {options}
             </select>
           </div>
-          <span class="icon is-left">
-            <i class="fas fa-globe"></i>
+          <span className="icon is-left">
+            <i className="fas fa-globe"></i>
           </span>
         </div>
       );
