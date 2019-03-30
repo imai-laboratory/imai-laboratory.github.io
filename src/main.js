@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link as RouteLink, Redirect
+import { BrowserRouter, Route, Switch, Redirect
 } from 'react-router-dom';
-import { Provider, Container, Flex, Box, Image, Link, Label } from 'rebass';
+import { Provider, Container } from 'rebass';
 
-import TitleImg from '../res/title.png';
-
-import { MenuBar, MenuItem, MenuParents, MenuChildren } from './menu.js';
 import { GetGeneralTexts } from './texts_general.js';
 import { ContentHome } from './content_home.js';
 import { ContentResearch, ContentResearchHai, ContentResearchHri,
@@ -21,24 +18,9 @@ import { ContentAccess } from './content_access.js';
 import { ContentLinks } from './content_links.js';
 import { ContentB3 } from './content_b3.js';
 import { Content404 } from './content_404.js';
-import { FixedFooter } from './fixed_footer.js';
 
 import { HeadNavBar } from './headnav.js';
-import { LanguageSwitcher } from './language_switcher.js';
 import { Footer } from './footer.js';
-
-// -----------------------------------------------------------------------------
-// --------------------------------- Component ---------------------------------
-// -----------------------------------------------------------------------------
-class TitleImage extends React.Component {
-  render() {
-    return (
-      <RouteLink to={'/'}>
-        <Image src={TitleImg} width={1} />
-      </RouteLink>
-    );
-  }
-}
 
 class MainContent extends React.Component {
   render() {
@@ -121,11 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
-
     // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
+    $navbarBurgers.forEach(el => {
       el.addEventListener('click', () => {
-
         // Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
@@ -133,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
       });
     });
   }

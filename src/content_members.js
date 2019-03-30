@@ -1,5 +1,4 @@
 import React from 'react';
-import { Flex, Box, Image, Heading, Subhead } from 'rebass';
 
 const UrlBase =
   'https://raw.githubusercontent.com/imai-laboratory/members_data/master/';
@@ -56,14 +55,14 @@ function createMemberList(members, lang) {
           imgUrl={MemberImageURL + members[i]['img']}
           key={roleIdx + '_' + i}
         />
-      )
+      );
     }
 
     // Register to the total list
     membersList.push(
       <div key={roleIdx}>
-        <h2 className="member-role-text">{getLangText(role, lang)}</h2>
-        <div className="columns is-mobile is-multiline">
+        <h2 className='member-role-text'>{getLangText(role, lang)}</h2>
+        <div className='columns is-mobile is-multiline'>
           {roleMemberList}
         </div>
       </div>
@@ -117,7 +116,7 @@ function createPastMemberList(pastMembers, lang, texts) {
     // Register to the total list
     membersList.push(
       <div key={yearIdx}>
-        <h2 className="pastmember-year-text">{year}</h2>
+        <h2 className='pastmember-year-text'>{year}</h2>
         {yearMemberList}
       </div>
     );
@@ -150,19 +149,19 @@ export class ContentMembers extends React.Component {
   }
   render() {
     return (
-      <div id="content_members">
-        <section id="hero-members" className="hero-img hero is-medium is-dark is-bold">
-          <div className="hero-body">
-            <div className="container has-text-centered">
-              <h1 className="title">
+      <div id='content_members'>
+        <section id='hero-members' className='hero-img hero is-medium is-dark is-bold'>
+          <div className='hero-body'>
+            <div className='container has-text-centered'>
+              <h1 className='title'>
                 {this.props.texts['members_head']}
               </h1>
             </div>
           </div>
         </section>
-        <div className="container">
+        <div className='container'>
           {createMemberList(this.state.members, this.props.lang)}
-          <h2 className="member-role-text">{this.props.texts['members_past_head']}</h2>
+          <h2 className='member-role-text'>{this.props.texts['members_past_head']}</h2>
           {createPastMemberList(this.state.pastMembers, this.props.lang, this.props.texts)}
         </div>
       </div>
@@ -180,14 +179,14 @@ class MemberElem extends React.Component {
 
   render() {
     return (
-      <div className="column is-6-mobile is-3-tablet is-3-desktop is-3-widescreen is-3-fullhd">
-        <div className="member-card">
-          <figure className="image">
-            <img className="is-rounded member-avatar" src={this.props.imgUrl} />
+      <div className='column is-6-mobile is-3-tablet is-3-desktop is-3-widescreen is-3-fullhd'>
+        <div className='member-card'>
+          <figure className='image'>
+            <img className='is-rounded member-avatar' src={this.props.imgUrl} />
           </figure>
-          <p class="name">{this.props.name}</p>
-          <p class="info">{this.props.grade}</p>
-          <p class="info">{this.props.email}</p>
+          <p className='name'>{this.props.name}</p>
+          <p className='info'>{this.props.grade}</p>
+          <p className='info'>{this.props.email}</p>
           {this.optionElement}
         </div>
       </div>
