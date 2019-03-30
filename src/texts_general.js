@@ -7,7 +7,8 @@ const MULTI_LANG_TEXTS = {
 
   // ----------------------------------- Menu ----------------------------------
   menu_home: { en: 'Home', ja: 'ホーム' },
-  menu_research: { en: 'Research Theme', ja: '研究分野' },
+  menu_research: { en: 'Research', ja: '研究' },
+  menu_research_theme: { en: 'Research Theme', ja: '研究分野' },
   menu_research_hai: {
     en: 'Human-Agent Interaction (HAI)',
     ja: 'ヒューマン-エージェント インタラクション (HAI)' },

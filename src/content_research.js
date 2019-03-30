@@ -77,7 +77,7 @@ export class ContentResearch extends React.Component {
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title">
-                {this.props.texts['menu_research']}
+                {this.props.texts['menu_research_theme']}
               </h1>
             </div>
           </div>

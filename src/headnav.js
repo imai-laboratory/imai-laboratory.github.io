@@ -20,21 +20,27 @@ export class HeadNavBar extends React.Component {
           
           <div id="headNavbarExpandArea" className="navbar-menu">
             <div className="navbar-start">
-              <NavItem to="/" name="Home" />
-              <NavDropDown key="research" name="Research">
-                <NavItem to="/research" name="About" />
-                <NavItem to="/publication" name="Publications" />
-                <NavItem to="/activity" name="Activities" />
+              <NavItem to="/" name={this.props.texts['menu_home']} />
+              <NavDropDown key="research" name={this.props.texts['menu_research']}>
+                <NavItem to="/research" name={this.props.texts['menu_research_theme']} />
+                <NavItem to="/publication_journal" name={this.props.texts['menu_publication_journal']} />
+                <NavItem to="/publication_international" name={this.props.texts['menu_publication_international']} />
+                <NavItem to="/publication_domestic" name={this.props.texts['menu_publication_domestic']} />
               </NavDropDown>
-              <NavItem to="/member" name="Members" />
-              <NavItem to="/links" name="Links" />
+              <NavDropDown key="activity" name={this.props.texts['menu_activity']}>
+                <NavItem to="/activity_award" name={this.props.texts['menu_activity_award']} />
+                <NavItem to="/activity_media" name={this.props.texts['menu_activity_media']} />
+                <NavItem to="/activity_talk" name={this.props.texts['menu_activity_talk']} />
+              </NavDropDown>
+              <NavItem to="/member" name={this.props.texts['menu_member']} />
+              <NavItem to="/links" name={this.props.texts['menu_links']} />
             </div>
 
             <div className="navbar-end">
               <div className="navbar-item">
                 <LanguageSwitcher changeLang={this.props.changeLang.bind(this)} langText={this.props.langText} />
                 <div className="buttons">
-                  <NavItemButton to="/b3" name="For B3" />
+                  <NavItemButton to="/b3" name={this.props.texts['menu_b3']} />
                 </div>
               </div>
             </div>
