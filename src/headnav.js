@@ -5,10 +5,11 @@ import { LanguageSwitcher } from './language_switcher.js';
 export class HeadNavBar extends React.Component {
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav id="headnav" className="navbar" role="navigation" aria-label="main navigation">
+        <div className="container">
           <div className="navbar-brand">
             <a className="navbar-item" href="/">
-              <img src="res/title.png" width="112" height="28" />
+              <img src="res/title.png" />
             </a>
 
             <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="headNavbarExpandArea">
@@ -41,10 +42,16 @@ export class HeadNavBar extends React.Component {
                 <LanguageSwitcher changeLang={this.props.changeLang.bind(this)} langText={this.props.langText} />
                 <div className="buttons">
                   <NavItemButton to="/b3" name={this.props.texts['menu_b3']} />
+                  <a href="https://twitter.com/imailab" className="button is-info">
+                    <span className="icon">
+                      <i className="fab fa-twitter"></i>
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </nav>
     );
   }
