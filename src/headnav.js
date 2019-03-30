@@ -6,7 +6,6 @@ export class HeadNavBar extends React.Component {
   render() {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="container">
           <div className="navbar-brand">
             <a className="navbar-item" href="/">
               <img src="res/title.png" width="112" height="28" />
@@ -40,7 +39,6 @@ export class HeadNavBar extends React.Component {
               </div>
             </div>
           </div>
-        </div>
       </nav>
     );
   }

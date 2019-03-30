@@ -14,7 +14,7 @@ export class LanguageSwitcher extends React.Component {
   
       return (
         <div className="control has-icons-left">
-          <div className="select">
+          <div className="select mr-2 mb-dt-0 mb-2">
             <select onChange={e => this.props.changeLang(e.target.value)}>
               {options}
             </select>
