@@ -25,6 +25,7 @@ import { FixedFooter } from './fixed_footer.js';
 
 import { HeadNavBar } from './headnav.js';
 import { LanguageSwitcher } from './language_switcher.js';
+import { Footer } from './footer.js';
 
 // -----------------------------------------------------------------------------
 // --------------------------------- Component ---------------------------------
@@ -174,6 +175,11 @@ class App extends React.Component {
           <div className="container">
             <MainContent lang={this.state.lang} text={this.state.texts} />
           </div>
+
+          {/* Footer */}
+          <Footer>
+            {this.state.texts['footer']}
+          </Footer>
 
         </Container>
       </Provider>
