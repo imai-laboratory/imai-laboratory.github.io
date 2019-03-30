@@ -130,14 +130,20 @@ function createPaperList(papers) {
 
 function createPublicationElement(head, papers) {
   return (
-    <Box width={1}>
-      <Heading pt={3}>{head}</Heading>
-      <Flex align='center' p={2} wrap>
-        <Box width={1} p={1}>
+    <div>
+      <section className="hero is-small is-primary is-bold">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <h1 className="title">
+                {head}
+              </h1>
+            </div>
+          </div>
+        </section>
+        <div className="container">
           {createPaperList(papers)}
-        </Box>
-      </Flex>
-    </Box>
+        </div>
+    </div>
   );
 }
 
