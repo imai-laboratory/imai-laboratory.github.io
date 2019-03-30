@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Carousel, CarouselSlide, Image, Heading } from 'rebass';
 
 // -----------------------------------------------------------------------------
@@ -63,21 +64,34 @@ export class ContentHome extends React.Component {
             </div>
           </div>
         </section>
-        <section className="hero is-medium is-dark is-bold">
+
+        <section id="hero-research" className="hero-img hero is-medium is-dark is-bold">
           <div className="hero-body">
             <div className="container">
               <h1 className="title">
                 {this.props.texts['menu_research']}
               </h1>
-              <RouteLink to='/research' key='/research' className="button is-primary mr-2">
-                <strong>About</strong>
-              </RouteLink>
-              <RouteLink to='/publication' key='/publication' className="button is-primary mr-2">
-                <strong>Publications</strong>
-              </RouteLink>
-              <RouteLink to='/activity' key='/activity' className="button is-primary">
-                <strong>Activities</strong>
-              </RouteLink>
+              <h2 class="subtitle">
+              {this.props.texts['home_keywords']}:
+              </h2>
+              <HashLink to='/research#research_section_iai' key='/research_iai' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_head']}</strong>
+              </HashLink>
+              <HashLink to='/research#research_section_hai' key='/research_hai' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_hai_head']}</strong>
+              </HashLink>
+              <HashLink to='/research#research_section_hri' key='/research_hri' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_hri_head']}</strong>
+              </HashLink>
+              <HashLink to='/research#research_section_ca' key='/research_ca' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_ca_head']}</strong>
+              </HashLink>
+              <HashLink to='/research#research_section_as' key='/research_as' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_as_head']}</strong>
+              </HashLink>
+              <HashLink to='/research#research_section_cn' key='/research_cn' className="button is-primary mr-2 mb-2">
+                <strong>{this.props.texts['research_cn_head']}</strong>
+              </HashLink>
             </div>
           </div>
         </section>

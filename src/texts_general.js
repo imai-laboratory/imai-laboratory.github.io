@@ -42,6 +42,8 @@ const MULTI_LANG_TEXTS = {
     en: 'INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY',
     ja: 'インタラクティブAIの研究室' },
 
+  home_keywords: { en: 'Keywords', ja: 'キーワード' },
+
   // --------------------------------- Research --------------------------------
   research_head: {
     en: 'Interactive Artificial Intelligence',
