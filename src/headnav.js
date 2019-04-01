@@ -22,8 +22,8 @@ export class HeadNavBar extends React.Component {
           <div id='headNavbarExpandArea' className='navbar-menu'>
             <div className='navbar-start'>
               <NavItem to='/' name={this.props.texts['menu_home']} />
-              <NavDropDown key='research' name={this.props.texts['menu_research']}>
-                <NavItem to='/research' name={this.props.texts['menu_research_theme']} />
+              <NavItem to='/research' name={this.props.texts['menu_research']} />
+              <NavDropDown key='publication' name={this.props.texts['menu_publication']}>
                 <NavItem to='/publication_journal' name={this.props.texts['menu_publication_journal']} />
                 <NavItem to='/publication_international' name={this.props.texts['menu_publication_international']} />
                 <NavItem to='/publication_domestic' name={this.props.texts['menu_publication_domestic']} />
