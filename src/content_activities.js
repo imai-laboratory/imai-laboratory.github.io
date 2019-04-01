@@ -36,10 +36,12 @@ function setActivityStatus(component, yearJsonUrl, jsonUrlExp) {
 function createActivityText(activity) {
   const description = <div dangerouslySetInnerHTML={{__html: activity.description}} />;
   return (
-    <div>
-      <h3>{activity.title}</h3>
-      {description}
-    </div>
+    <tr className="article-row">
+      <td className="article-cell">
+        <strong>{activity.title}</strong>
+        {description}
+      </td>
+    </tr>
   );
 }
 
@@ -54,9 +56,7 @@ function createActivityList(activities) {
     var yearActivityList = [];
     yearActivities.forEach((activity, activityIdx) => {
       yearActivityList.push(
-        <Box width={1} p={2} key={yearIdx + '_' + activityIdx}>
-          {createActivityText(activity)}
-        </Box>
+        createActivityText(activity)
       );
     });
 
@@ -64,7 +64,9 @@ function createActivityList(activities) {
     activityList.push(
       <Box width={1} p={3} key={yearIdx}>
         <Subhead>{year}</Subhead>
-        {yearActivityList}
+        <table className="article-table">
+          {yearActivityList}
+        </table>
       </Box>
     );
   });
@@ -84,7 +86,7 @@ function createActivityElement(head, activities) {
         </div>
       </section>
       <div className='container'>
-        {createActivityList(activities)}
+          {createActivityList(activities)}
       </div>
     </div>
   );
