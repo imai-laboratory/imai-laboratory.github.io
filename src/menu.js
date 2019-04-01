@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toolbar, NavLink, Group } from 'rebass';
 
-import styles from './menu.css';
+import styles from './stylesheets/menu.css';
 
 export class MenuBar extends React.Component {
   render() {

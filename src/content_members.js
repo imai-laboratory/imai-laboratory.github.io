@@ -1,5 +1,4 @@
 import React from 'react';
-import { Flex, Box, Image, Heading, Subhead } from 'rebass';
 
 const UrlBase =
   'https://raw.githubusercontent.com/imai-laboratory/members_data/master/';
@@ -37,67 +36,6 @@ function getLangText(elem, lang) {
 // -----------------------------------------------------------------------------
 // ---------------------------------- Members ----------------------------------
 // -----------------------------------------------------------------------------
-class MemberImage extends React.Component {
-  constructor(prop) {
-    super(prop);
-    this.imgSize = 180;
-    this.state = {
-      scale: 1.0
-    };
-  }
-  onLoadImage(e) {
-    var w = e.target.width;
-    var h = e.target.height;
-    if (h < w) {
-      // Zoom
-      this.setState({scale: this.imgSize / h});
-    }
-  }
-
-  render() {
-    var transformText = 'translate(-50%, -50%) scale(' + this.state.scale + ')';
-    return (
-      <div style={{overflow: 'hidden',
-                   width: this.imgSize,
-                   height: this.imgSize,
-                   margin: 'auto'}}>
-        <Image src={this.props.src}
-               onLoad={this.onLoadImage.bind(this)}
-               style={{position: 'relative',
-                       width: '100%',  // Fit to width
-                       height: 'auto',
-                       top: '50%',
-                       left: '50%',
-                       borderRadius: '50%',
-                       transform: transformText}} />
-      </div>
-    );
-  }
-}
-
-function createMemberElem(member, lang) {
-  var name = getLangText(member['name'], lang);
-  var grade = getLangText(member['grade'], lang);
-  var email = member['email'];
-  var option = member['option'];
-  var imgUrl = MemberImageURL + member['img'];
-
-  var optionElement = (option === undefined ? <div />
-    : <div dangerouslySetInnerHTML={{__html: option}} />);
-
-  return (
-    <Box p={1}>
-      <Flex align='center' style={{textAlign: 'center'}} wrap>
-        <Box width={1}><MemberImage src={imgUrl} /></Box>
-        <Box width={1}>{name}</Box>
-        <Box width={1}>{grade}</Box>
-        <Box width={1}>{email}</Box>
-        <Box width={1}>{optionElement}</Box>
-      </Flex>
-    </Box>
-  );
-}
-
 function createMemberList(members, lang) {
   // Create current member list
   var membersList = [];
@@ -106,41 +44,28 @@ function createMemberList(members, lang) {
     var members = memberInfo['members'];
 
     // Create member list of each role
-    // 2 colum member list
     var roleMemberList = [];
-    for (let i = 0; i < (members.length + 1) / 2; ++i) {
-      const row = []
-      const index =  2 * i
-      // first column
-      if (members[index] !== undefined) {
-        row.push(
-          <Box width={[1, 1/2]} p={2} key={roleIdx + '_' + index}>
-            {createMemberElem(members[index], lang)}
-          </Box>
-        )
-      }
-      // second column
-      if (members[index+1] !== undefined) {
-        console.log(members[index+1])
-        row.push(
-          <Box width={[1, 1/2]} p={2} key={roleIdx + '_' + (index + 1)}>
-            {createMemberElem(members[index + 1], lang)}
-          </Box>
-        )
-      }
+    for (var i = 0; i < members.length; i++) {
       roleMemberList.push(
-        <Flex wrap>
-          {row}
-        </Flex>
-      )
+        <MemberElem
+          name={getLangText(members[i]['name'], lang)}
+          grade={getLangText(members[i]['grade'], lang)}
+          email={members[i]['email']}
+          optionElement={members[i]['option']}
+          imgUrl={MemberImageURL + members[i]['img']}
+          key={roleIdx + '_' + i}
+        />
+      );
     }
 
     // Register to the total list
     membersList.push(
-      <Box width={1} p={3} key={roleIdx}>
-        <Subhead>{getLangText(role, lang)}</Subhead>
-        {roleMemberList}
-      </Box>
+      <div key={roleIdx}>
+        <h2 className='member-role-text'>{getLangText(role, lang)}</h2>
+        <div className='columns is-mobile is-multiline'>
+          {roleMemberList}
+        </div>
+      </div>
     );
   });
 
@@ -182,18 +107,18 @@ function createPastMemberList(pastMembers, lang, texts) {
     var yearMemberList = [];
     members.forEach((member, memberIdx) => {
       yearMemberList.push(
-        <Box width={1} p={0} key={yearIdx + '_' + memberIdx}>
+        <div key={yearIdx + '_' + memberIdx}>
           {createPastMemberElem(member, lang, texts)}
-        </Box>
+        </div>
       );
     });
 
     // Register to the total list
     membersList.push(
-      <Box width={1} p={3} key={yearIdx}>
-        <Subhead>{year}</Subhead>
+      <div key={yearIdx}>
+        <h2 className='pastmember-year-text'>{year}</h2>
         {yearMemberList}
-      </Box>
+      </div>
     );
   });
 
@@ -224,21 +149,47 @@ export class ContentMembers extends React.Component {
   }
   render() {
     return (
-      <Box width={1}>
-        <Heading pt={3}>{this.props.texts['members_head']}</Heading>
-        <Flex align='center' p={2} wrap>
-          <Box width={1} p={1}>
-            {createMemberList(this.state.members, this.props.lang)}
-          </Box>
-        </Flex>
-        <Heading pt={3}>{this.props.texts['members_past_head']}</Heading>
-        <Flex align='center' p={2} wrap>
-          <Box width={1} p={1}>
-            {createPastMemberList(this.state.pastMembers, this.props.lang,
-              this.props.texts)}
-          </Box>
-        </Flex>
-      </Box>
+      <div id='content_members'>
+        <section id='hero-members' className='hero-img hero is-medium is-dark is-bold'>
+          <div className='hero-body'>
+            <div className='container has-text-centered'>
+              <h1 className='title'>
+                {this.props.texts['members_head']}
+              </h1>
+            </div>
+          </div>
+        </section>
+        <div className='container'>
+          {createMemberList(this.state.members, this.props.lang)}
+          <h2 className='member-role-text'>{this.props.texts['members_past_head']}</h2>
+          {createPastMemberList(this.state.pastMembers, this.props.lang, this.props.texts)}
+        </div>
+      </div>
+    );
+  }
+}
+
+class MemberElem extends React.Component {
+  constructor(prop) {
+    super(prop);
+
+    this.optionElement = (this.props.optionElement === undefined ? <div />
+      : <div dangerouslySetInnerHTML={{__html: this.props.optionElement}} />);
+  }
+
+  render() {
+    return (
+      <div className='column is-6-mobile is-3-tablet is-3-desktop is-3-widescreen is-3-fullhd'>
+        <div className='member-card'>
+          <figure className='image'>
+            <img className='is-rounded member-avatar' src={this.props.imgUrl} />
+          </figure>
+          <p className='name'>{this.props.name}</p>
+          <p className='info'>{this.props.grade}</p>
+          <p className='info'>{this.props.email}</p>
+          {this.optionElement}
+        </div>
+      </div>
     );
   }
 }

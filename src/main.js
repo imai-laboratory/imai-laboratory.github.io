@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link as RouteLink, Redirect
+import { BrowserRouter, Route, Switch, Redirect
 } from 'react-router-dom';
-import { Provider, Container, Flex, Box, Image, Link, Label } from 'rebass';
+import { Provider, Container } from 'rebass';
 
-import TitleImg from '../res/title.png';
-
-import { MenuBar, MenuItem, MenuParents, MenuChildren } from './menu.js';
 import { GetGeneralTexts } from './texts_general.js';
 import { ContentHome } from './content_home.js';
 import { ContentResearch, ContentResearchHai, ContentResearchHri,
@@ -21,127 +18,9 @@ import { ContentAccess } from './content_access.js';
 import { ContentLinks } from './content_links.js';
 import { ContentB3 } from './content_b3.js';
 import { Content404 } from './content_404.js';
-import { FixedFooter } from './fixed_footer.js';
 
-// -----------------------------------------------------------------------------
-// --------------------------------- Component ---------------------------------
-// -----------------------------------------------------------------------------
-class TitleImage extends React.Component {
-  render() {
-    return (
-      <RouteLink to={'/'}>
-        <Image src={TitleImg} width={1} />
-      </RouteLink>
-    );
-  }
-}
-
-class LanguageSwitcher extends React.Component {
-  render() {
-    return (
-      <Flex wrap>
-        <Box width={[1 / 3, 1, 1, 1]} align='right'>
-          <Label>{this.props.langText}:</Label>
-        </Box>
-        <Box width={[2 / 3, 1, 1, 1]} align='left'>
-          <Flex wrap>
-            {/* Texts (`English` and '日本語') are not dynamic. */}
-            <Link onClick={this.props.changeLang.bind(this, 'en')}
-              href='javascript:;' px={2}>English</Link>
-            <Link onClick={this.props.changeLang.bind(this, 'ja')}
-              href='javascript:;' px={2}>日本語</Link>
-          </Flex>
-        </Box>
-      </Flex>
-    );
-  }
-}
-
-class MainMenu extends React.Component {
-  constructor(prop) {
-    super(prop);
-    this.state = {
-      menuKeys: [
-        'home',
-        [
-          'research', // parent
-          'research_hai', // children 1
-          'research_hri', // children 2 ...
-          'research_ca',
-          'research_as',
-          'research_cn'
-        ],
-        'member',
-        [
-          'publication', // parent
-          'publication_journal', // children 1
-          'publication_international', // children 2 ...
-          'publication_domestic'
-        ],
-        [
-          'activity', // parent
-          'activity_award', // children 1
-          'activity_media', // children 2
-          'activity_talk' // children 3
-        ],
-        'links',
-        'access',
-        'b3'
-      ]
-    };
-  }
-  createMenuItem(key) {
-    return (
-      <RouteLink to={key} key={key}>
-        <MenuItem>
-          {this.props.texts['menu_' + key]}
-        </MenuItem>
-      </RouteLink>
-    );
-  }
-  createMenuItemHome(key) {
-    return (
-      <RouteLink to='/' key={key}>
-        <MenuItem>
-          {this.props.texts['menu_' + key]}
-        </MenuItem>
-      </RouteLink>
-    );
-  }
-  createNestedMenuItems(keys) {
-    if (keys.length === 0) { return null; }
-    var parentItem = this.createMenuItem(keys[0]);
-    var childItems = [];
-    for (var i = 1; i < keys.length; i++) {
-      childItems.push(this.createMenuItem(keys[i]));
-    }
-    return (<MenuParents key={keys[0] + '_parent'}>
-      {parentItem}
-      <MenuChildren key={keys[0] + '_child'}>
-        {childItems}
-      </MenuChildren>
-    </MenuParents>);
-  };
-  render() {
-    // Create menu items
-    var menuItems = [];
-    this.state.menuKeys.forEach((key) => {
-      if (typeof (key) === 'string') {
-        if (key === 'home') {
-          menuItems.push(this.createMenuItemHome(key));
-        } else {
-          menuItems.push(this.createMenuItem(key));
-        }
-      } else if (typeof (key) === 'object') {
-        menuItems.push(this.createNestedMenuItems(key));
-      } else {
-        console.error('Invalid type in menu key.');
-      }
-    });
-
-    return (<MenuBar>{menuItems}</MenuBar>);
-  }
-}
+import { HeadNavBar } from './headnav.js';
+import { Footer } from './footer.js';
 
 class MainContent extends React.Component {
   render() {
@@ -218,6 +97,27 @@ function routeInitialUrl() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+    // Add a click event on each of them
+    $navbarBurgers.forEach(el => {
+      el.addEventListener('click', () => {
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+});
+
 // -----------------------------------------------------------------------------
 // ------------------------------ Application Main -----------------------------
 // -----------------------------------------------------------------------------
@@ -247,41 +147,16 @@ class App extends React.Component {
           {/* Routing via initial URL */}
           {routeInitialUrl()}
 
-          {/* Header */}
-          <Flex align='center' wrap>
-            <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} p={2}>
-              <TitleImage />
-            </Box>
-            <Box ml='auto' align='right' width={[1, 5 / 12, 3 / 12, 3 / 12]} px={4}>
-              <LanguageSwitcher changeLang={this.changeLang.bind(this)}
-                langText={this.state.texts.language} />
-            </Box>
-          </Flex>
-
           {/* Menu */}
-          <Flex align='center'>
-            <Box width={1} ml={[0, 0, 0, 0]}>
-              <MainMenu texts={this.state.texts} />
-            </Box>
-          </Flex>
+          <HeadNavBar texts={this.state.texts} changeLang={this.changeLang.bind(this)} langText={this.state.texts.language} />
 
           {/* Content */}
-          <Flex align='center' py={2}>
-            <Box width={1} px={10}>
-              <MainContent lang={this.state.lang} text={this.state.texts} />
-            </Box>
-          </Flex>
+          <MainContent lang={this.state.lang} text={this.state.texts} />
 
           {/* Footer */}
-          <Flex align='center' py={20}>
-            <Box width={1}>
-              <FixedFooter>
-                <div style={{textAlign: 'center'}}>
-                  {this.state.texts['footer']}
-                </div>
-              </FixedFooter>
-            </Box>
-          </Flex>
+          <Footer>
+            {this.state.texts['footer']}
+          </Footer>
 
         </Container>
       </Provider>

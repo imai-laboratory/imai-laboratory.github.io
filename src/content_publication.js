@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Heading, Subhead, Link, Text } from 'rebass';
+import { Box, Subhead, Link, Text } from 'rebass';
 import { fetchJson } from './utility.js';
 
 // Json URLs from publication repository.
@@ -42,16 +42,16 @@ function createPaperText(paper) {
         <span>,</span>
         {paper.author.slice(1).join(', ').replace(/_/g, ' ')}
       </Text>
-    )
+    );
   }
   if (paper.title) {
     textList.push(
       <Text pb={1}>
         "<strong>{paper.title.replace(/_/g, ' ')}</strong>"
       </Text>
-    )
+    );
   }
-  const place = []
+  const place = [];
   if (paper.book) {
     place.push(paper.book);
   }
@@ -71,8 +71,8 @@ function createPaperText(paper) {
     <Text pb={1}>
       {place.join(',').replace(/_/g, ' ')}
     </Text>
-  )
-  return textList
+  );
+  return textList;
 }
 
 function createPDFLink(paper) {
@@ -84,10 +84,10 @@ function createPDFLink(paper) {
 function createPaperList(papers) {
   // Count up the number of papers
   var paperTotalIdx = 0;
-  papers.forEach((paperInfo, yearIdx) => {
+  papers.forEach((paperInfo) => {
     var yearPapers = paperInfo['paper'];
-    yearPapers.forEach((paper, paperIdx) => {
-        paperTotalIdx++;
+    yearPapers.forEach(() => {
+      paperTotalIdx++;
     });
   });
 
@@ -130,14 +130,20 @@ function createPaperList(papers) {
 
 function createPublicationElement(head, papers) {
   return (
-    <Box width={1}>
-      <Heading pt={3}>{head}</Heading>
-      <Flex align='center' p={2} wrap>
-        <Box width={1} p={1}>
-          {createPaperList(papers)}
-        </Box>
-      </Flex>
-    </Box>
+    <div>
+      <section className='hero is-small is-primary is-bold'>
+        <div className='hero-body'>
+          <div className='container has-text-centered'>
+            <h1 className='title'>
+              {head}
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div className='container'>
+        {createPaperList(papers)}
+      </div>
+    </div>
   );
 }
 
