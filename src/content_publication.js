@@ -33,7 +33,7 @@ function setPaperStatus(component, yearJsonUrl, jsonUrlExp) {
     });
 }
 
-function createPaperText(paper) {
+function createPaperText(paper, lang) {
   var textList = [];
   if (paper.author) {
     textList.push(
@@ -47,7 +47,7 @@ function createPaperText(paper) {
   if (paper.title) {
     textList.push(
       <Text pb={1}>
-        "<strong>{paper.title.replace(/_/g, ' ')}</strong>"
+        "<strong>{getLangText(paper.title, lang).replace(/_/g, ' ')}</strong>"
       </Text>
     );
   }
@@ -81,7 +81,7 @@ function createPDFLink(paper) {
   }
 }
 
-function createPaperList(papers) {
+function createPaperList(papers, lang) {
   // Count up the number of papers
   var paperTotalIdx = 0;
   papers.forEach((paperInfo) => {
@@ -106,7 +106,7 @@ function createPaperList(papers) {
           style={{'border-bottom': '1px solid #95a5a6'}}>
           <td>{paperTotalIdx--}</td>
           <td style={{padding: '12px'}}>
-            {createPaperText(paper)}
+            {createPaperText(paper, lang)}
             {createPDFLink(paper)}
           </td>
         </tr>
@@ -128,7 +128,7 @@ function createPaperList(papers) {
   return paperList;
 }
 
-function createPublicationElement(head, papers) {
+function createPublicationElement(head, papers, lang) {
   return (
     <div>
       <section className='hero is-small is-primary is-bold'>
@@ -141,10 +141,14 @@ function createPublicationElement(head, papers) {
         </div>
       </section>
       <div className='container'>
-        {createPaperList(papers)}
+        {createPaperList(papers, lang)}
       </div>
     </div>
   );
+}
+
+function getLangText(elem, lang) {
+  return elem[lang] === undefined ? elem : elem[lang];
 }
 
 // --------------------------------- Component ---------------------------------
@@ -158,7 +162,8 @@ export class ContentPublicationsJournal extends React.Component {
   render() {
     return createPublicationElement(
       this.props.texts['publication_journal_head'],
-      this.state.papers);
+      this.state.papers,
+      this.props.lang);
   }
 }
 
@@ -172,7 +177,8 @@ export class ContentPublicationsInternational extends React.Component {
   render() {
     return createPublicationElement(
       this.props.texts['publication_international_head'],
-      this.state.papers);
+      this.state.papers,
+      this.props.lang);
   }
 }
 
@@ -186,6 +192,7 @@ export class ContentPublicationsDomestic extends React.Component {
   render() {
     return createPublicationElement(
       this.props.texts['publication_domestic_head'],
-      this.state.papers);
+      this.state.papers,
+      this.props.lang);
   }
 }

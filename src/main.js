@@ -47,16 +47,16 @@ class MainContent extends React.Component {
             lang={this.props.lang} />} />
         <Route path='/publication' // Same as journal
           render={() => <ContentPublicationsJournal
-            texts={this.props.text} />} />
+            texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/publication_journal'
           render={() => <ContentPublicationsJournal
-            texts={this.props.text} />} />
+            texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/publication_international'
           render={() => <ContentPublicationsInternational
-            texts={this.props.text} />} />
+            texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/publication_domestic'
           render={() => <ContentPublicationsDomestic
-            texts={this.props.text} />} />
+            texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/activity' // same as reward
           render={() => <ContentActivitiesAward
             texts={this.props.text} />} />
