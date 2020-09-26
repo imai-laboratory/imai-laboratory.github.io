@@ -8,24 +8,24 @@ export class ContentHome extends React.Component {
   render() {
     return (
       <div id='content_home'>
-        <section id='hero-welcome' className='hero-img hero is-large is-dark is-bold'>
+        <section id='hero-welcome' className='hero-img hero is-large is-link is-bold'>
           <div className='hero-body'>
             <div className='container has-text-centered'>
-              <h1 className='title'>
+              <h1 className='title mb-4'>
                 {this.props.texts['home_imailab']}
               </h1>
+              <h2 className='is-size-4'>
+                {this.props.texts['home_message']}
+              </h2>
             </div>
           </div>
         </section>
 
-        <section id='hero-research' className='hero-img hero is-medium is-dark is-bold'>
+        <section className='hero is-medium is-dark is-bold'>
           <div className='hero-body'>
             <div className='container'>
-              <h1 className='title'>
-                {this.props.texts['menu_research']}
-              </h1>
-              <h2 className='subtitle'>
-                {this.props.texts['home_keywords']}:
+              <h2 className='subtitle has-text-left'>
+                {this.props.texts['menu_research']} {this.props.texts['home_keywords']}:
               </h2>
               <HashLink to='/research#research_section_ai' key='/research_ai' className='button is-primary mr-2 mb-2'>
                 <strong>{this.props.texts['research_ai_head']}</strong>

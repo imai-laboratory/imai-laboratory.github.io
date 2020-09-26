@@ -40,7 +40,12 @@ const MULTI_LANG_TEXTS = {
   // ----------------------------------- Home ----------------------------------
   home_imailab: {
     en: 'INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY',
-    ja: 'インタラクティブAIの研究室' },
+    ja: 'INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY' },
+
+  home_message: {
+    en: 'We are developing interactive AI algorithms and systems that augment the interaction between people and information systems and the communication between people.',
+    ja: '人と情報システムのインタラクション・人と人のコミュニケーションを拡張するインタラクティブAIについて研究しています。'
+  },
 
   home_keywords: { en: 'Keywords', ja: 'キーワード' },
 
