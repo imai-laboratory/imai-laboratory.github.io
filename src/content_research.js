@@ -82,7 +82,7 @@ class ResearchSection extends React.Component {
   render() {
     return (
       <div id={'research_section_' + this.props.id}>
-        <section className='hero is-dark'>
+        <section className='hero is-primary'>
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>
