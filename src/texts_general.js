@@ -55,64 +55,53 @@ const MULTI_LANG_TEXTS = {
     en: 'Imai Laboratory studies mechanisms for Interactive Artificial Intelligence based on Cognitive Science, Artificial Intelligence, Robotics, Intelligent Sensor Network, and Interaction Design.\n\nWe are especially interested in the particular interaction in a physical world including humans and machines. An intelligent machine has to have a skill of interacting with people by developing a relation, adapting each other, sharing information with them, supporting their activities, and developing a new symbiosis society. A robot, a computer graphic agent, and a sensor network are our key technologies to develop the interactive artificial intelligent system. We develop an interaction model and/or mechanism on the physical agent, and show how the model/mechanism works at a wild situation.\n\nOur design principle for developing the interactive artificial intelligence is a three layered model consisting of the layer of knowledge base interaction/adaptation/learning, the layer of theory of mind, and the layer of generating liveness. We consider that the AI technologies cannot be applied to interaction without the skill of the theory of mind and the liveness. We investigate how the mechanisms of the three layers cooperate to achieve a natural interaction with humans.',
     ja: '今井研究室では、認知科学・人工知能・知能ロボット・知的センサネットワーク・インタラクションデザインを基盤として、インタラクティブな人工知能を実現するメカニズムの研究を行っています。特に、人と機械を含む実世界でのインタラクションを対象にインタラクティブ人工知能システムの研究を行っています。\n\nインタラクティブ人工知能システムでは、人とインタラクションする能力を基に人と関係を築いたり、人と相互に適応したり、人と情報を共有したり、人の生活を支援したりする人と機械の共生環境の実現を目指しています。ロボットやコンピュータグラフィックスエージェント、センサネットワークを利用することで、インタラクションのモデルやメカニズムを明らかにし、実世界で活躍できる知能システムの実現をめざします。\n\n今井研究室では、デザイン原理として三つのインタラクションの層を考えています。一番下は今性の層(Liveness)、その上に心の理論の層(Reading the other’s mind)、一番上に知的で適応的なインタラクションの層(Adaptation, Learning)があり、これらが連携して初めて人と機械の間のインタラクションが成立すると考えています。人は、今性のある機械の動きを見て機械に心があることを想定し、結果として、機械と知的な駆け引きをしたり、相互に適応したりします。このデザイン原理の基で知的システムを設計しています。' },
 
-  // ------------------------------- Research HAI ------------------------------
-  research_hai_head: {
-    en: 'Human-Agent Interaction (HAI)',
-    ja: 'ヒューマン-エージェント インタラクション (HAI)' },
-  research_hai_migration_head: { en: 'Agent Migration', ja: 'マイグレーション' },
-  research_hai_migration_exp: {
-    en: 'We develop a personal CG agent to assist human daily activities. The personal CG agent can migrate on a mobile device and home appliances by keeping a relation with a user.\n\nThe advantage of the migration is to solve a problem that the user has to manage a complex digital environments consisting of lots of software applications, IoT devices, and physical services like a robot. The migration of the personal CG agent can keep the personal information of the user to control the way of accessing the services and provide tailored experiences in the integrated digital system. The knowledge based interaction and the theory of mind are important for designing the agent migration. Moreover, the lively behaviors of the personal CG agent is important to develop a relationship with the user for initiate the interaction.',
-    ja: '人の日常生活を支援するパーソナルCGエージェントを開発しています。パーソナルCGエージェントは、ユーザとの関係を保存しながら、携帯端末や様々な家電に乗り移ることができます。この機能をエージェントマイグレーションと呼びます。\n\nエージェントマイグレーションによって、ユーザは、複雑化するデジタル機器群を、同一のやりかたで使用することができるようになります。特に、エージェントを仲介して機器を用いることで、それぞれのユーザに特化する形で家電の機能を提供することができるようになります。また、ユーザは、エージェントと心を読み合う関係を構成することができるので、エージェントと状況を共有し協調して活動することができるようになります。' },
+  // ------------------------------- Research AI -------------------------------
+  research_ai_head: {
+    en: 'The research of contextual language understanding',
+    ja: '文脈を考慮した言語対話研究' },
+  research_ai_exp: {
+    en: 'The meaning of a word depends on the context. The context consists of words that have a fixed meaning. Since the context and the senses depend on each other, a method of the simultaneous estimation is significant to grasp the flow of a dialogue. In the theme, we are developing a language comprehension algorithm that progresses in time to gradually understand what the other person is saying in a conversation while allowing misunderstanding each other.',
+    ja: '単語の意味は文脈で決まります。文脈は、意味が決まった単語で構成されます。双方が相手の構成要素となっているので、同時に推定していく手法が必要になります。このテーマでは、お互いが勘違いしながらも、徐々に対話の中で相手の言わんとしていることを理解していく時間進展のある言語理解アルゴリズムを開発しています。' },
 
-  // ------------------------------- Research HRI ------------------------------
-  research_hri_head: {
-    en: 'Human-Robot Interaction (HRI)',
-    ja: 'ヒューマン-ロボット インタラクション (HRI)' },
-  research_hri_liveness_head: {
-    en: 'Liveliness for an intelligent robot',
-    ja: '知能ロボットの今性の効果' },
-  research_hri_liveness_exp: {
-    en: 'Designing interaction between a person and an intelligent robot requires that the robot shows liveliness to engage a user in the interaction. The lively behaviors motivate the person to read a robot’s mind (an imagined mental state of the robot) unconsciously. The figure shows a scene where a user teaches the robot the name of objects and the robot behaves in response to the user’s utterances and actions. The continuous immediate responses regulate the user’s teaching behaviors and establish a natural human-robot interaction.',
-    ja: '人とロボットのコミュニケーションを成立させるためには、ロボットが今性を示す振る舞いをする必要があります。\n\nロボットの今性とは、人の話しかけや動き、周辺に起きる出来事に実時間でロボットが反応を示し、ロボットが同じ文脈を共有していると人に思わせることです。ロボットが今性を示して、初めて人はロボットの心（想像上のロボットの心の状態）を推測してくれるようになります。上の写真は、ユーザがロボットに物の名前を教えている場面です。ユーザの教える振る舞いに反応することでロボットは今性を示しています。ユーザは、ロボットの反応を見て、理解度を想定しながら教えるという行為を自然に行うことができてます。' },
-  research_hri_immersion_head: {
-    en: 'Communication strategy',
-    ja: '人とロボットのコミュニケーションの演出' },
-  research_hri_immersion_exp: {
-    en: 'One of important problems is how the robot initiates the interaction with a human. The picture shows a solution for the problem. The robot uses five senses of a human to attract her/him to interact with the robot. The robot gives a person a chocolate bar in the picture and give him an utterance related to what he feels by eating the bar. For example, the robot said “It is delicious, isn’t it?” The emotional utterance makes the persons engage in the interaction with the robot.',
-    ja: 'ロボットの方から人に話しかけてコミュニケーションを開始することは、その反対（人がロボットに話しかけて開始する場合）よりも難しいことが知られています。\n\n写真の研究は、人の五感を利用してロボットが人とのコミュニケーションを開始しようとしている場面です。この手法は、コミュニケーションを開始する上で高い効果があることが分かりました。ロボットが人にチョコレートをあげて、人が食べるように勧めているシーンです。ここで、人がチョコを食べ始めたときにロボットが「おいしいでしょ？」と話しかけます。すると、ロボットが人に対して共感している（ロボットが人の心を読んでいる）と人に思わせる効果があり、円滑にコミュニケーションを開始できることが分かりました。' },
-  research_hri_emotion_head: {
-    en: 'Emotion Recognition',
-    ja: 'インタラクションを利用した感情認識' },
-  research_hri_emotion_exp: {
-    en: 'Emotional recognition is also an important theme to develop an intelligent robot. Interactive artificial intelligence considers the issue of the emotion in the context of interaction. The human’s emotion is in the loop of the interaction with the robot. We cannot deal with it independent from the interaction. This project develops an emotion recognition mechanism which interprets the human’s facial expression in the context of interaction with the robot.',
-    ja: '感情認識は、知能ロボットを作る上でも重要な研究テーマです。インタラクションの中で感情認識を考えると、インタラクションの文脈も考慮すべきであることが分かっています。人の感情は、ロボットとのインタラクションのループの中で変化しますので、インタラクションの文脈から独立して扱うべきものではありません。この研究は、人とロボットのインタラクションの文脈を参照し、人の表情を解釈する方法を研究しています。' },
+  // ------------------------------- Research SI -------------------------------
+  research_si_head: {
+    en: 'The research of situated interaction',
+    ja: '状況・画像と言語' },
+  research_si_exp: {
+    en: 'Situated expressions are related to things and events in the environment around them and exclude obvious information from themselves. People select the relevant environmental stuff along with the progress of the dialogue. In this theme, we are investigating a method for determining important information for a conversation from image information and sensor information.',
+    ja: '時に、人の発言は周囲の物や出来事に関連していて、自明な事柄は初略されます。また、周囲にある沢山の物のどれを無視して、どれに注目したらいいのかも、対話の文脈が進む中で決まってきます。このテーマでは、画像情報やセンサ情報の中から対話に重要な情報を決めていく手法の研究も行っています。' },
 
-  // ------------------------------- Research CA -------------------------------
-  research_ca_head: { en: 'Cognitive Adaption', ja: '認知適応' },
-  research_ca_wheelchair_head: { en: 'Wheelchair', ja: '車椅子の適応' },
-  research_ca_wheelchair_exp: {
-    en: 'An autonomous vehicle becomes popular along the emergence of a self-driving car. However, the relation between a driver and the vehicle is not studied well. We are investigating the effect of an adaptation process on the particular relation with the vehicle. Although a machine learning technique can acquire the model of the driver, there are two design stances as the result of the adaptation; one is a machine as the part of the driver’s body. And the other is an autonomous machine which has an independent embodiment. We are revealing criteria to achieve one of the design stance by conducting an experiment.',
-    ja: '自動運転技術の発達にともなって自律走行車への期待が高まっています。自動運転の技術の次に、ドライバーと走行車の関係の研究を行っていくことが重要になってきます。特に、人が走行車に適応する過程に関する研究が重要です。\n\n機械学習の手法は運転者のモデルを獲得する必要がありますが、一方で、そこで生じる運転者と走行車の関係には2種類のタイプが存在します。走行車が人の体の一部として捉えられる場合と、人と独立に自律して動くと捉えられる場合です。本研究では、走行車のどのような要因がこれら二つの違いに繋がるのか研究を行っています。' },
+  // ------------------------------- Research AD -------------------------------
+  research_ad_head: {
+    en: 'Augmented Dialogue',
+    ja: 'オーギュメンテッド対話：人のインタラクションの支援' },
+  research_ad_exp: {
+    en: 'The difficulty in human-human communication is related to the uncertainty of whether the other person understands the meaning of what you want to say or is looking at the material you want to show. In this theme, we develop an Augmented Dialogue that supports dialogue between people by guessing the missing information that occurs in the interaction by using an artificial intelligence system.',
+    ja: '人と人のコミュニケーションで難しいのは、対話の中で相手が自分が言いたいことの意味を正しく理解しているのか、自分が示したい資料を見ているか本当のところは分からないことです。このテーマでは、対話分析する人工知能でやりとりの中で生じる欠けた情報を推測することで人と人の対話を支援するオーギュメンテッド対話を実現しようとしています。' },
 
-  // ------------------------------- Research AS -------------------------------
-  research_as_head: { en: 'Augmented Sociality', ja: '拡張社会' },
-  research_as_teroos_head: { en: 'TEROOS Project', ja: 'TEROOS プロジェクト' },
-  research_as_teroos_exp: {
-    en: 'Our communication environment can be extended by using IT. TEROOS project developed a shoulder mounted robot named TEROOS which enables a remote user share their vision and attention with a local user via the embodied expression of TEROOS. We conducted a field test between Akihabara and Yokohama, and a test between Hawaii and Japan to reveal how TEROOS mediated the long-distance communication by using its social appearance.',
-    ja: 'IT技術を使うことで私たちのコミュニケーション環境は拡張することができます。TEROOSは、肩に乗せることのできるテレプレゼンスロボットで、遠隔のユーザと現地のユーザが視線を共有しながら身体的表現を用いたインタラクションをすることができます。TEROOSを用いて秋葉原と横浜を繋げる実験や、ハワイと福島を繋げる実験を行い、新しいデバイスで人がどのようなインタラクションを行うことができるのかを明らかにしました。' },
-  research_as_prot_head: { en: 'PROT Project', ja: 'PROT プロジェクト' },
-  research_as_prot_exp: {
-    en: 'PROT project employs a movable projector to project the image of a remote user at any surfaces. The local user has an amazing experience in the interaction with the remote user. They can interact each other by referring to physical objects at the local environment.',
-    ja: 'PROTは、映像を移動させ周囲の任意の壁にCGアバタを投影できるシステムです。遠隔のユーザが自分の分身であるCGアバタを移動させ、現地のユーザの周囲にある物体を共有しながらインタラクションができる環境を構築しました。' },
+  // ------------------------------- Research IU -------------------------------
+  research_iu_head: {
+    en: 'Interactive understanding others with small samples',
+    ja: '少数サンプルと他者理解' },
+  research_iu_exp: {
+    en: 'Humans are able to acquire the model of the others with small numbers of interactions, while the machine learning algorithm requires a certain amount of data. The theme develops an AI system in the scene of understanding others in interaction by comparing the tendency of human interlocutors with the machine learning algorithm.',
+    ja: '機械学習をするためには大量のデータが必要ですが、人は少ないサンプルでも理解できてしまうことが多々あります。本研究では、機械学習の特性と、人との情報集約の特性を比較しながら、人が他人から情報を聞き出す他者理解のインタラクションの場面に適応可能な新しいアルゴリズムの研究をしています。' },
 
-  // ------------------------------- Research CN -------------------------------
-  research_cn_head: {
-    en: 'Cognitive Neural Network',
-    ja: '認知的ニューラルネットワーク' },
-  research_cn_mouse_head: { en: '', ja: '' },
-  research_cn_mouse_exp: {
-    en: 'We are investigating a mechanism for an interactive artificial intelligence based on a cognitive neural network model. We cannot find the mechanism without considering the effect of an embodiment and social relation with the other agents. The other significant point is to find the way that the mechanism keeps the liveness of agent’s behaviors to engage people in the interaction with the agent.',
-    ja: 'インタラクティブAIシステムを構築するための機構を、認知的神経回路モデルを用いて研究しています。\n\nエージェント自体の身体性および周囲のエージェントとの社会的関係を考慮にいれることで、インタラクションのメカニズムを明らかにしようとしています。また、エージェントの今性のある反応も考慮することで、エージェントとのインタラクションに人を引き込む方法にも注目しています。' },
+  // ------------------------------- Research UI -------------------------------
+  research_ui_head: {
+    en: 'User Interface for Mutual Adaptation',
+    ja: '人と相互適応するユーザインタフェース' },
+  research_ui_exp: {
+    en: 'There are a lot of autonomous machines that accept humans\' control, such as computer applications, computer games, teleoperated robots, and autonomous vehicles. The control interface for the devices provides a pre-designed method, while users have their preferred style of control. The theme investigates a control environment to support mutual adaptation between users and machines by using a technique of machine learning.',
+    ja: 'モバイルアプリケーション、ゲーム、テレプレゼンスロボット、自律走行車など、自動的に動きつつも人が操作する物が沢山存在します。本当は、人それぞれ別の操作方法が良いのにもかかわらず、事前にデザインされた操作インタフェースが提供されている物がほとんどです。このテーマでは、人が機械に慣れていく過程と、機械が人の特性を学習していく過程を相互適応として捉えて、より使いやすい知的な操作環境を提供することを目指しています。' },
+
+  // ------------------------------- Research AG -------------------------------
+  research_ag_head: {
+    en: 'Agent based user interface',
+    ja: 'エージェントインタフェース' },
+  research_ag_exp: {
+    en: 'We study an autonomous agent to support the user\'s daily life via interaction. The agent is expected to migrate different types of home appliances to help the user, which is difficult for the robot, which has a physical embodiment. We try to propose the agent-based user interface to integrate the services of living environments and home appliances.',
+    ja: '人と対話形式で生活支援をするエージェントの研究をしています。ソフトウェアエージェントは、ロボットと異なり、様々な機器に移動しでサービスできるなどより柔軟な支援の提供が期待できます。本研究では、生活環境・家電機器のサービスをエージェントで統一的に扱えるユーザインタフェースの構築を目指し研究しています。' },
 
   // --------------------------------- Members ---------------------------------
   members_head: { en: 'Members', ja: '研究室メンバー' },
