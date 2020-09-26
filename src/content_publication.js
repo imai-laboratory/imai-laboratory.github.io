@@ -36,11 +36,12 @@ function setPaperStatus(component, yearJsonUrl, jsonUrlExp) {
 function createPaperText(paper, lang) {
   var textList = [];
   if (paper.author) {
+    var authors = getLangText(paper.author, lang);
     textList.push(
       <Text pb={1}>
-        <strong>{paper.author[0].replace(/_/g, ' ')}</strong>
+        <strong>{authors[0].replace(/_/g, ' ')}</strong>
         <span>,</span>
-        {paper.author.slice(1).join(', ').replace(/_/g, ' ')}
+        {authors.slice(1).join(', ').replace(/_/g, ' ')}
       </Text>
     );
   }
@@ -53,7 +54,7 @@ function createPaperText(paper, lang) {
   }
   const place = [];
   if (paper.book) {
-    place.push(paper.book);
+    place.push(getLangText(paper.book, lang));
   }
   if (paper.vol) {
     place.push(paper.vol);
