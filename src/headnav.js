@@ -21,7 +21,10 @@ export class HeadNavBar extends React.Component {
         <div id='headNavbarExpandArea' className='navbar-menu'>
           <div className='navbar-start'>
             <NavItem to='/' name={this.props.texts['menu_home']} />
-            <NavItem to='/research' name={this.props.texts['menu_research']} />
+            <NavDropDown key='research' name={this.props.texts['menu_research']}>
+              <NavItem to='/research' name={this.props.texts['menu_research_theme']} />
+              <NavItem to='#' name={this.props.texts['menu_research_proj']} />
+            </NavDropDown>
             <NavDropDown key='publication' name={this.props.texts['menu_publication']}>
               <NavItem to='/publication_journal' name={this.props.texts['menu_publication_journal']} />
               <NavItem to='/publication_international' name={this.props.texts['menu_publication_international']} />
@@ -34,6 +37,7 @@ export class HeadNavBar extends React.Component {
             </NavDropDown>
             <NavItem to='/member' name={this.props.texts['menu_member']} />
             <NavItem to='/access' name={this.props.texts['menu_access']} />
+            <NavItem to='#' name={this.props.texts['menu_class']} />
             <NavItem to='/links' name={this.props.texts['menu_links']} />
           </div>
 

@@ -9,6 +9,7 @@ const MULTI_LANG_TEXTS = {
   menu_home: { en: 'Home', ja: 'ホーム' },
   menu_research: { en: 'Research', ja: '研究' },
   menu_research_theme: { en: 'Research Theme', ja: '研究分野' },
+  menu_research_proj: { en: 'Research Projects', ja: '研究プロジェクト' },
   menu_research_hai: {
     en: 'Human-Agent Interaction (HAI)',
     ja: 'ヒューマン-エージェント インタラクション (HAI)' },
@@ -31,6 +32,7 @@ const MULTI_LANG_TEXTS = {
     ja: '国内会議 (日本)' },
   menu_links: { en: 'Link', ja: '外部リンク' },
   menu_access: { en: 'Access', ja: 'アクセス' },
+  menu_class: { en: 'Class', ja: '授業' },
   menu_b3: { en: 'For B3', ja: 'B3向け情報' },
   menu_activity: { en: 'Activities', ja: 'アクティビティ' },
   menu_activity_award: { en: 'Awards', ja: '受賞' },
