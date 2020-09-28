@@ -23,7 +23,7 @@ export class HeadNavBar extends React.Component {
             <NavItem to='/' name={this.props.texts['menu_home']} />
             <NavDropDown key='research' name={this.props.texts['menu_research']}>
               <NavItem to='/research' name={this.props.texts['menu_research_theme']} />
-              <NavItem to='#' name={this.props.texts['menu_research_proj']} />
+              <NavItem to='/research_proj' name={this.props.texts['menu_research_proj']} />
             </NavDropDown>
             <NavDropDown key='publication' name={this.props.texts['menu_publication']}>
               <NavItem to='/publication_journal' name={this.props.texts['menu_publication_journal']} />

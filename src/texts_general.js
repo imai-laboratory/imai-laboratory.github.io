@@ -110,6 +110,29 @@ const MULTI_LANG_TEXTS = {
     en: 'We study an autonomous agent to support the user\'s daily life via interaction. The agent is expected to migrate different types of home appliances to help the user, which is difficult for the robot, which has a physical embodiment. We try to propose the agent-based user interface to integrate the services of living environments and home appliances.',
     ja: '人と対話形式で生活支援をするエージェントの研究をしています。ソフトウェアエージェントは、ロボットと異なり、様々な機器に移動しでサービスできるなどより柔軟な支援の提供が期待できます。本研究では、生活環境・家電機器のサービスをエージェントで統一的に扱えるユーザインタフェースの構築を目指し研究しています。' },
 
+  // ------------------------------- Research Projects -------------------------------
+
+  research_proj_crest: {
+    en: 'CREST',
+    ja: 'CREST'
+  },
+  research_proj_crest_desc: {
+    en: 'A study on Mutual Understanding Computing based on Simultaneous Contextualization and Interpreting',
+    ja: '文脈と解釈の同時推定に基づく相互理解コンピューテーションの実現'
+  },
+  research_proj_sip: {
+    en: 'SIP',
+    ja: 'SIP'
+  },
+  research_proj_sip_desc: {
+    en: 'Project',
+    ja: 'エビデンスに基づくテーラーメイド教育の研究開発'
+  },
+  research_proj_agv: {
+    en: '',
+    ja: '農林中央金庫 アグベンチャーラボ'
+  },
+
   // --------------------------------- Members ---------------------------------
   members_head: { en: 'Members', ja: '研究室メンバー' },
   members_past_head: { en: 'Past Members', ja: '卒業生' },

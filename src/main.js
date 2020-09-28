@@ -9,6 +9,7 @@ import { ContentHome } from './content_home.js';
 import { ContentResearch, ContentResearchHai, ContentResearchHri,
   ContentResearchCa, ContentResearchAs, ContentResearchCn
 } from './content_research.js';
+import { ContentResearchProj } from './content_research_proj.js';
 import { ContentMembers } from './content_members.js';
 import { ContentPublicationsJournal, ContentPublicationsInternational,
   ContentPublicationsDomestic } from './content_publication.js';
@@ -42,6 +43,8 @@ class MainContent extends React.Component {
           render={() => <ContentResearchAs texts={this.props.text} />} />
         <Route path='/research_cn'
           render={() => <ContentResearchCn texts={this.props.text} />} />
+        <Route path='/research_proj'
+          render={() => <ContentResearchProj texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/member'
           render={() => <ContentMembers texts={this.props.text}
             lang={this.props.lang} />} />
