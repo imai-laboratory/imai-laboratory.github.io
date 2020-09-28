@@ -24,7 +24,7 @@ export class ContentHome extends React.Component {
         <section className='hero is-medium is-primary is-bold'>
           <div className='hero-body'>
             <div className='container'>
-              <h2 className='subtitle has-text-left'>
+              <h2 className='chap-title has-text-left has-text-white'>
                 {this.props.texts['menu_research']} {this.props.texts['home_keywords']}:
               </h2>
               <HashLink to='/research#research_section_ai' key='/research_ai' className='button is-primary is-light mr-2 mb-2'>
