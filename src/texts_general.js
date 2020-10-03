@@ -66,6 +66,9 @@ const MULTI_LANG_TEXTS = {
   research_ai_head: {
     en: 'The research of contextual language understanding',
     ja: '文脈を考慮した言語対話研究' },
+  research_ai_short: {
+    en: 'Contextual language understanding',
+    ja: '文脈を考慮した言語対話研究' },
   research_ai_exp: {
     en: 'The meaning of a word depends on the context. The context consists of words that have a fixed meaning. Since the context and the senses depend on each other, a method of the simultaneous estimation is significant to grasp the flow of a dialogue. In the theme, we are developing a language comprehension algorithm that progresses in time to gradually understand what the other person is saying in a conversation while allowing misunderstanding each other.',
     ja: '単語の意味は文脈で決まります。文脈は、意味が決まった単語で構成されます。双方が相手の構成要素となっているので、同時に推定していく手法が必要になります。このテーマでは、お互いが勘違いしながらも、徐々に対話の中で相手の言わんとしていることを理解していく時間進展のある言語理解アルゴリズムを開発しています。' },
@@ -73,6 +76,9 @@ const MULTI_LANG_TEXTS = {
   // ------------------------------- Research SI -------------------------------
   research_si_head: {
     en: 'The research of situated interaction',
+    ja: '状況・画像と言語' },
+  research_si_short: {
+    en: 'Situated interaction',
     ja: '状況・画像と言語' },
   research_si_exp: {
     en: 'Situated expressions are related to things and events in the environment around them and exclude obvious information from themselves. People select the relevant environmental stuff along with the progress of the dialogue. In this theme, we are investigating a method for determining important information for a conversation from image information and sensor information.',
@@ -89,6 +95,9 @@ const MULTI_LANG_TEXTS = {
   // ------------------------------- Research IU -------------------------------
   research_iu_head: {
     en: 'Interactive understanding others with small samples',
+    ja: '少数サンプルと他者理解' },
+  research_iu_short: {
+    en: 'Interactive understanding others',
     ja: '少数サンプルと他者理解' },
   research_iu_exp: {
     en: 'Humans are able to acquire the model of the others with small numbers of interactions, while the machine learning algorithm requires a certain amount of data. The theme develops an AI system in the scene of understanding others in interaction by comparing the tendency of human interlocutors with the machine learning algorithm.',

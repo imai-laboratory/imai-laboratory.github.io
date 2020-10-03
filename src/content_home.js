@@ -29,16 +29,16 @@ export class ContentHome extends React.Component {
               </h2>
               <div className='mb-4'>
                 <HashLink to='/research#research_section_ai' key='/research_ai' className='button is-primary is-light mr-2 mb-2'>
-                  <strong>{this.props.texts['research_ai_head']}</strong>
+                  <strong>{this.props.texts['research_ai_short']}</strong>
                 </HashLink>
                 <HashLink to='/research#research_section_si' key='/research_si' className='button is-primary is-light mr-2 mb-2'>
-                  <strong>{this.props.texts['research_si_head']}</strong>
+                  <strong>{this.props.texts['research_si_short']}</strong>
                 </HashLink>
                 <HashLink to='/research#research_section_ad' key='/research_ad' className='button is-primary is-light mr-2 mb-2'>
                   <strong>{this.props.texts['research_ad_head']}</strong>
                 </HashLink>
                 <HashLink to='/research#research_section_iu' key='/research_iu' className='button is-primary is-light mr-2 mb-2'>
-                  <strong>{this.props.texts['research_iu_head']}</strong>
+                  <strong>{this.props.texts['research_iu_short']}</strong>
                 </HashLink>
                 <HashLink to='/research#research_section_ui' key='/research_ui' className='button is-primary is-light mr-2 mb-2'>
                   <strong>{this.props.texts['research_ui_head']}</strong>
