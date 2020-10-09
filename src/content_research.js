@@ -4,7 +4,8 @@ import React from 'react';
 import CnMouseImg from '../res/research/cn_mouse.jpg';
 import AiImg from '../res/research/ai_ja.png';
 import AgImg from '../res/research/ag.png';
-import IuImg from '../res/research/iu_1.jpg';
+import SigImg from '../res/research/signage_1.jpg';
+import IuImg from '../res/research/iu.jpg';
 import UiImg from '../res/research/ui.png';
 
 // -----------------------------------------------------------------------------
@@ -45,7 +46,7 @@ export class ContentResearch extends React.Component {
         <ResearchSection key='ad' id='ad' title={this.props.texts['research_ad_head']}>
           <ResearchSubSection text={this.props.texts['research_ad_exp']}>
             <div className='column has-text-centered'>
-              <img src={CnMouseImg} />
+              <img src={SigImg} />
             </div>
           </ResearchSubSection>
         </ResearchSection>
