@@ -1,7 +1,8 @@
 import React from 'react';
 
 // Images
-import AiImg from '../res/research/ai_ja.png';
+import AiImg from '../res/research/scain_ja.png';
+import AiImgEn from '../res/research/scain_en.png';
 import AgImg from '../res/research/ag.png';
 import SiImg from '../res/research/context-situated.png';
 import IuImg from '../res/research/iu.jpg';
@@ -29,7 +30,12 @@ export class ContentResearch extends React.Component {
         <ResearchSection key='ai' id='ai' title={this.props.texts['research_ai_head']}>
           <ResearchSubSection text={this.props.texts['research_ai_exp']}>
             <div className='column has-text-centered'>
-              <img src={AiImg} />
+              { this.props.lang === 'ja' &&
+                <img src={AiImg} />
+              }
+              { this.props.lang !== 'ja' &&
+                <img src={AiImgEn} />
+              }
             </div>
           </ResearchSubSection>
         </ResearchSection>

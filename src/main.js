@@ -32,7 +32,7 @@ class MainContent extends React.Component {
         <Route path='/home'
           render={() => <ContentHome texts={this.props.text} />} />
         <Route path='/research'
-          render={() => <ContentResearch texts={this.props.text} />} />
+          render={() => <ContentResearch texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/research_hai'
           render={() => <ContentResearchHai texts={this.props.text} />} />
         <Route path='/research_hri'
