@@ -1,10 +1,9 @@
 import React from 'react';
 
 // Images
-import CnMouseImg from '../res/research/cn_mouse.jpg';
 import AiImg from '../res/research/ai_ja.png';
 import AgImg from '../res/research/ag.png';
-import SigImg from '../res/research/signage_1.jpg';
+import SiImg from '../res/research/context-situated.png';
 import IuImg from '../res/research/iu.jpg';
 import UiImg from '../res/research/ui.png';
 
@@ -38,17 +37,13 @@ export class ContentResearch extends React.Component {
         <ResearchSection key='si' id='si' title={this.props.texts['research_si_head']}>
           <ResearchSubSection text={this.props.texts['research_si_exp']}>
             <div className='column has-text-centered'>
-              <img src={CnMouseImg} />
+              <img src={SiImg} />
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
         <ResearchSection key='ad' id='ad' title={this.props.texts['research_ad_head']}>
-          <ResearchSubSection text={this.props.texts['research_ad_exp']}>
-            <div className='column has-text-centered'>
-              <img src={SigImg} />
-            </div>
-          </ResearchSubSection>
+          <ResearchSubSection text={this.props.texts['research_ad_exp']} />
         </ResearchSection>
 
         <ResearchSection key='iu' id='iu' title={this.props.texts['research_iu_head']}>
