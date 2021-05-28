@@ -144,7 +144,7 @@ const MULTI_LANG_TEXTS = {
 
   // --------------------------------- Members ---------------------------------
   members_head: { en: 'Members', ja: '研究室メンバー' },
-  members_past_head: { en: 'Past Members', ja: '卒業生' },
+  members_past_head: { en: 'Past Members', ja: '過去のメンバー' },
   members_past_grade_doctor: { en: 'Doctor', ja: '博士' },
   members_past_grade_master: { en: 'Master', ja: '修士' },
   members_past_grade_bachelor: { en: 'Bachelor', ja: '学士' },
