@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Subhead } from 'rebass';
+import { Subhead } from 'rebass';
 import { fetchJson } from './utility.js';
 
 // Json URLs from publication repository.
@@ -62,12 +62,12 @@ function createActivityList(activities) {
 
     // Register to the total list
     activityList.push(
-      <Box width={1} p={3} key={yearIdx}>
+      <div key={yearIdx}>
         <Subhead>{year}</Subhead>
         <table className="article-table">
           {yearActivityList}
         </table>
-      </Box>
+      </div>
     );
   });
   return activityList;
