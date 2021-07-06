@@ -37,8 +37,9 @@ export class HeadNavBar extends React.Component {
             </NavDropDown>
             <NavItem to='/member' name={this.props.texts['menu_member']} />
             <NavItem to='/access' name={this.props.texts['menu_access']} />
-            <NavItem to='#' name={this.props.texts['menu_class']} />
+            {/*<NavItem to='#' name={this.props.texts['menu_class']} />*/}
             <NavItem to='/links' name={this.props.texts['menu_links']} />
+            
           </div>
 
           <div className='navbar-end'>

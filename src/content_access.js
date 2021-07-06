@@ -11,7 +11,7 @@ function createSpatialText(rawText) {
   var texts = [];
   // Replace newline with Box element
   rawText.split('\n').map(
-    (s, i) => { texts.push(<div i>{s}</div>); }
+    (s, i) => { texts.push(<div key={i}>{s}</div>); }
   );
   return (<div>{texts}</div>);
 }
