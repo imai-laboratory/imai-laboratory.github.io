@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Heading, Link } from 'rebass';
+import { Flex, Heading, Link } from 'rebass';
 import { ContentLinks } from './content_links.js';
 
 const GoogleMap = (<iframe className='map' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.9341102634576!2d139.6515391506741!3d35.55532944437713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f9c5d6e11e5%3A0x2781d6958786ab3a!2z5oW25oeJ576p5aG-5aSn5a2mIOefouS4iuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1502181984198' frameBorder='0' height='450' style={{border: 0, width: '100%'}} allowFullScreen />);
@@ -11,9 +11,9 @@ function createSpatialText(rawText) {
   var texts = [];
   // Replace newline with Box element
   rawText.split('\n').map(
-    (s, i) => { texts.push(<Box width={1} p={1} key={i}>{s}</Box>); }
+    (s, i) => { texts.push(<div i>{s}</div>); }
   );
-  return (<Box width={1} p={3}>{texts}</Box>);
+  return (<div>{texts}</div>);
 }
 
 // -----------------------------------------------------------------------------
