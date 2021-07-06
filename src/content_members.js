@@ -61,7 +61,7 @@ function createMemberList(members, lang) {
     // Register to the total list
     membersList.push(
       <div key={roleIdx}>
-        <h2 className='subtitle'>{getLangText(role, lang)}</h2>
+        <h2 className='chap-title'>{getLangText(role, lang)}</h2>
         <div className='columns is-mobile is-multiline'>
           {roleMemberList}
         </div>
@@ -161,7 +161,7 @@ export class ContentMembers extends React.Component {
         </section>
         <div className='container'>
           {createMemberList(this.state.members, this.props.lang)}
-          <h2 className='subtitle'>{this.props.texts['members_past_head']}</h2>
+          <h2 className='chap-title'>{this.props.texts['members_past_head']}</h2>
           {createPastMemberList(this.state.pastMembers, this.props.lang, this.props.texts)}
         </div>
       </div>

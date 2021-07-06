@@ -1,3 +1,5 @@
+$primary: #27bef5;
+
 @import "../../node_modules/bulma/bulma.sass";
 @import "spacing";
 @import "headnav";
@@ -8,7 +10,7 @@
 @import "articles";
 @import "access";
 
-.subtitle {
+.chap-title {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
