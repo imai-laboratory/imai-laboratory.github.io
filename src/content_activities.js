@@ -36,8 +36,8 @@ function setActivityStatus(component, yearJsonUrl, jsonUrlExp) {
 function createActivityText(activity) {
   const description = <div dangerouslySetInnerHTML={{__html: activity.description}} />;
   return (
-    <tr className="article-row">
-      <td className="article-cell">
+    <tr className='article-row'>
+      <td className='article-cell'>
         <strong>{activity.title}</strong>
         {description}
       </td>
@@ -54,7 +54,7 @@ function createActivityList(activities) {
 
     // Create paper list of a year
     var yearActivityList = [];
-    yearActivities.forEach((activity, activityIdx) => {
+    yearActivities.forEach((activity) => {
       yearActivityList.push(
         createActivityText(activity)
       );
@@ -64,7 +64,7 @@ function createActivityList(activities) {
     activityList.push(
       <div key={yearIdx}>
         <Subhead>{year}</Subhead>
-        <table className="article-table">
+        <table className='article-table'>
           {yearActivityList}
         </table>
       </div>
@@ -86,7 +86,7 @@ function createActivityElement(head, activities) {
         </div>
       </section>
       <div className='container'>
-          {createActivityList(activities)}
+        {createActivityList(activities)}
       </div>
     </div>
   );
