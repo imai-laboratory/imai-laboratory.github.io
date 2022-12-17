@@ -21,6 +21,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "eslint": "^8.30.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-standard": "^5.0.0",
     "file-loader": "^0.11.2",
     "gh-pages": "^1.0.0",
     "json-loader": "^0.5.7",
@@ -34,7 +40,10 @@
     "watch": "webpack -d --watch",
     "server": "webpack-dev-server --hot --inline --progress",
     "publish": "$NODE ./publish.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint src/*.js || exit 0",
+    "lint:fix": "./node_modules/.bin/eslint --fix src/*.js || exit 0"
+
   },
   "repository": {
     "type": "git",

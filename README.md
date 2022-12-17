@@ -26,12 +26,12 @@ LinterとしてESLintを使用します。
 設定ファイルは`.eslintrc.json`です。
 編集後には必ずチェックを行ってください。
 ```
-# Install (as global)
-npm install -g eslint eslint-plugin-react eslint-plugin-promise eslint-plugin-import \
-                      eslint-plugin-node eslint-plugin-standard
 
 # Check
-eslint src/*.js
+npm run lint
+
+# Fix
+npm run lint:fix
 ```
 
 ## 外部データ
