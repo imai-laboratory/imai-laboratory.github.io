@@ -128,8 +128,8 @@ class App extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      lang: 'en',
-      texts: GetGeneralTexts('en'),
+      lang: 'ja',
+      texts: GetGeneralTexts('ja'),
       theme: {
         font: 'helvetica, arial, meiryo, "ms pgothic", sans-serif'
       }

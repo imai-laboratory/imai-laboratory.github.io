@@ -3,8 +3,8 @@ import React from 'react';
 export class LanguageSwitcher extends React.Component {
   render() {
     var langs = [
-      { code: 'en', name: 'English' },
-      { code: 'ja', name: '日本語' }
+      { code: 'ja', name: '日本語' },
+      { code: 'en', name: 'English' }
     ];
     var options = langs.map((l) => (
       <option key={l.code} value={l.code}>
