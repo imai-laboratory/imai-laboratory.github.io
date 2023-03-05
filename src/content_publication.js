@@ -82,6 +82,12 @@ function createPDFLink(paper) {
   }
 }
 
+function createAppendixLink(paper) {
+  if (paper.appendix_url) {
+    return <Link href={paper.appendix_url} children={'[Appendix]'} />;
+  }
+}
+
 function createPaperList(papers, lang) {
   // Count up the number of papers
   var paperTotalIdx = 0;
@@ -109,6 +115,7 @@ function createPaperList(papers, lang) {
           <td style={{padding: '12px'}}>
             {createPaperText(paper, lang)}
             {createPDFLink(paper)}
+            {createAppendixLink(paper)}
           </td>
         </tr>
       );
