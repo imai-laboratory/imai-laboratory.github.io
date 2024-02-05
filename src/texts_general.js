@@ -110,7 +110,9 @@ const MULTI_LANG_TEXTS = {
   research_ui_exp: {
     en: 'There are a lot of autonomous machines that accept humans\' control, such as computer applications, computer games, teleoperated robots, and autonomous vehicles. The control interface for the devices provides a pre-designed method, while users have their preferred style of control. The theme investigates a control environment to support mutual adaptation between users and machines by using a technique of machine learning.',
     ja: 'モバイルアプリケーション、ゲーム、テレプレゼンスロボット、自律走行車など、自動的に動きつつも人が操作する物が沢山存在します。本当は、人それぞれ別の操作方法が良いのにもかかわらず、事前にデザインされた操作インタフェースが提供されている物がほとんどです。このテーマでは、人が機械に慣れていく過程と、機械が人の特性を学習していく過程を相互適応として捉えて、より使いやすい知的な操作環境を提供することを目指しています。' },
-
+  research_ui_exp2: {
+    en: "Researching a wearable avatar named TEROOS. TEROOS is mounted on a person's shoulder and enables the wearer and the user controlling it to share vision remotely. Furthermore, this avatar has an anthropomorphic face, allowing the user controlling it to communicate with people co-located with the wearer, thereby enhancing joint activities between humans and robots.",
+    ja: 'TEROOSという名前のウェアラブルなアバターを研究しています。TEROOSは人の肩に装着され、着用者とそれを制御するユーザーが遠隔で視覚を共有できるようにします。さらに、このアバターには人間らしい顔があり、それを制御するユーザーが着用者と同じ場所にいる人々とコミュニケーションを取ることを可能にし人とロボットの共同活動を強化します。' },
   // ------------------------------- Research AG -------------------------------
   research_ag_head: {
     en: 'Agent based user interface',
