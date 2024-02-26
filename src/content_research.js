@@ -69,7 +69,8 @@ export class ContentResearch extends React.Component {
           /*
           <ResearchSubSection text={this.props.texts['research_ui_exp2']}>
             <div className='column has-text-centered'>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/4doyLws0zC0?si=39YIJRieC8d1EIAX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/4doyLws0zC0?si=39YIJRieC8d1EIAX' title='YouTube video player' frameBorder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                allowFullScreen />
             </div>
           </ResearchSubSection>
           */
