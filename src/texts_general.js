@@ -31,6 +31,7 @@ const MULTI_LANG_TEXTS = {
     en: 'Domestic Conference (Japan)',
     ja: '国内会議 (日本)' },
   menu_links: { en: 'Link', ja: '外部リンク' },
+  menu_for_collaborations: { en: 'For Collaborations and Companies', ja: '共同研究・企業の方へ' },
   menu_access: { en: 'Access', ja: 'アクセス' },
   menu_class: { en: 'Class', ja: '授業' },
   menu_b3: { en: 'For B3', ja: 'B3向け情報' },
@@ -258,6 +259,36 @@ const MULTI_LANG_TEXTS = {
   access_accessmap_link2: {
     en: 'Yagami Campus Map (Japanese)',
     ja: '交通アクセス' },
+
+  // ---------------------------------- For Collaborations ----------------------------------
+  for_collaborations_about: {
+    en: 'At the Imai Laboratory of Keio University, we actively engage in academic consulting to support the scholarly activities of companies and collaborate on joint research projects to address the challenges faced by businesses.',
+    ja: '慶應義塾大学今井研究室では、企業のみなさまの学術的な活動を支援するための学術コンサルティングや、企業のみなさまが持つ課題を一緒に解決していく共同研究などを積極的に受け入れいています。' },
+  for_collaborations_contact: {
+    en: 'Contact Information',
+    ja: '問い合わせ先'
+  },
+  for_collaborations_access: {
+    en: 'Professor Rinta Imai\n' +
+      'Faculty of Science and Technology, Keio University',
+    ja: '慶應義塾大学　理工学部　教授　今井　倫太\n' },
+  for_collaborations_email: { en: 'michita@ailab.ics.keio.ac.jp', ja: 'michita@ailab.ics.keio.ac.jp' },
+  for_collaborations_example: { en: 'Examples of Collaborative Research', ja: '共同研究の一例\n' },
+  for_collaborations_example1: {
+    en: 'Development of service systems using computer systems, CG agents, and robots that can communicate with humans (via conversation).',
+    ja: '人とコミュニケーション(会話)するコンピュータシステム、CGエージェント、ロボットを利用したサービスシステムの構築。\n' },
+  for_collaborations_example2: {
+    en: 'System design for emotionally expressive CG characters and robots.',
+    ja: '感情を持ったCGキャラクタ・ロボットのシステムデザイン\n' },
+  for_collaborations_example3: {
+    en: 'Development of value-added services for online meeting systems.',
+    ja: 'オンライン会議システムの負荷価値サービスの構築\n' },
+  for_collaborations_example4: {
+    en: 'System development utilizing large-scale language models.',
+    ja: '大規模言語モデルを利用したシステム構築\n' },
+  for_collaborations_example5: {
+    en: 'Analysis of communication (conversation) data.',
+    ja: 'コミュニケーション（会話）データの分析\n' },
 
   // ---------------------------------- Activities ---------------------------------
   activity_award_head: { en: 'Awards', ja: '受賞' },

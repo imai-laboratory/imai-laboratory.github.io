@@ -40,6 +40,7 @@ export class HeadNavBar extends React.Component {
             <NavItem to='/access' name={this.props.texts['menu_access']} />
             {/* <NavItem to='#' name={this.props.texts['menu_class']} /> */}
             <NavItem to='/links' name={this.props.texts['menu_links']} />
+            <NavItem to='/for_collaborations' name={this.props.texts['menu_for_collaborations']} />
 
           </div>
 

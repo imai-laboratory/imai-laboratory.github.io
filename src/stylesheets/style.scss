@@ -9,13 +9,14 @@ $primary: #27bef5;
 @import "links";
 @import "articles";
 @import "access";
+@import "for_collaborations";
 
 .chap-title {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
     color: $grey-darker;
-  
+
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }

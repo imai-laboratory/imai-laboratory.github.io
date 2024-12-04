@@ -22,6 +22,7 @@ import { Content404 } from './content_404.js';
 
 import { HeadNavBar } from './headnav.js';
 import { Footer } from './footer.js';
+import {ContentForCollaborations} from './content_for_collaborations';
 
 class MainContent extends React.Component {
   render() {
@@ -76,6 +77,8 @@ class MainContent extends React.Component {
           render={() => <ContentAccess texts={this.props.text} />} />
         <Route path='/links'
           render={() => <ContentLinks texts={this.props.text} />} />
+        <Route path='/for_collaborations'
+          render={() => <ContentForCollaborations texts={this.props.text} />} />
         <Route path='/b3'
           render={() => <ContentB3 texts={this.props.text} />} />
         <Route path='*'
