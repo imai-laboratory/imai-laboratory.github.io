@@ -27,6 +27,48 @@ export class ContentResearch extends React.Component {
           </div>
         </section>
 
+        <ResearchSection key='isc' id='isc' title={this.props.texts['research_isc_head']}>
+          <ResearchSubSection text={this.props.texts['research_isc_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4' controls />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
+        <ResearchSection key='scains' id='scains' title={this.props.texts['research_scains_head']}>
+          <ResearchSubSection text={this.props.texts['research_scains1_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4'
+                controls />
+            </div>
+          </ResearchSubSection>
+          <ResearchSubSection text={this.props.texts['research_scains2_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4' controls />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
+        <ResearchSection key='closer' id='closer' title={this.props.texts['research_closer_head']}>
+          <ResearchSubSection text={this.props.texts['research_closer_exp']} />
+        </ResearchSection>
+
+        <ResearchSection key='relbot' id='relbot' title={this.props.texts['research_relbot_head']}>
+          <ResearchSubSection text={this.props.texts['research_relbot_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/RelBot.mp4' controls />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
+        <ResearchSection key='travot' id='travot' title={this.props.texts['research_travot_head']}>
+          <ResearchSubSection text={this.props.texts['research_travot_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4' controls />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
         <ResearchSection key='ai' id='ai' title={this.props.texts['research_ai_head']}>
           <ResearchSubSection text={this.props.texts['research_ai_exp']}>
             <div className='column has-text-centered'>
