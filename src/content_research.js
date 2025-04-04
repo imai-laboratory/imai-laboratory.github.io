@@ -1,68 +1,12 @@
 import React from 'react';
-import { Box, Heading, Subhead, Image } from 'rebass';
 
 // Images
-import LayerImg from '../res/research/top_3layers.jpg';
-import HaiMigrationImg from '../res/research/hai_migration.jpg';
-import HaiMigrationVid from '../res/research/hai_migration_demo.mp4';
-import HriLivenessImg from '../res/research/hri_liveness.jpg';
-import HriLivenessVid from '../res/research/hri_liveness_demo.mp4';
-import HriImmersionImg from '../res/research/hri_immersion.jpg';
-import HriImmersionVid from '../res/research/hri_immersion_demo.mp4';
-import HriEmotionImg from '../res/research/hri_emotion.jpg';
-import CaWheelchairImg from '../res/research/ca_wheelchair.jpg';
-import CaWheelchairVid from '../res/research/ca_wheelchair_demo.mp4';
-import AsTeroosImg from '../res/research/as_teroos.jpg';
-import AsTeroosVid from '../res/research/as_teroos_demo.mp4';
-import AsProtImg from '../res/research/as_prot.jpg';
-import AsProtVid from '../res/research/as_prot_demo.mp4';
-import CnMouseImg from '../res/research/cn_mouse.jpg';
-
-// -----------------------------------------------------------------------------
-// ----------------- Common functions to create research pages -----------------
-// -----------------------------------------------------------------------------
-function createSpatialText(rawText) {
-  var texts = [];
-  // Replace newline with Box element
-  rawText.split('\n').map(
-    (s, i) => { texts.push(<Box width={1} p={1} key={i}>{s}</Box>); }
-  );
-  return (<Box width={1} pt={1}>{texts}</Box>);
-}
-
-function createHead(text) {
-  return (<Heading pt={3}>{text}</Heading>);
-}
-
-function createSubhead(text) {
-  return (<Subhead pt={3}>{text}</Subhead>);
-}
-
-const RESP_MEDIA_WIDTH = ['100%', '90%', '75%', '70%'];
-
-function createRespImage(img, caption) {
-  return (
-    <div>
-      <Box mx='auto' width={RESP_MEDIA_WIDTH}>
-        <Image src={img} width={1} />
-      </Box>
-      {caption !== undefined &&
-        <Box width={1}><div style={{textAlign: 'center'}}>{caption}</div></Box>
-      }
-    </div>);
-}
-
-function createRespVideo(video, poster, caption) {
-  return (
-    <div>
-      <Box mx='auto' width={RESP_MEDIA_WIDTH}>
-        <video src={video} poster={poster} controls style={{width: '100%'}} />
-      </Box>
-      {caption !== undefined &&
-        <Box width={1}><div style={{textAlign: 'center'}}>{caption}</div></Box>
-      }
-    </div>);
-}
+import AiImg from '../res/research/scain_ja.png';
+import AiImgEn from '../res/research/scain_en.png';
+import AgImg from '../res/research/ag.png';
+import SiImg from '../res/research/context-situated.png';
+import IuImg from '../res/research/iu.jpg';
+import UiImg from '../res/research/ui.png';
 
 // -----------------------------------------------------------------------------
 // ------------------------------- Research pages ------------------------------
@@ -83,180 +27,106 @@ export class ContentResearch extends React.Component {
           </div>
         </section>
 
-        <ResearchSection key='iai' id='iai' title={this.props.texts['research_head']}>
-          <ResearchSubSection text={this.props.texts['research_exp']}>
+        <ResearchSection key='isc' id='isc' title={this.props.texts['research_isc_head']}>
+          <ResearchSubSection text={this.props.texts['research_isc_exp']}>
             <div className='column has-text-centered'>
-              <img src={LayerImg} />
-              <p>{this.props.texts['research_layer_cap']}</p>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4' controls />
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
-        <ResearchSection key='hai' id='hai' title={this.props.texts['research_hai_head']}>
-          <ResearchSubSection
-            title={this.props.texts['research_hai_migration_head']}
-            text={this.props.texts['research_hai_migration_exp']}>
+        <ResearchSection key='scains' id='scains' title={this.props.texts['research_scains_head']}>
+          <ResearchSubSection text={this.props.texts['research_scains1_exp']}>
             <div className='column has-text-centered'>
-              <img src={HaiMigrationImg} />
-              <video src={HaiMigrationVid} controls />
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4'
+                controls />
+            </div>
+          </ResearchSubSection>
+          <ResearchSubSection text={this.props.texts['research_scains2_exp']}>
+            <div className='column has-text-centered'>
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4' controls />
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
-        <ResearchSection key='hri' id='hri' title={this.props.texts['research_hri_head']}>
-          <ResearchSubSection
-            title={this.props.texts['research_hri_liveness_head']}
-            text={this.props.texts['research_hri_liveness_exp']}>
+        <ResearchSection key='closer' id='closer' title={this.props.texts['research_closer_head']}>
+          <ResearchSubSection text={this.props.texts['research_closer_exp']} />
+        </ResearchSection>
+
+        <ResearchSection key='relbot' id='relbot' title={this.props.texts['research_relbot_head']}>
+          <ResearchSubSection text={this.props.texts['research_relbot_exp']}>
             <div className='column has-text-centered'>
-              <video src={HriLivenessVid} poster={HriLivenessImg} controls />
-            </div>
-          </ResearchSubSection>
-          <ResearchSubSection
-            title={this.props.texts['research_hri_immersion_head']}
-            text={this.props.texts['research_hri_immersion_exp']}>
-            <div className='column has-text-centered'>
-              <video src={HriImmersionVid} poster={HriImmersionImg} controls />
-            </div>
-          </ResearchSubSection>
-          <ResearchSubSection
-            title={this.props.texts['research_hri_emotion_head']}
-            text={this.props.texts['research_hri_emotion_exp']}>
-            <div className='column has-text-centered'>
-              <img src={HriEmotionImg} />
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/RelBot.mp4' controls />
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
-        <ResearchSection key='ca' id='ca' title={this.props.texts['research_ca_head']}>
-          <ResearchSubSection
-            title={this.props.texts['research_ca_wheelchair_head']}
-            text={this.props.texts['research_ca_wheelchair_exp']}>
+        <ResearchSection key='travot' id='travot' title={this.props.texts['research_travot_head']}>
+          <ResearchSubSection text={this.props.texts['research_travot_exp']}>
             <div className='column has-text-centered'>
-              <video src={CaWheelchairVid} poster={CaWheelchairImg} controls />
+              <video src='https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4' controls />
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
-        <ResearchSection key='as' id='as' title={this.props.texts['research_as_head']}>
-          <ResearchSubSection
-            title={this.props.texts['research_as_teroos_head']}
-            text={this.props.texts['research_as_teroos_exp']}>
+        <ResearchSection key='ai' id='ai' title={this.props.texts['research_ai_head']}>
+          <ResearchSubSection text={this.props.texts['research_ai_exp']}>
             <div className='column has-text-centered'>
-              <video src={AsTeroosVid} poster={AsTeroosImg} controls />
-            </div>
-          </ResearchSubSection>
-          <ResearchSubSection
-            title={this.props.texts['research_as_prot_head']}
-            text={this.props.texts['research_as_prot_exp']}>
-            <div className='column has-text-centered'>
-              <video src={AsProtVid} poster={AsProtImg} controls />
+              { this.props.lang === 'ja' &&
+                <img src={AiImg} />
+              }
+              { this.props.lang !== 'ja' &&
+                <img src={AiImgEn} />
+              }
             </div>
           </ResearchSubSection>
         </ResearchSection>
 
-        <ResearchSection key='cn' id='cn' title={this.props.texts['research_cn_head']}>
-          <ResearchSubSection
-            title={this.props.texts['research_cn_mouse_head']}
-            text={this.props.texts['research_cn_mouse_exp']}>
+        <ResearchSection key='si' id='si' title={this.props.texts['research_si_head']}>
+          <ResearchSubSection text={this.props.texts['research_si_exp']}>
             <div className='column has-text-centered'>
-              <img src={CnMouseImg} />
+              <img src={SiImg} />
             </div>
           </ResearchSubSection>
         </ResearchSection>
+
+        <ResearchSection key='ad' id='ad' title={this.props.texts['research_ad_head']}>
+          <ResearchSubSection text={this.props.texts['research_ad_exp']} />
+        </ResearchSection>
+
+        <ResearchSection key='iu' id='iu' title={this.props.texts['research_iu_head']}>
+          <ResearchSubSection text={this.props.texts['research_iu_exp']}>
+            <div className='column has-text-centered'>
+              <img src={IuImg} />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
+        <ResearchSection key='ui' id='ui' title={this.props.texts['research_ui_head']}>
+          <ResearchSubSection text={this.props.texts['research_ui_exp']}>
+            <div className='column has-text-centered'>
+              <img src={UiImg} />
+            </div>
+          </ResearchSubSection>
+          /*
+          <ResearchSubSection text={this.props.texts['research_ui_exp2']}>
+            <div className='column has-text-centered'>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/4doyLws0zC0?si=39YIJRieC8d1EIAX' title='YouTube video player' frameBorder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                allowFullScreen />
+            </div>
+          </ResearchSubSection>
+          */
+        </ResearchSection>
+
+        <ResearchSection key='ag' id='ag' title={this.props.texts['research_ag_head']}>
+          <ResearchSubSection text={this.props.texts['research_ag_exp']}>
+            <div className='column has-text-centered'>
+              <img src={AgImg} />
+            </div>
+          </ResearchSubSection>
+        </ResearchSection>
+
       </div>
-    );
-  }
-}
-
-// ------------------------------------ HAI ------------------------------------
-export class ContentResearchHai extends React.Component {
-  render() {
-    return (
-      <Box width={1}>
-        {/* Head */}
-        {createHead(this.props.texts['research_hai_head'])}
-        {/* Migration */}
-        {createSubhead(this.props.texts['research_hai_migration_head'])}
-        {createRespImage(HaiMigrationImg)}
-        {createRespVideo(HaiMigrationVid)}
-        {createSpatialText(this.props.texts['research_hai_migration_exp'])}
-      </Box>
-    );
-  }
-}
-
-// ------------------------------------ HRI ------------------------------------
-export class ContentResearchHri extends React.Component {
-  render() {
-    return (
-      <Box width={1}>
-        {/* Head */}
-        {createHead(this.props.texts['research_hai_head'])}
-        {/* Liveness */}
-        {createSubhead(this.props.texts['research_hri_liveness_head'])}
-        {createRespVideo(HriLivenessVid, HriLivenessImg)}
-        {createSpatialText(this.props.texts['research_hri_liveness_exp'])}
-        {/* Immersion */}
-        {createSubhead(this.props.texts['research_hri_immersion_head'])}
-        {createRespVideo(HriImmersionVid, HriImmersionImg)}
-        {createSpatialText(this.props.texts['research_hri_immersion_exp'])}
-        {/* Emotion */}
-        {createSubhead(this.props.texts['research_hri_emotion_head'])}
-        {createRespImage(HriEmotionImg)}
-        {createSpatialText(this.props.texts['research_hri_emotion_exp'])}
-      </Box>
-    );
-  }
-}
-
-// ------------------------------------- CA ------------------------------------
-export class ContentResearchCa extends React.Component {
-  render() {
-    return (
-      <Box width={1}>
-        {/* Head */}
-        {createHead(this.props.texts['research_ca_head'])}
-        {/* Wheelchair */}
-        {createSubhead(this.props.texts['research_ca_wheelchair_head'])}
-        {createRespVideo(CaWheelchairVid, CaWheelchairImg)}
-        {createSpatialText(this.props.texts['research_ca_wheelchair_exp'])}
-      </Box>
-    );
-  }
-}
-
-// ------------------------------------- AS ------------------------------------
-export class ContentResearchAs extends React.Component {
-  render() {
-    return (
-      <Box width={1}>
-        {/* Head */}
-        {createHead(this.props.texts['research_as_head'])}
-        {/* TEROOS */}
-        {createSubhead(this.props.texts['research_as_teroos_head'])}
-        {createRespVideo(AsTeroosVid, AsTeroosImg)}
-        {createSpatialText(this.props.texts['research_as_teroos_exp'])}
-        {/* PROT */}
-        {createSubhead(this.props.texts['research_as_prot_head'])}
-        {createRespVideo(AsProtVid, AsProtImg)}
-        {createSpatialText(this.props.texts['research_as_prot_exp'])}
-      </Box>
-    );
-  }
-}
-
-// ------------------------------------- CN ------------------------------------
-export class ContentResearchCn extends React.Component {
-  render() {
-    return (
-      <Box width={1}>
-        {/* Head */}
-        {createHead(this.props.texts['research_cn_head'])}
-        {/* Mouse (?) */}
-        {createSubhead(this.props.texts['research_cn_mouse_head'])}
-        {createRespImage(CnMouseImg)}
-        {createSpatialText(this.props.texts['research_cn_mouse_exp'])}
-      </Box>
     );
   }
 }
@@ -265,7 +135,7 @@ class ResearchSection extends React.Component {
   render() {
     return (
       <div id={'research_section_' + this.props.id}>
-        <section className='hero is-dark'>
+        <section className='hero is-primary'>
           <div className='hero-body'>
             <div className='container'>
               <h1 className='title'>

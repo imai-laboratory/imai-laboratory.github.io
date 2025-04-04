@@ -8,43 +8,45 @@ export class ContentHome extends React.Component {
   render() {
     return (
       <div id='content_home'>
-        <section id='hero-welcome' className='hero-img hero is-large is-dark is-bold'>
+        <section className='hero is-medium is-white is-bold'>
           <div className='hero-body'>
             <div className='container has-text-centered'>
-              <h1 className='title'>
+              <h1 className='title mb-4 has-text-black'>
                 {this.props.texts['home_imailab']}
               </h1>
+              <h2 className='is-size-4'>
+                {this.props.texts['home_message']}
+              </h2>
             </div>
           </div>
         </section>
 
-        <section id='hero-research' className='hero-img hero is-medium is-dark is-bold'>
+        <section className='hero is-small is-primary is-bold'>
           <div className='hero-body'>
             <div className='container'>
-              <h1 className='title'>
-                {this.props.texts['menu_research']}
-              </h1>
-              <h2 className='subtitle'>
-                {this.props.texts['home_keywords']}:
+              <h2 className='chap-title has-text-left has-text-white'>
+                {this.props.texts['menu_research']} {this.props.texts['home_keywords']}:
               </h2>
-              <HashLink to='/research#research_section_iai' key='/research_iai' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_head']}</strong>
-              </HashLink>
-              <HashLink to='/research#research_section_hai' key='/research_hai' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_hai_head']}</strong>
-              </HashLink>
-              <HashLink to='/research#research_section_hri' key='/research_hri' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_hri_head']}</strong>
-              </HashLink>
-              <HashLink to='/research#research_section_ca' key='/research_ca' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_ca_head']}</strong>
-              </HashLink>
-              <HashLink to='/research#research_section_as' key='/research_as' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_as_head']}</strong>
-              </HashLink>
-              <HashLink to='/research#research_section_cn' key='/research_cn' className='button is-primary mr-2 mb-2'>
-                <strong>{this.props.texts['research_cn_head']}</strong>
-              </HashLink>
+              <div className='mb-4'>
+                <HashLink to='/research#research_section_ai' key='/research_ai' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_ai_short']}</strong>
+                </HashLink>
+                <HashLink to='/research#research_section_si' key='/research_si' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_si_short']}</strong>
+                </HashLink>
+                <HashLink to='/research#research_section_ad' key='/research_ad' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_ad_head']}</strong>
+                </HashLink>
+                <HashLink to='/research#research_section_iu' key='/research_iu' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_iu_short']}</strong>
+                </HashLink>
+                <HashLink to='/research#research_section_ui' key='/research_ui' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_ui_head']}</strong>
+                </HashLink>
+                <HashLink to='/research#research_section_ag' key='/research_ag' className='button is-primary is-light mr-2 mb-2'>
+                  <strong>{this.props.texts['research_ag_head']}</strong>
+                </HashLink>
+              </div>
             </div>
           </div>
         </section>

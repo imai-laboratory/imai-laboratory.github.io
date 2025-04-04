@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import { LanguageSwitcher } from './language_switcher.js';
+import title from '../res/title.png';
 
 export class HeadNavBar extends React.Component {
   render() {
@@ -8,7 +9,7 @@ export class HeadNavBar extends React.Component {
       <nav id='headnav' className='navbar' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
           <a className='navbar-item' href='/'>
-            <img src='res/title.png' />
+            <img src={title} />
           </a>
 
           <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='headNavbarExpandArea'>
@@ -21,7 +22,10 @@ export class HeadNavBar extends React.Component {
         <div id='headNavbarExpandArea' className='navbar-menu'>
           <div className='navbar-start'>
             <NavItem to='/' name={this.props.texts['menu_home']} />
-            <NavItem to='/research' name={this.props.texts['menu_research']} />
+            <NavDropDown key='research' name={this.props.texts['menu_research']}>
+              <NavItem to='/research' name={this.props.texts['menu_research_theme']} />
+              <NavItem to='/research_proj' name={this.props.texts['menu_research_proj']} />
+            </NavDropDown>
             <NavDropDown key='publication' name={this.props.texts['menu_publication']}>
               <NavItem to='/publication_journal' name={this.props.texts['menu_publication_journal']} />
               <NavItem to='/publication_international' name={this.props.texts['menu_publication_international']} />
@@ -34,7 +38,10 @@ export class HeadNavBar extends React.Component {
             </NavDropDown>
             <NavItem to='/member' name={this.props.texts['menu_member']} />
             <NavItem to='/access' name={this.props.texts['menu_access']} />
+            {/* <NavItem to='#' name={this.props.texts['menu_class']} /> */}
             <NavItem to='/links' name={this.props.texts['menu_links']} />
+            <NavItem to='/for_collaborations' name={this.props.texts['menu_for_collaborations']} />
+
           </div>
 
           <div className='navbar-end'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Subhead, Link, Text } from 'rebass';
+import { Subhead, Link, Text } from 'rebass';
 import { fetchJson } from './utility.js';
 
 // Json URLs from publication repository.
@@ -82,6 +82,12 @@ function createPDFLink(paper) {
   }
 }
 
+function createAppendixLink(paper) {
+  if (paper.appendix_url) {
+    return <Link href={paper.appendix_url} children={'[Appendix]'} />;
+  }
+}
+
 function createPaperList(papers, lang) {
   // Count up the number of papers
   var paperTotalIdx = 0;
@@ -109,6 +115,7 @@ function createPaperList(papers, lang) {
           <td style={{padding: '12px'}}>
             {createPaperText(paper, lang)}
             {createPDFLink(paper)}
+            {createAppendixLink(paper)}
           </td>
         </tr>
       );
@@ -116,14 +123,14 @@ function createPaperList(papers, lang) {
 
     // Register to the total list
     paperList.push(
-      <Box width={1} p={3} key={yearIdx}>
+      <div key={yearIdx}>
         <Subhead>{year}</Subhead>
         <table style={{'border-collapse': 'collapse', width: '100%'}}>
           <tbody>
             {yearPaperList}
           </tbody>
         </table>
-      </Box>
+      </div>
     );
   });
   return paperList;

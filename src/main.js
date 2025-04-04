@@ -9,6 +9,7 @@ import { ContentHome } from './content_home.js';
 import { ContentResearch, ContentResearchHai, ContentResearchHri,
   ContentResearchCa, ContentResearchAs, ContentResearchCn
 } from './content_research.js';
+import { ContentResearchProj } from './content_research_proj.js';
 import { ContentMembers } from './content_members.js';
 import { ContentPublicationsJournal, ContentPublicationsInternational,
   ContentPublicationsDomestic } from './content_publication.js';
@@ -21,6 +22,7 @@ import { Content404 } from './content_404.js';
 
 import { HeadNavBar } from './headnav.js';
 import { Footer } from './footer.js';
+import {ContentForCollaborations} from './content_for_collaborations';
 
 class MainContent extends React.Component {
   render() {
@@ -31,7 +33,7 @@ class MainContent extends React.Component {
         <Route path='/home'
           render={() => <ContentHome texts={this.props.text} />} />
         <Route path='/research'
-          render={() => <ContentResearch texts={this.props.text} />} />
+          render={() => <ContentResearch texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/research_hai'
           render={() => <ContentResearchHai texts={this.props.text} />} />
         <Route path='/research_hri'
@@ -42,6 +44,8 @@ class MainContent extends React.Component {
           render={() => <ContentResearchAs texts={this.props.text} />} />
         <Route path='/research_cn'
           render={() => <ContentResearchCn texts={this.props.text} />} />
+        <Route path='/research_proj'
+          render={() => <ContentResearchProj texts={this.props.text} lang={this.props.lang} />} />
         <Route path='/member'
           render={() => <ContentMembers texts={this.props.text}
             lang={this.props.lang} />} />
@@ -73,6 +77,8 @@ class MainContent extends React.Component {
           render={() => <ContentAccess texts={this.props.text} />} />
         <Route path='/links'
           render={() => <ContentLinks texts={this.props.text} />} />
+        <Route path='/for_collaborations'
+          render={() => <ContentForCollaborations texts={this.props.text} />} />
         <Route path='/b3'
           render={() => <ContentB3 texts={this.props.text} />} />
         <Route path='*'
@@ -125,8 +131,8 @@ class App extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      lang: 'en',
-      texts: GetGeneralTexts('en'),
+      lang: 'ja',
+      texts: GetGeneralTexts('ja'),
       theme: {
         font: 'helvetica, arial, meiryo, "ms pgothic", sans-serif'
       }

@@ -26,12 +26,12 @@ LinterとしてESLintを使用します。
 設定ファイルは`.eslintrc.json`です。
 編集後には必ずチェックを行ってください。
 ```
-# Install (as global)
-npm install -g eslint eslint-plugin-react eslint-plugin-promise eslint-plugin-import \
-                      eslint-plugin-node eslint-plugin-standard
 
 # Check
-eslint src/*.js
+npm run lint
+
+# Fix
+npm run lint:fix
 ```
 
 ## 外部データ
@@ -40,7 +40,7 @@ eslint src/*.js
 * 論文情報　https://github.com/imai-laboratory/publications_data
 
 ## その他
-ReactJSと共に用いるUI Componentとして[Rebass](http://jxnblk.com/rebass/)を使用しています。
+ReactJSと共に用いるUI Componentとして[Rebass](https://rebassjs.org/)を使用しています。
 
 英語・日本語対応のためテキスト情報は`src/texts_general.js`へ記載し、各コンテンツ内でReactJSのプロパティとして参照します。
 すなわち言語切り替えボタンを押すと動的にテキストが更新されます。

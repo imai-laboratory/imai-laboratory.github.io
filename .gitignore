@@ -10,3 +10,5 @@ dist/*
 *.swo
 *.swn
 *.swm
+
+.idea
