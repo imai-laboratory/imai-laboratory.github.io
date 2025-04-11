@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Subhead, Link, Text } from 'rebass';
 import { fetchJson } from './utility.js';
+import { useFormatter } from './composables/formatter.js';
 
 // Json URLs from publication repository.
 const JsonBase =
@@ -34,6 +35,8 @@ function setPaperStatus(component, yearJsonUrl, jsonUrlExp) {
 }
 
 function createPaperText(paper, lang) {
+  const formatter = useFormatter();
+  const isJa = lang === 'ja';
   var textList = [];
   if (paper.author) {
     var authors = getLangText(paper.author, lang);
@@ -71,6 +74,42 @@ function createPaperText(paper, lang) {
   textList.push(
     <Text pb={1}>
       {place.join(',').replace(/_/g, ' ')}
+    </Text>
+  );
+
+  const parts = [];
+  // 開催地（都市, 国）
+  const location = [];
+  if (paper.host_city) location.push(getLangText(paper.host_city, lang));
+  if (paper.host_country) location.push(getLangText(paper.host_country, lang));
+
+  if (location.length > 0) {
+    const locationStr = isJa
+      ? location.reverse().join('・')
+      : location.join(', ');
+    parts.push(locationStr);
+  }
+
+  // 開催期間
+  if (paper.event_duration) {
+    const [start, end] = paper.event_duration.split(' - ');
+    const duration = isJa
+      ? `開催期間: ${formatter.formatDateJa(start)}〜${formatter.formatDateJa(end)}`
+      : `Event Duration: ${paper.event_duration}`;
+    parts.push(duration);
+  }
+
+  // 発表日
+  if (paper.presentation_date) {
+    const presentation = isJa
+      ? `発表日: ${formatter.formatDateJa(paper.presentation_date)}`
+      : `Presentation Date: ${paper.presentation_date}`;
+    parts.push(presentation);
+  }
+
+  textList.push(
+    <Text pb={1}>
+      {parts.join(', ').replace(/_/g, ' ')}
     </Text>
   );
   return textList;
