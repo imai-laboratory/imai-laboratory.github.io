@@ -1,19 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
-import { texts } from "@/lib/texts";
-import type { Language } from "@/lib/types";
+import { LanguageSwitcher } from "./language-switcher";
 
-type NavigationProps = {
-  currentLanguage?: Language;
-  onLanguageChange?: (lang: Language) => void;
-};
-
-export function Navigation({
-  currentLanguage = "ja",
-  onLanguageChange,
-}: NavigationProps) {
+export const Navigation = () => {
+  const t = useTranslations("navigation");
+  const locale = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -27,7 +21,7 @@ export function Navigation({
           {/* Logo */}
           <div className="flex items-center">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="text-2xl font-bold text-primary-600 hover:text-primary-700"
             >
               Imai Lab
@@ -37,16 +31,16 @@ export function Navigation({
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="text-gray-700 hover:text-primary-600 transition-colors"
             >
-              {texts.menu_home[currentLanguage]}
+              {t("home")}
             </Link>
 
             {/* Research Dropdown */}
             <div className="relative group">
               <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {texts.menu_research[currentLanguage]}
+                {t("research")}
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="none"
@@ -63,31 +57,31 @@ export function Navigation({
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <Link
-                  href="/research"
+                  href={`/${locale}/research`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_research_theme[currentLanguage]}
+                  {t("research_theme")}
                 </Link>
                 <Link
-                  href="/research_proj"
+                  href={`/${locale}/research_proj`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_research_proj[currentLanguage]}
+                  {t("research_proj")}
                 </Link>
               </div>
             </div>
 
             <Link
-              href="/member"
+              href={`/${locale}/member`}
               className="text-gray-700 hover:text-primary-600 transition-colors"
             >
-              {texts.menu_member[currentLanguage]}
+              {t("member")}
             </Link>
 
             {/* Publication Dropdown */}
             <div className="relative group">
               <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {texts.menu_publication[currentLanguage]}
+                {t("publication")}
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="none"
@@ -104,22 +98,22 @@ export function Navigation({
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <Link
-                  href="/publication_journal"
+                  href={`/${locale}/publication_journal`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_publication_journal[currentLanguage]}
+                  {t("publication_journal")}
                 </Link>
                 <Link
-                  href="/publication_international"
+                  href={`/${locale}/publication_international`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_publication_international[currentLanguage]}
+                  {t("publication_international")}
                 </Link>
                 <Link
-                  href="/publication_domestic"
+                  href={`/${locale}/publication_domestic`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_publication_domestic[currentLanguage]}
+                  {t("publication_domestic")}
                 </Link>
               </div>
             </div>
@@ -127,7 +121,7 @@ export function Navigation({
             {/* Activity Dropdown */}
             <div className="relative group">
               <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {texts.menu_activity[currentLanguage]}
+                {t("activity")}
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="none"
@@ -144,45 +138,45 @@ export function Navigation({
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <Link
-                  href="/activity_award"
+                  href={`/${locale}/activity_award`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_activity_award[currentLanguage]}
+                  {t("activity_award")}
                 </Link>
                 <Link
-                  href="/activity_media"
+                  href={`/${locale}/activity_media`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_activity_media[currentLanguage]}
+                  {t("activity_media")}
                 </Link>
                 <Link
-                  href="/activity_talk"
+                  href={`/${locale}/activity_talk`}
                   className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                 >
-                  {texts.menu_activity_talk[currentLanguage]}
+                  {t("activity_talk")}
                 </Link>
               </div>
             </div>
 
             <Link
-              href="/access"
+              href={`/${locale}/access`}
               className="text-gray-700 hover:text-primary-600 transition-colors"
             >
-              {texts.menu_access[currentLanguage]}
+              {t("access")}
             </Link>
 
             <Link
-              href="/links"
+              href={`/${locale}/links`}
               className="text-gray-700 hover:text-primary-600 transition-colors"
             >
-              {texts.menu_links[currentLanguage]}
+              {t("links")}
             </Link>
 
             <Link
-              href="/for_collaborations"
+              href={`/${locale}/for_collaborations`}
               className="text-gray-700 hover:text-primary-600 transition-colors"
             >
-              {texts.menu_for_collaborations[currentLanguage]}
+              {t("for_collaborations")}
             </Link>
 
             {/* External Links */}
@@ -193,7 +187,7 @@ export function Navigation({
                 rel="noopener noreferrer"
                 className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
               >
-                {texts.menu_b3[currentLanguage]}
+                {t("b3")}
               </a>
               <a
                 href="https://twitter.com/imailab"
@@ -212,22 +206,7 @@ export function Navigation({
             </div>
 
             {/* Language Switcher */}
-            {onLanguageChange && (
-              <div className="flex space-x-2">
-                <button
-                  className={`px-3 py-1 text-sm rounded ${currentLanguage === "ja" ? "bg-primary-500 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
-                  onClick={() => onLanguageChange("ja")}
-                >
-                  日本語
-                </button>
-                <button
-                  className={`px-3 py-1 text-sm rounded ${currentLanguage === "en" ? "bg-primary-500 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
-                  onClick={() => onLanguageChange("en")}
-                >
-                  English
-                </button>
-              </div>
-            )}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -257,103 +236,107 @@ export function Navigation({
           <div className="md:hidden border-t border-gray-200">
             <div className="py-2">
               <Link
-                href="/"
+                href={`/${locale}`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_home[currentLanguage]}
+                {t("home")}
               </Link>
               <Link
-                href="/research"
+                href={`/${locale}/research`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_research_theme[currentLanguage]}
+                {t("research_theme")}
               </Link>
               <Link
-                href="/research_proj"
+                href={`/${locale}/research_proj`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_research_proj[currentLanguage]}
+                {t("research_proj")}
               </Link>
               <Link
-                href="/member"
+                href={`/${locale}/member`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_member[currentLanguage]}
+                {t("member")}
               </Link>
               <Link
-                href="/publication"
+                href={`/${locale}/publication`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_publication[currentLanguage]}
+                {t("publication")}
               </Link>
               <Link
-                href="/activity"
+                href={`/${locale}/activity`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_activity[currentLanguage]}
+                {t("activity")}
               </Link>
               <Link
-                href="/access"
+                href={`/${locale}/access`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_access[currentLanguage]}
+                {t("access")}
               </Link>
               <Link
-                href="/links"
+                href={`/${locale}/links`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_links[currentLanguage]}
+                {t("links")}
               </Link>
               <Link
-                href="/for_collaborations"
+                href={`/${locale}/for_collaborations`}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_for_collaborations[currentLanguage]}
+                {t("for_collaborations")}
               </Link>
 
               {/* Publication sub-menu */}
               <Link
-                href="/publication_journal"
+                href={`/${locale}/publication_journal`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_publication_journal[currentLanguage]}
+                {t("publication_journal")}
               </Link>
               <Link
-                href="/publication_international"
+                href={`/${locale}/publication_international`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_publication_international[currentLanguage]}
+                {t("publication_international")}
               </Link>
               <Link
-                href="/publication_domestic"
+                href={`/${locale}/publication_domestic`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_publication_domestic[currentLanguage]}
+                {t("publication_domestic")}
               </Link>
 
               {/* Activity sub-menu */}
               <Link
-                href="/activity_award"
+                href={`/${locale}/activity_award`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_activity_award[currentLanguage]}
+                {t("activity_award")}
               </Link>
               <Link
-                href="/activity_media"
+                href={`/${locale}/activity_media`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_activity_media[currentLanguage]}
+                {t("activity_media")}
               </Link>
               <Link
-                href="/activity_talk"
+                href={`/${locale}/activity_talk`}
                 className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
               >
-                {texts.menu_activity_talk[currentLanguage]}
+                {t("activity_talk")}
               </Link>
+
+              <div className="px-4 py-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         )}
       </div>
     </nav>
   );
-}
+};

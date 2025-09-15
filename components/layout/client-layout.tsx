@@ -1,36 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { texts } from "@/lib/texts";
-import type { Language } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import { Navigation } from "@/components/ui/navigation";
 
 type ClientLayoutProps = {
   children: React.ReactNode;
 };
 
-function Footer({ children }: { children: React.ReactNode }) {
+const Footer = () => {
+  const t = useTranslations("site");
+
   return (
     <footer className="bg-gray-500 text-white py-8">
       <div className="text-center">
-        <p className="mb-4">{children}</p>
+        <p className="mb-4">{t("description")}</p>
       </div>
     </footer>
   );
-}
+};
 
-export function ClientLayout({ children }: ClientLayoutProps) {
-  const [lang, setLang] = useState<Language>("ja");
-
-  const changeLang = (newLang: Language) => {
-    setLang(newLang);
-  };
-
+export const ClientLayout = ({ children }: ClientLayoutProps) => {
   return (
     <div className="font-sans">
-      <Navigation currentLanguage={lang} onLanguageChange={changeLang} />
+      <Navigation />
       <main>{children}</main>
-      <Footer>{texts.footer[lang]}</Footer>
+      <Footer />
     </div>
   );
-}
+};

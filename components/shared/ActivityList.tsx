@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, ActivityInfo } from "@/lib/types";
+import type { Activity, ActivityInfo } from "@/lib/types";
 
 type ActivityListProps = {
   activities: ActivityInfo[];

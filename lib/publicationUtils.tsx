@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper } from "@/lib/types";
+import type { Paper } from "@/lib/types";
 
 export const getLangText = (elem: any, lang: string): string => {
   return elem && elem[lang] !== undefined ? elem[lang] : elem;

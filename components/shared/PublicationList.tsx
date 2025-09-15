@@ -1,7 +1,7 @@
-import React from "react";
 import Link from "next/link";
-import { Paper, PaperInfo } from "@/lib/types";
+import React from "react";
 import { createPaperText } from "@/lib/publicationUtils";
+import type { Paper, PaperInfo } from "@/lib/types";
 
 type PublicationListProps = {
   papers: PaperInfo[];
@@ -63,4 +63,4 @@ export const PublicationList = ({ papers, lang }: PublicationListProps) => {
   });
 
   return <div>{paperList}</div>;
-}
+};

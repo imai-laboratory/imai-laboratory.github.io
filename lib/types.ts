@@ -3,16 +3,6 @@ export type LocalizedText = {
   ja: string;
 };
 
-export type SiteConfig = {
-  site: {
-    title: LocalizedText;
-    description: LocalizedText;
-  };
-  navigation: {
-    [key: string]: LocalizedText;
-  };
-};
-
 export type ResearchArea = {
   id: string;
   title: LocalizedText;
@@ -20,22 +10,7 @@ export type ResearchArea = {
   keywords: string[];
 };
 
-export type Member = {
-  id: string;
-  name: LocalizedText;
-  role: LocalizedText;
-  email?: string;
-  research_interests?: string[];
-};
-
 export type Language = "en" | "ja";
-
-export type AppState = {
-  language: Language;
-  siteConfig: SiteConfig | null;
-  researchAreas: ResearchArea[];
-  members: Member[];
-};
 
 // Activity系の型定義
 export type Activity = {
@@ -68,28 +43,4 @@ export type Paper = {
 export type PaperInfo = {
   year: string;
   paper: Paper[];
-};
-
-// Member系の型定義（既存のMemberと重複を避けるためプレフィックス追加）
-export type MemberData = {
-  name: { [key: string]: string };
-  grade: { [key: string]: string };
-  email: string;
-  option?: string;
-  img: string;
-};
-
-export type MemberGroupInfo = {
-  role: { [key: string]: string };
-  members: MemberData[];
-};
-
-export type PastMember = {
-  name: { [key: string]: string };
-  grade: string;
-};
-
-export type PastMemberInfo = {
-  year: string;
-  members: PastMember[];
 };
