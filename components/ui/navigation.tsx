@@ -41,8 +41,6 @@ export const Navigation = () => {
               ]}
             />
 
-            <NavLink href={`/${locale}/member`}>{t("member")}</NavLink>
-
             <DropdownMenu
               trigger={t("publication")}
               items={[
@@ -75,6 +73,8 @@ export const Navigation = () => {
                 { href: `/${locale}/activity_talk`, label: t("activity_talk") },
               ]}
             />
+
+            <NavLink href={`/${locale}/member`}>{t("member")}</NavLink>
 
             <NavLink href={`/${locale}/access`}>{t("access")}</NavLink>
             <NavLink href={`/${locale}/links`}>{t("links")}</NavLink>
@@ -162,12 +162,6 @@ export const Navigation = () => {
                 {t("research_proj")}
               </MobileNavLink>
               <MobileNavLink
-                href={`/${locale}/member`}
-                onClickAction={() => setIsMobileMenuOpen(false)}
-              >
-                {t("member")}
-              </MobileNavLink>
-              <MobileNavLink
                 href={`/${locale}/publication_journal`}
                 onClickAction={() => setIsMobileMenuOpen(false)}
                 className="pl-8"
@@ -208,6 +202,12 @@ export const Navigation = () => {
                 className="pl-8"
               >
                 {t("activity_talk")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/member`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("member")}
               </MobileNavLink>
               <MobileNavLink
                 href={`/${locale}/access`}
