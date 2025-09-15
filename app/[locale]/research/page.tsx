@@ -73,6 +73,7 @@ export default async function ResearchPage({ params }: Props) {
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4"
               controls
+              aria-label="Interactive Smart Clerk demonstration video"
             />
           </div>
         </ResearchSubSection>
@@ -84,6 +85,7 @@ export default async function ResearchPage({ params }: Props) {
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4"
               controls
+              aria-label="SCAINs Presenter demonstration video"
             />
           </div>
         </ResearchSubSection>
@@ -92,6 +94,7 @@ export default async function ResearchPage({ params }: Props) {
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4"
               controls
+              aria-label="SCAINs algorithm demonstration video"
             />
           </div>
         </ResearchSubSection>
@@ -107,6 +110,7 @@ export default async function ResearchPage({ params }: Props) {
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/RelBot.mp4"
               controls
+              aria-label="RelBot demonstration video"
             />
           </div>
         </ResearchSubSection>
@@ -118,6 +122,7 @@ export default async function ResearchPage({ params }: Props) {
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4"
               controls
+              aria-label="TRAVOT demonstration video"
             />
           </div>
         </ResearchSubSection>

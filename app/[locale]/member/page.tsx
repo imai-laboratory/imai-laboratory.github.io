@@ -68,7 +68,9 @@ function MemberElem({
         <p className="text-gray-600 text-sm">{grade}</p>
         <p className="text-gray-600 text-sm">{email}</p>
         {optionElement && (
-          <div dangerouslySetInnerHTML={{ __html: optionElement }} />
+          <div className="whitespace-pre-line text-sm text-gray-600 mt-2">
+            {optionElement}
+          </div>
         )}
       </div>
     </div>
@@ -164,7 +166,7 @@ function createPastMemberList(
     ));
 
     return (
-      <div key={`year-${year}`}>
+      <div key={`past-year-${year}-${_yearIdx}`}>
         <h2 className="text-xl font-bold mb-4 mt-6">{year}</h2>
         {yearMemberList}
       </div>

@@ -6,7 +6,7 @@ type ActivityListProps = {
 
 const createActivityText = (activity: Activity, key: string) => {
   const description = (
-    <div dangerouslySetInnerHTML={{ __html: activity.description }} />
+    <div className="whitespace-pre-line">{activity.description}</div>
   );
   return (
     <tr key={key} className="border-b border-gray-200">
