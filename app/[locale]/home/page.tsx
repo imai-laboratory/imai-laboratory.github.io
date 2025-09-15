@@ -70,10 +70,11 @@ function ContentHome({ t }: ContentHomeProps) {
 }
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function HomePage({ params: { locale } }: Props) {
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 

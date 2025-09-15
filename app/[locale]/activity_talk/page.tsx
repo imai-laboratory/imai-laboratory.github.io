@@ -6,10 +6,11 @@ import { getActivityData } from "@/lib/serverDataFetchers";
 
 export { generateStaticParams };
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function ActivityTalkPage({ params: { locale } }: Props) {
+export default async function ActivityTalkPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const activities = await getActivityData("talk");
   const t = await getTranslations({ locale });

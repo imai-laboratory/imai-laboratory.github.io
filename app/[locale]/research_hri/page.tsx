@@ -2,10 +2,11 @@ import React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
-export const dynamic = 'force-static';
-type Props = { params: { locale: string } };
+export const dynamic = "force-static";
+type Props = { params: Promise<{ locale: string }> };
 
-export default function ResearchHriPage({ params: { locale } }: Props) {
+export default async function ResearchHriPage({ params }: Props) {
+  const { locale } = await params;
   return (
     <div id="content_research_hri">
       <section className="bg-primary-500 text-white py-20">

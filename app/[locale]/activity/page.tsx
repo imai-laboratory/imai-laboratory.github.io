@@ -6,10 +6,11 @@ import { getActivityData } from "@/lib/serverDataFetchers";
 
 export { generateStaticParams };
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function ActivityPage({ params: { locale } }: Props) {
+export default async function ActivityPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "activities" });
   const activities = await getActivityData("award");

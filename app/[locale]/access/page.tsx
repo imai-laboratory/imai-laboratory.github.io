@@ -19,10 +19,11 @@ function createSpatialText(rawText: string) {
 }
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function AccessPage({ params: { locale } }: Props) {
+export default async function AccessPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 

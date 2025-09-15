@@ -28,10 +28,11 @@ async function getActivities(): Promise<ActivityInfo[]> {
 }
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function ActivityMediaPage({ params: { locale } }: Props) {
+export default async function ActivityMediaPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const activities = await getActivities();
   const t = await getTranslations({ locale });

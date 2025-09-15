@@ -6,7 +6,7 @@ import { getPublicationData } from "@/lib/serverDataFetchers";
 
 export { generateStaticParams };
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export default async function PublicationDomesticPage({

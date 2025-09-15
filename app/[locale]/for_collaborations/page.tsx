@@ -3,9 +3,10 @@ import React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
-export default async function ForCollaborationsPage({ params: { locale } }: Props) {
+export default async function ForCollaborationsPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   return (
     <div>

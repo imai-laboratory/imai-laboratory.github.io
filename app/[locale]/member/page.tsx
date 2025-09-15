@@ -138,7 +138,11 @@ function createPastMemberElem(member: PastMember, lang: string, t: any) {
   return <div>{resText}</div>;
 }
 
-function createPastMemberList(pastMembers: PastMemberInfo[], lang: string, t: any) {
+function createPastMemberList(
+  pastMembers: PastMemberInfo[],
+  lang: string,
+  t: any,
+) {
   return pastMembers.map((memberInfo, yearIdx) => {
     const year = memberInfo.year;
     const membersList = memberInfo.members;

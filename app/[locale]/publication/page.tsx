@@ -6,10 +6,11 @@ import { getPublicationData } from "@/lib/serverDataFetchers";
 
 export { generateStaticParams };
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
-export default async function PublicationPage({ params: { locale } }: Props) {
+export default async function PublicationPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const papers = await getPublicationData("journal");
   const t = await getTranslations({ locale });

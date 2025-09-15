@@ -2,7 +2,7 @@ import React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 type ResearchProjectProps = {
   title: string;
   desc?: string;
@@ -33,9 +33,10 @@ function ResearchProject({ title, desc, url, text }: ResearchProjectProps) {
   );
 }
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
-export default function ResearchProjPage({ params: { locale } }: Props) {
+export default async function ResearchProjPage({ params }: Props) {
+  const { locale } = await params;
   return (
     <div id="content_links">
       <section className="bg-primary-500 text-white py-16">
