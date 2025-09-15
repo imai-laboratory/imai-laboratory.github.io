@@ -1,6 +1,6 @@
 # 今井研究室 Webページ
 
-URL: https://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
+URL: https://www.ailab.ics.keio.ac.jp
 
 今井研究室の公式Webサイトです。
 
@@ -28,12 +28,6 @@ pnpm build
 
 # 本番環境の起動
 pnpm start
-
-# 静的エクスポート
-pnpm export
-
-# GitHub Pagesへのデプロイ
-pnpm deploy
 ```
 
 ## コード品質管理
