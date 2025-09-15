@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const UrlBase =
   "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
-const MembersJson = UrlBase + "members.json";
-const MembersPastJson = UrlBase + "past_members.json";
-const MemberImageURL = UrlBase + "imgs/";
+const MembersJson = `${UrlBase}members.json`;
+const MembersPastJson = `${UrlBase}past_members.json`;
+const MemberImageURL = `${UrlBase}imgs/`;
 
 async function fetchJson(url: string) {
   try {
@@ -20,7 +21,10 @@ async function fetchJson(url: string) {
   }
 }
 
-function getLangText(elem: any, lang: string): string {
+function getLangText(
+  elem: Record<string, string> | null | undefined,
+  lang: string,
+): string {
   if (!elem) return "";
   const text = elem[lang];
   if (text !== undefined) {
@@ -52,10 +56,12 @@ function MemberElem({
     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
       <div className="bg-white rounded-lg shadow-sm p-6 text-center">
         <div className="mb-4">
-          <img
+          <Image
             className="w-24 h-24 mx-auto rounded-full object-cover"
             src={imgUrl}
             alt={name}
+            width={96}
+            height={96}
           />
         </div>
         <p className="font-semibold text-lg mb-2">{name}</p>
@@ -104,7 +110,7 @@ function createMemberList(members: MemberInfo[], lang: string) {
         grade={getLangText(member.grade, lang)}
         email={member.email}
         optionElement={member.option}
-        imgUrl={MemberImageURL + member.img}
+        imgUrl={`${MemberImageURL}${member.img}`}
       />
     ));
 
@@ -119,7 +125,11 @@ function createMemberList(members: MemberInfo[], lang: string) {
   });
 }
 
-function createPastMemberElem(member: PastMember, lang: string, t: any) {
+function createPastMemberElem(
+  member: PastMember,
+  lang: string,
+  t: (key: string) => string,
+) {
   let resText = "";
 
   const name = getLangText(member.name, lang);
@@ -133,7 +143,7 @@ function createPastMemberElem(member: PastMember, lang: string, t: any) {
   } else if (gradeMark === "b") {
     resText += `·(${t("members_past_grade_bachelor")})`;
   } else if (gradeMark) {
-    resText += " (" + gradeMark + ")";
+    resText += ` (${gradeMark})`;
   }
   return <div>{resText}</div>;
 }
@@ -141,7 +151,7 @@ function createPastMemberElem(member: PastMember, lang: string, t: any) {
 function createPastMemberList(
   pastMembers: PastMemberInfo[],
   lang: string,
-  t: any,
+  t: (key: string) => string,
 ) {
   return pastMembers.map((memberInfo, yearIdx) => {
     const year = memberInfo.year;

@@ -1,8 +1,8 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing";
 import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 const languages = [
   { code: "ja", flag: "🇯🇵", name: "日本語" },
@@ -41,6 +41,7 @@ export const LanguageSwitcher = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="group flex items-center space-x-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-lg px-3 py-1.5 text-sm text-gray-700 hover:border-primary-200 hover:bg-primary-50/50 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-400 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto"
       >
@@ -68,6 +69,7 @@ export const LanguageSwitcher = () => {
           <div className="p-1">
             {languages.map((lang) => (
               <button
+                type="button"
                 key={lang.code}
                 onClick={(e) => {
                   e.preventDefault();

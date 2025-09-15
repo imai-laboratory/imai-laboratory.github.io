@@ -40,6 +40,7 @@ export const DropdownMenu = ({
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="px-2 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 flex items-center gap-1"
       >
