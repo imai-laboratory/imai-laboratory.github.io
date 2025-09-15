@@ -9,9 +9,9 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function PublicationDomesticPage({
-  params: { locale },
-}: Props) {
+export default async function PublicationDomesticPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const papers = await getPublicationData("domestic");
   const t = await getTranslations({ locale });
 

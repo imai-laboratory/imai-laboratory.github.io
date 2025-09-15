@@ -1,6 +1,6 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
-import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export { generateStaticParams };
 

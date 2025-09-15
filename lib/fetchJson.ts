@@ -9,7 +9,6 @@ export const fetchJson = (url: string) => {
         resolve(json || []);
       })
       .catch(() => {
-        // エラーは静かに処理し、空配列を返す
         resolve([]);
       });
   });

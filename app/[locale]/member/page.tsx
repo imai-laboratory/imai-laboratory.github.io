@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
 
 const UrlBase =
   "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
