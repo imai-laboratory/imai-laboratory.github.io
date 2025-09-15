@@ -1,7 +1,17 @@
 import type { Paper } from "@/lib/types";
 
-export const getLangText = (elem: any, lang: string): string => {
-  return elem && elem[lang] !== undefined ? elem[lang] : elem;
+export const getLangText = (
+  elem: string | Record<string, string | string[]>,
+  lang: string,
+): string => {
+  if (typeof elem === "string") {
+    return elem;
+  }
+  if (elem && elem[lang] !== undefined) {
+    const value = elem[lang];
+    return Array.isArray(value) ? value[0] || "" : value;
+  }
+  return "";
 };
 
 export const formatDateJa = (dateStr: string): string => {
@@ -22,8 +32,17 @@ export const formatPaperData = (paper: Paper, lang: string) => {
   // Authors
   let authors: string[] = [];
   if (paper.author) {
-    const authorData = getLangText(paper.author, lang);
-    authors = Array.isArray(authorData) ? authorData : [authorData];
+    const authorData = paper.author[lang];
+    if (Array.isArray(authorData)) {
+      authors = authorData;
+    } else if (authorData) {
+      authors = [authorData];
+    } else {
+      // Fallback to first available language
+      const firstLang = Object.keys(paper.author)[0];
+      const fallbackData = paper.author[firstLang];
+      authors = Array.isArray(fallbackData) ? fallbackData : [fallbackData];
+    }
   }
 
   // Title

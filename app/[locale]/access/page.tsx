@@ -10,11 +10,14 @@ const GoogleMap = (
     height="450"
     style={{ border: 0, width: "100%" }}
     allowFullScreen
+    title="Google Map showing Keio University location"
   />
 );
 
 function createSpatialText(rawText: string) {
-  const texts = rawText.split("\n").map((s, i) => <div key={i}>{s}</div>);
+  const texts = rawText
+    .split("\n")
+    .map((s, index) => <div key={`text-${index}-${s.slice(0, 10)}`}>{s}</div>);
   return <div>{texts}</div>;
 }
 

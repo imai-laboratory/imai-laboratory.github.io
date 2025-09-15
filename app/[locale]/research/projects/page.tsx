@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import { LinkCard } from "@/components/shared/LinkCard";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
@@ -8,6 +9,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export default async function ResearchProjPage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <div id="content_links">
       <section className="bg-primary-500 text-white py-16">

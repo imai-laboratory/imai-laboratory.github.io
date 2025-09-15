@@ -29,13 +29,13 @@ export const PublicationList = ({ papers, lang }: PublicationListProps) => {
   });
 
   // Create paper list
-  const paperList = papers.map((paperInfo, yearIdx) => {
+  const paperList = papers.map((paperInfo, _yearIdx) => {
     const year = paperInfo.year;
     const yearPapers = paperInfo.paper || [];
 
     const yearPaperList = yearPapers.map((paper, paperIdx) => (
       <tr
-        key={`${yearIdx}_${paperIdx}`}
+        key={`${year}-paper-${paperIdx}-${paper.title?.ja || paper.title?.en || paperIdx}`}
         style={{ borderBottom: "1px solid #95a5a6" }}
       >
         <td>{paperTotalIdx--}</td>
@@ -48,7 +48,7 @@ export const PublicationList = ({ papers, lang }: PublicationListProps) => {
     ));
 
     return (
-      <div key={yearIdx}>
+      <div key={`year-${year}`}>
         <h3
           style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "1rem 0" }}
         >

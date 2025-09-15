@@ -99,13 +99,13 @@ type PastMemberInfo = {
 };
 
 function createMemberList(members: MemberInfo[], lang: string) {
-  return members.map((memberInfo, roleIdx) => {
+  return members.map((memberInfo, _roleIdx) => {
     const role = memberInfo.role;
     const membersList = memberInfo.members;
 
     const roleMemberList = membersList.map((member, i) => (
       <MemberElem
-        key={`${roleIdx}_${i}`}
+        key={`${getLangText(role, "en")}-${getLangText(member.name, "en")}-${i}`}
         name={getLangText(member.name, lang)}
         grade={getLangText(member.grade, lang)}
         email={member.email}
@@ -115,7 +115,7 @@ function createMemberList(members: MemberInfo[], lang: string) {
     ));
 
     return (
-      <div key={roleIdx}>
+      <div key={`role-${getLangText(role, "en")}`}>
         <h2 className="text-2xl font-bold mb-6 mt-8">
           {getLangText(role, lang)}
         </h2>
@@ -153,18 +153,18 @@ function createPastMemberList(
   lang: string,
   t: (key: string) => string,
 ) {
-  return pastMembers.map((memberInfo, yearIdx) => {
+  return pastMembers.map((memberInfo, _yearIdx) => {
     const year = memberInfo.year;
     const membersList = memberInfo.members;
 
     const yearMemberList = membersList.map((member, memberIdx) => (
-      <div key={`${yearIdx}_${memberIdx}`}>
+      <div key={`${year}-${getLangText(member.name, "en")}-${memberIdx}`}>
         {createPastMemberElem(member, lang, t)}
       </div>
     ));
 
     return (
-      <div key={yearIdx}>
+      <div key={`year-${year}`}>
         <h2 className="text-xl font-bold mb-4 mt-6">{year}</h2>
         {yearMemberList}
       </div>

@@ -51,6 +51,7 @@ export const DropdownMenu = ({
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
+          <title>Dropdown arrow</title>
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -65,7 +66,7 @@ export const DropdownMenu = ({
           <div className="py-2">
             {items.map((item, index) => (
               <Link
-                key={index}
+                key={`dropdown-${item.href}-${index}`}
                 href={item.href}
                 className="block px-4 py-3 text-sm text-gray-700 hover:bg-primary-50/70 hover:text-primary-700 transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
                 onClick={() => {
