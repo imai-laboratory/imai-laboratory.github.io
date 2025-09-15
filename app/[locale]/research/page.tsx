@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
@@ -126,10 +127,20 @@ export default async function ResearchPage({ params }: Props) {
         <ResearchSubSection text={t("ai_exp")}>
           <div className="flex justify-center">
             {locale === "ja" && (
-              <img src="/res/research/scain_ja.png" alt="AI Research" />
+              <Image
+                src="/res/research/scain_ja.png"
+                alt="AI Research"
+                width={800}
+                height={600}
+              />
             )}
             {locale !== "ja" && (
-              <img src="/res/research/scain_en.png" alt="AI Research" />
+              <Image
+                src="/res/research/scain_en.png"
+                alt="AI Research"
+                width={800}
+                height={600}
+              />
             )}
           </div>
         </ResearchSubSection>
@@ -138,9 +149,11 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection key="si" id="si" title={t("si_head")}>
         <ResearchSubSection text={t("si_exp")}>
           <div className="flex justify-center">
-            <img
+            <Image
               src="/res/research/context-situated.png"
               alt="Situated Interaction"
+              width={800}
+              height={600}
             />
           </div>
         </ResearchSubSection>
@@ -153,7 +166,12 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection key="iu" id="iu" title={t("iu_head")}>
         <ResearchSubSection text={t("iu_exp")}>
           <div className="flex justify-center">
-            <img src="/res/research/iu.jpg" alt="Interactive Understanding" />
+            <Image
+              src="/res/research/iu.jpg"
+              alt="Interactive Understanding"
+              width={800}
+              height={600}
+            />
           </div>
         </ResearchSubSection>
       </ResearchSection>
@@ -161,7 +179,12 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection key="ui" id="ui" title={t("ui_head")}>
         <ResearchSubSection text={t("ui_exp")}>
           <div className="flex justify-center">
-            <img src="/res/research/ui.png" alt="User Interface" />
+            <Image
+              src="/res/research/ui.png"
+              alt="User Interface"
+              width={800}
+              height={600}
+            />
           </div>
         </ResearchSubSection>
         {/*
@@ -177,7 +200,12 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection key="ag" id="ag" title={t("ag_head")}>
         <ResearchSubSection text={t("ag_exp")}>
           <div className="flex justify-center">
-            <img src="/res/research/ag.png" alt="Agent Technology" />
+            <Image
+              src="/res/research/ag.png"
+              alt="Agent Technology"
+              width={800}
+              height={600}
+            />
           </div>
         </ResearchSubSection>
       </ResearchSection>
