@@ -1,3 +1,4 @@
+import { SafeHTML } from "@/components/ui/SafeHTML";
 import type { Activity, ActivityInfo } from "@/lib/types";
 
 type ActivityListProps = {
@@ -6,7 +7,7 @@ type ActivityListProps = {
 
 const createActivityText = (activity: Activity, key: string) => {
   const description = (
-    <div className="whitespace-pre-line">{activity.description}</div>
+    <SafeHTML html={activity.description} className="whitespace-pre-line" />
   );
   return (
     <tr key={key} className="border-b border-gray-200">

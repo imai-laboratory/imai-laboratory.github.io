@@ -19,11 +19,10 @@
     "start": "next start",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "format": "biome format --write",
-    "export": "next build && next export",
-    "deploy": "npm run export && gh-pages -d out"
+    "format": "biome format --write"
   },
   "dependencies": {
+    "dompurify": "3.2.6",
     "next": "15.5.3",
     "next-intl": "4.3.9",
     "react": "19.1.0",
@@ -35,7 +34,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "gh-pages": "^6.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

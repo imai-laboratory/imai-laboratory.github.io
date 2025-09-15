@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { SafeHTML } from "@/components/ui/SafeHTML";
 
 const UrlBase =
   "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
@@ -68,9 +69,10 @@ function MemberElem({
         <p className="text-gray-600 text-sm">{grade}</p>
         <p className="text-gray-600 text-sm">{email}</p>
         {optionElement && (
-          <div className="whitespace-pre-line text-sm text-gray-600 mt-2">
-            {optionElement}
-          </div>
+          <SafeHTML
+            html={optionElement}
+            className="whitespace-pre-line text-sm text-gray-600 mt-2"
+          />
         )}
       </div>
     </div>
@@ -166,7 +168,7 @@ function createPastMemberList(
     ));
 
     return (
-      <div key={`past-year-${year}-${_yearIdx}`}>
+      <div key={`past-year-${year}-${membersList.length}`}>
         <h2 className="text-xl font-bold mb-4 mt-6">{year}</h2>
         {yearMemberList}
       </div>
