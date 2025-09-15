@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
-import { navigationItems, externalLinks } from "@/lib/navigation";
+import { externalLinks, navigationItems } from "@/lib/navigation";
 import { DropdownMenu } from "./dropdown-menu";
 import { LanguageSwitcher } from "./language-switcher";
 import { ExternalLink, MobileNavLink, NavLink } from "./nav-link";

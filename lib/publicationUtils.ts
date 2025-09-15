@@ -16,34 +16,22 @@ export const formatDateJa = (dateStr: string): string => {
   }
 };
 
-export const createPaperText = (paper: Paper, lang: string) => {
+export const formatPaperData = (paper: Paper, lang: string) => {
   const isJa = lang === "ja";
-  const textList = [];
 
+  // Authors
+  let authors: string[] = [];
   if (paper.author) {
-    const authors = getLangText(paper.author, lang);
-    const authorList = Array.isArray(authors) ? authors : [authors];
-    textList.push(
-      <p key="authors" style={{ paddingBottom: "4px" }}>
-        <strong>{authorList[0]?.replace(/_/g, " ")}</strong>
-        {authorList.length > 1 && (
-          <>
-            <span>,</span>
-            {authorList.slice(1).join(", ").replace(/_/g, " ")}
-          </>
-        )}
-      </p>,
-    );
+    const authorData = getLangText(paper.author, lang);
+    authors = Array.isArray(authorData) ? authorData : [authorData];
   }
 
-  if (paper.title) {
-    textList.push(
-      <p key="title" style={{ paddingBottom: "4px" }}>
-        "<strong>{getLangText(paper.title, lang)?.replace(/_/g, " ")}</strong>"
-      </p>,
-    );
-  }
+  // Title
+  const title = paper.title
+    ? getLangText(paper.title, lang)?.replace(/_/g, " ")
+    : "";
 
+  // Publication info
   const place = [];
   if (paper.book) place.push(getLangText(paper.book, lang));
   if (paper.vol) place.push(paper.vol);
@@ -51,47 +39,41 @@ export const createPaperText = (paper: Paper, lang: string) => {
   if (paper.page) place.push(paper.page);
   if (paper.year) place.push(paper.year);
 
-  textList.push(
-    <p key="place" style={{ paddingBottom: "4px" }}>
-      {place.join(",").replace(/_/g, " ")}
-    </p>,
-  );
-
-  const parts = [];
   // Location
   const location = [];
   if (paper.host_city) location.push(getLangText(paper.host_city, lang));
   if (paper.host_country) location.push(getLangText(paper.host_country, lang));
 
-  if (location.length > 0) {
-    const locationStr = isJa
-      ? location.reverse().join("・")
-      : location.join(", ");
-    parts.push(locationStr);
-  }
+  const locationStr =
+    location.length > 0
+      ? isJa
+        ? location.reverse().join("・")
+        : location.join(", ")
+      : "";
 
   // Event duration
+  let eventDuration = "";
   if (paper.event_duration) {
     const [start, end] = paper.event_duration.split(" - ");
-    const duration = isJa
+    eventDuration = isJa
       ? `開催期間: ${formatDateJa(start)}〜${formatDateJa(end)}`
       : `Event Duration: ${paper.event_duration}`;
-    parts.push(duration);
   }
 
   // Presentation date
+  let presentationDate = "";
   if (paper.presentation_date) {
-    const presentation = isJa
+    presentationDate = isJa
       ? `発表日: ${formatDateJa(paper.presentation_date)}`
       : `Presentation Date: ${paper.presentation_date}`;
-    parts.push(presentation);
   }
 
-  textList.push(
-    <p key="details" style={{ paddingBottom: "4px" }}>
-      {parts.join(", ").replace(/_/g, " ")}
-    </p>,
-  );
-
-  return textList;
+  return {
+    authors,
+    title,
+    place: place.join(",").replace(/_/g, " "),
+    location: locationStr,
+    eventDuration,
+    presentationDate,
+  };
 };

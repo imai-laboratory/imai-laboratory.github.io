@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { createPaperText } from "@/lib/publicationUtils";
 import type { Paper, PaperInfo } from "@/lib/types";
+import { PaperDisplay } from "./PaperDisplay";
 
 type PublicationListProps = {
   papers: PaperInfo[];
@@ -40,7 +40,7 @@ export const PublicationList = ({ papers, lang }: PublicationListProps) => {
       >
         <td>{paperTotalIdx--}</td>
         <td style={{ padding: "12px" }}>
-          {createPaperText(paper, lang)}
+          <PaperDisplay paper={paper} lang={lang} />
           {createPDFLink(paper)}
           {createAppendixLink(paper)}
         </td>
