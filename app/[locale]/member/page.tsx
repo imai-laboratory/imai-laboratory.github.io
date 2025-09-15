@@ -5,22 +5,14 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { SafeHTML } from "@/components/elements/SafeHTML";
-
-const UrlBase =
-  "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
-const MembersJson = `${UrlBase}members.json`;
-const MembersPastJson = `${UrlBase}past_members.json`;
-const MemberImageURL = `${UrlBase}imgs/`;
-
-async function fetchJson(url: string) {
-  try {
-    const response = await fetch(url, { cache: "no-store" });
-    return await response.json();
-  } catch (ex) {
-    console.error(ex);
-    return [];
-  }
-}
+import {
+  getMemberImageUrl,
+  getMembersData,
+  getPastMembersData,
+  type MemberInfo,
+  type PastMember,
+  type PastMemberInfo,
+} from "@/lib/serverDataFetchers";
 
 function getLangText(
   elem: Record<string, string> | null | undefined,
@@ -79,29 +71,6 @@ function MemberElem({
   );
 }
 
-type Member = {
-  name: { [key: string]: string };
-  grade: { [key: string]: string };
-  email: string;
-  option?: string;
-  img: string;
-};
-
-type MemberInfo = {
-  role: { [key: string]: string };
-  members: Member[];
-};
-
-type PastMember = {
-  name: { [key: string]: string };
-  grade: string;
-};
-
-type PastMemberInfo = {
-  year: string;
-  members: PastMember[];
-};
-
 function createMemberList(members: MemberInfo[], lang: string) {
   return members.map((memberInfo, _roleIdx) => {
     const role = memberInfo.role;
@@ -114,7 +83,7 @@ function createMemberList(members: MemberInfo[], lang: string) {
         grade={getLangText(member.grade, lang)}
         email={member.email}
         optionElement={member.option}
-        imgUrl={`${MemberImageURL}${member.img}`}
+        imgUrl={getMemberImageUrl(member.img)}
       />
     ));
 
@@ -186,12 +155,12 @@ export default function MemberPage() {
 
   useEffect(() => {
     // Fetch current members
-    fetchJson(MembersJson).then((data) => {
+    getMembersData().then((data) => {
       setMembers(data || []);
     });
 
     // Fetch past members
-    fetchJson(MembersPastJson).then((data) => {
+    getPastMembersData().then((data) => {
       setPastMembers(data || []);
     });
   }, []);
