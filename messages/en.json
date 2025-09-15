@@ -1,0 +1,92 @@
+{
+  "site": {
+    "title": "Imai Laboratory",
+    "description": "Interactive Artificial Intelligence Laboratory, Department of Information and Computer Science, Keio University"
+  },
+  "navigation": {
+    "site": {
+      "title": "Imai Laboratory",
+      "description": "Interactive Artificial Intelligence Laboratory, Department of Information and Computer Science, Keio University"
+    },
+    "home": "Home",
+    "research": "Research",
+    "research_theme": "Research Themes",
+    "research_proj": "Projects",
+    "member": "Members",
+    "publication": "Publications",
+    "publication_journal": "Journal Papers",
+    "publication_international": "International Conference Papers",
+    "publication_domestic": "Domestic Conference Papers",
+    "activity": "Activities",
+    "activity_award": "Awards",
+    "activity_media": "Media Coverage",
+    "activity_talk": "Talks & Presentations",
+    "access": "Access",
+    "links": "Links",
+    "for_collaborations": "For Collaborations",
+    "b3": "For B3 Students"
+  },
+  "members": {
+    "members_head": "Members",
+    "members_past_head": "Past Members",
+    "members_past_grade_doctor": "Doctor",
+    "members_past_grade_master": "Master",
+    "members_past_grade_bachelor": "Bachelor"
+  },
+  "activities": {
+    "award": "Awards",
+    "media": "Media Coverage",
+    "talk": "Talks & Presentations"
+  },
+  "publications": {
+    "journal": "Journal Papers",
+    "international": "International Conference Papers",
+    "domestic": "Domestic Conference Papers"
+  },
+  "home": {
+    "title": "INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY",
+    "message": "We are developing interactive AI algorithms and systems that augment the interaction between people and information systems and the communication between people.",
+    "keywords": "Keywords"
+  },
+  "research": {
+    "research_theme": "Research Themes",
+    "ai_short": "Contextual language understanding",
+    "si_short": "Situated interaction",
+    "ad_head": "Augmented Dialogue",
+    "iu_short": "Interactive understanding others",
+    "ui_head": "User Interface for Mutual Adaptation",
+    "ag_head": "My Great Agent (ITACO System)",
+    "ca": "Cognitive Adaption",
+    "as": "Augmented Society",
+    "cn": "Cognitive Neural Network",
+    "scains_head": "Missed Conversation Support System",
+    "scains1_exp": "In online meetings such as Zoom, it's easy to miss what others are saying when you're distracted by something else. Many people have experienced the frustration of being asked for their opinion when they weren't paying attention. We developed an algorithm that identifies important missed statements (which we call SCAINs) from the conversation. Additionally, we created the SCAINs Presenter, which presents these important missed statements to help people navigate through situations where they missed parts of the conversation. With the practical application of this research, individuals will be able to participate in multiple meetings or handle multiple tasks more efficiently.",
+    "scains2_exp": "In the video at left, you and Person A are having a conversation about a picture next to you, while Person B is not paying attention (in this video, Person A and Person B are using GPT-4, and you are providing human input). When important parts of the conversation between you and Person A arise that would cause a loss of meaning if missed, the corresponding sections are highlighted in yellow and red (the colors are used to make the algorithm's judgments easier to understand). In the video, we verify what happens if Person B misses these key sections by directing the conversation to them. You'll notice that Person B, who missed the colored sections, starts saying things that are off-topic.",
+    "closer_head": "Automatic English Cloze Test Generation System CLOZER",
+    "closer_exp": "Q. Fill in the blank with the correct word: \"If you want to go to Keio University, you should ____ hard.\"\\nThis type of fill-in-the-blank question is called a cloze test. In this research, we define a good cloze test as one where no other word fits the context besides the correct answer. We developed an algorithm called CLOZER that automatically generates such questions. CLOZER uses BERT, a large-scale natural language model, to simulate human answer tendencies and calculates a Gap Score based on the Gini coefficient to generate questions. This research aims to determine whether machine learning models can simulate human thought processes when solving problems and whether they can create good questions.",
+    "relbot_head": "A Robot That Engages in Conversation While Judging Relationships",
+    "relbot_exp": "People engage in conversations while considering whether they agree or disagree with others' opinions. Sometimes, this leads to conflicts during discussions. This research utilizes a large-scale language model to infer the relationships between participants and applies Heider's balance theory, which describes the dynamics of likes and dislikes among three people, to simulate conversations where participants either become allies or experience discord. Let's take a look at a conversation between Keio-fan Pepper-kun, Waseda-fan Pepper-chan, and a human.",
+    "travot_head": "Conversation Robot System for Travel Memoir Generation",
+    "travot_exp": "We aim to create a system that generates travel diaries through dialogue with a robot. While image captioning technology can now provide descriptive text about photos, it cannot capture the stories or memories behind the moment when the photo was taken or the experiences associated with it. To create a travel diary, it is necessary to gather information directly from the person who experienced the trip. In this research, we developed a robot that engages in conversation about photos taken during a trip. The system then uses the information gathered through this conversation to generate a travel diary filled with personal memories.",
+    "ai_head": "The research of contextual language understanding",
+    "ai_exp": "The meaning of a word depends on the context. The context consists of words that have a fixed meaning. Since the context and the senses depend on each other, a method of the simultaneous estimation is significant to grasp the flow of a dialogue. In the theme, we are developing a language comprehension algorithm that progresses in time to gradually understand what the other person is saying in a conversation while allowing misunderstanding each other.",
+    "si_head": "The research of situated interaction",
+    "si_exp": "Situated expressions are related to things and events in the environment around them and exclude obvious information from themselves. People select the relevant environmental stuff along with the progress of the dialogue. In this theme, we are investigating a method for determining important information for a conversation from image information and sensor information.",
+    "ad_exp": "The difficulty in human-human communication is related to the uncertainty of whether the other person understands the meaning of what you want to say or is looking at the material you want to show. In this theme, we develop an Augmented Dialogue that supports dialogue between people by guessing the missing information that occurs in the interaction by using an artificial intelligence system.",
+    "iu_head": "Interactive understanding others with small samples",
+    "iu_exp": "Humans are able to acquire the model of the others with small numbers of interactions, while the machine learning algorithm requires a certain amount of data. The theme develops an AI system in the scene of understanding others in interaction by comparing the tendency of human interlocutors with the machine learning algorithm.",
+    "ui_exp": "There are a lot of autonomous machines that accept humans' control, such as computer applications, computer games, teleoperated robots, and autonomous vehicles. The control interface for the devices provides a pre-designed method, while users have their preferred style of control. The theme investigates a control environment to support mutual adaptation between users and machines by using a technique of machine learning.",
+    "ui_exp2": "Researching a wearable avatar named TEROOS. TEROOS is mounted on a person's shoulder and enables the wearer and the user controlling it to share vision remotely. Furthermore, this avatar has an anthropomorphic face, allowing the user controlling it to communicate with people co-located with the wearer, thereby enhancing joint activities between humans and robots.",
+    "ag_exp": "We study an autonomous agent to support the user's daily life via interaction. The agent is expected to migrate different types of home appliances to help the user, which is difficult for the robot, which has a physical embodiment. We try to propose the agent-based user interface to integrate the services of living environments and home appliances."
+  },
+  "access": {
+    "location_exp": "Imai Laboratory is located in Yagami Campus.",
+    "address": "Imai Laboratory, Dept. of Information & Computer Science,\nFaculty of Science & Technology, Keio University\n3-14-1 Hiyoshi, Kohoku-ku, Yokohama-shi, Kanagawa-ken 223-8522 Japan",
+    "rooms": "Professor Michita Imai's Room: 26-208B\nStudents' Room: 26-203\n",
+    "tel": "TEL: +81-45-566-1515 (Professor's Room)\nTEL: +81-45-566-1749 (Students' Room)",
+    "accessmap_link": "Yagami Campus Map (Japanese)"
+  },
+  "links": {
+    "head": "Links"
+  }
+}
