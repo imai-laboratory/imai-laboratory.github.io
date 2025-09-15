@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ActivityList } from "@/components/shared/ActivityList";
+import { ActivityList } from "@/components/features/ActivityList";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getActivityData } from "@/lib/serverDataFetchers";
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { SafeHTML } from "@/components/ui/SafeHTML";
+import { SafeHTML } from "@/components/elements/SafeHTML";
 
 const UrlBase =
   "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";

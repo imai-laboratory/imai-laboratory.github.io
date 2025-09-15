@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Navigation } from "@/components/ui/navigation";
+import { Navigation } from "@/components/elements/navigation";
 
 type ClientLayoutProps = {
   children: React.ReactNode;

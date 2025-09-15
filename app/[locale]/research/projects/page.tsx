@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { LinkCard } from "@/components/shared/LinkCard";
+import { LinkCard } from "@/components/features/LinkCard";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
