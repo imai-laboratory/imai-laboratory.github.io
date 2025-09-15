@@ -1,6 +1,6 @@
 # 今井研究室　Webページ
 
-URL: http://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
+URL: https://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
 
 `src`ディレクトリ内の[ReactJS](https://facebook.github.io/react/)で書かれたJSXファイルや、`res`ディレクトリ内の画像・動画ファイルを[Webpack](https://webpack.github.io/)によりまとめ`dist`ディレクトリへ出力、`gh-pages`ブランチへアップロードすることでWebページが公開されます。
 

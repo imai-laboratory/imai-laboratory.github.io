@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
@@ -57,7 +56,7 @@ export default async function LinksPage({ params }: Props) {
         />
         <ContentLink
           title="Cognitive Robot Interaction 参考文献"
-          url="http://www.ailab.ics.keio.ac.jp/webpage_personal/cognitive_robot_interaction/"
+          url="https://www.ailab.ics.keio.ac.jp/webpage_personal/cognitive_robot_interaction/"
         />
       </div>
     </div>

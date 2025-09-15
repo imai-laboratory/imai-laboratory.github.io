@@ -3,7 +3,7 @@ import type React from "react";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
-// Research Section component
+
 type ResearchSectionProps = {
   id: string;
   title: string;
@@ -12,7 +12,7 @@ type ResearchSectionProps = {
 
 function ResearchSection({ id, title, children }: ResearchSectionProps) {
   return (
-    <div id={"research_section_" + id}>
+    <div id={`research_section_${id}`}>
       <section className="bg-primary-500 text-white py-16">
         <div className="container mx-auto px-6">
           <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>

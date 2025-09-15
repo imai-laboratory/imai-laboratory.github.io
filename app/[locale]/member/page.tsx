@@ -127,11 +127,11 @@ function createPastMemberElem(member: PastMember, lang: string, t: any) {
 
   const gradeMark = member.grade;
   if (gradeMark === "d") {
-    resText += " (" + t("members_past_grade_doctor") + ")";
+    resText += `·(${t("members_past_grade_doctor")})`;
   } else if (gradeMark === "m") {
-    resText += " (" + t("members_past_grade_master") + ")";
+    resText += `·(${t("members_past_grade_master")})`;
   } else if (gradeMark === "b") {
-    resText += " (" + t("members_past_grade_bachelor") + ")";
+    resText += `·(${t("members_past_grade_bachelor")})`;
   } else if (gradeMark) {
     resText += " (" + gradeMark + ")";
   }

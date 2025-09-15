@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
+import { DropdownMenu } from "./dropdown-menu";
 import { LanguageSwitcher } from "./language-switcher";
+import { ExternalLink, MobileNavLink, NavLink } from "./nav-link";
 
 export const Navigation = () => {
   const t = useTranslations("navigation");
@@ -12,206 +14,103 @@ export const Navigation = () => {
 
   return (
     <nav
-      className="bg-white shadow-md"
+      className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50"
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex-shrink-0">
             <Link
               href={`/${locale}`}
-              className="text-2xl font-bold text-primary-600 hover:text-primary-700"
+              className="text-xl font-semibold text-gray-900 hover:text-primary-600 transition-colors"
             >
               Imai Lab
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href={`/${locale}`}
-              className="text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              {t("home")}
-            </Link>
+          <div className="hidden xl:flex items-center gap-1">
+            <NavLink href={`/${locale}`}>{t("home")}</NavLink>
 
-            {/* Research Dropdown */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {t("research")}
-                <svg
-                  className="ml-1 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link
-                  href={`/${locale}/research`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("research_theme")}
-                </Link>
-                <Link
-                  href={`/${locale}/research_proj`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("research_proj")}
-                </Link>
-              </div>
-            </div>
+            <DropdownMenu
+              trigger={t("research")}
+              items={[
+                { href: `/${locale}/research`, label: t("research_theme") },
+                { href: `/${locale}/research_proj`, label: t("research_proj") },
+              ]}
+            />
 
-            <Link
-              href={`/${locale}/member`}
-              className="text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              {t("member")}
-            </Link>
+            <NavLink href={`/${locale}/member`}>{t("member")}</NavLink>
 
-            {/* Publication Dropdown */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {t("publication")}
-                <svg
-                  className="ml-1 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link
-                  href={`/${locale}/publication_journal`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("publication_journal")}
-                </Link>
-                <Link
-                  href={`/${locale}/publication_international`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("publication_international")}
-                </Link>
-                <Link
-                  href={`/${locale}/publication_domestic`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("publication_domestic")}
-                </Link>
-              </div>
-            </div>
+            <DropdownMenu
+              trigger={t("publication")}
+              items={[
+                {
+                  href: `/${locale}/publication_journal`,
+                  label: t("publication_journal"),
+                },
+                {
+                  href: `/${locale}/publication_international`,
+                  label: t("publication_international"),
+                },
+                {
+                  href: `/${locale}/publication_domestic`,
+                  label: t("publication_domestic"),
+                },
+              ]}
+            />
 
-            {/* Activity Dropdown */}
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-primary-600 transition-colors flex items-center">
-                {t("activity")}
-                <svg
-                  className="ml-1 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link
-                  href={`/${locale}/activity_award`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("activity_award")}
-                </Link>
-                <Link
-                  href={`/${locale}/activity_media`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("activity_media")}
-                </Link>
-                <Link
-                  href={`/${locale}/activity_talk`}
-                  className="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                >
-                  {t("activity_talk")}
-                </Link>
-              </div>
-            </div>
+            <DropdownMenu
+              trigger={t("activity")}
+              items={[
+                {
+                  href: `/${locale}/activity_award`,
+                  label: t("activity_award"),
+                },
+                {
+                  href: `/${locale}/activity_media`,
+                  label: t("activity_media"),
+                },
+                { href: `/${locale}/activity_talk`, label: t("activity_talk") },
+              ]}
+            />
 
-            <Link
-              href={`/${locale}/access`}
-              className="text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              {t("access")}
-            </Link>
-
-            <Link
-              href={`/${locale}/links`}
-              className="text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              {t("links")}
-            </Link>
-
-            <Link
-              href={`/${locale}/for_collaborations`}
-              className="text-gray-700 hover:text-primary-600 transition-colors"
-            >
+            <NavLink href={`/${locale}/access`}>{t("access")}</NavLink>
+            <NavLink href={`/${locale}/links`}>{t("links")}</NavLink>
+            <NavLink href={`/${locale}/for_collaborations`}>
               {t("for_collaborations")}
-            </Link>
+            </NavLink>
 
             {/* External Links */}
-            <div className="flex items-center space-x-2">
-              <a
-                href="http://www.ailab.ics.keio.ac.jp/welcome-junior/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-gray-200/50">
+              <ExternalLink
+                href="https://www.ailab.ics.keio.ac.jp/welcome-junior/"
+                size="sm"
               >
                 {t("b3")}
-              </a>
-              <a
+              </ExternalLink>
+              <ExternalLink
                 href="https://twitter.com/imailab"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition-colors"
+                variant="secondary"
+                className="p-2 hover:scale-110 transform transition-transform"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                 </svg>
-              </a>
+              </ExternalLink>
+              <LanguageSwitcher />
             </div>
-
-            {/* Language Switcher */}
-            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2"
+            className="xl:hidden p-2 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -233,106 +132,97 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200">
+          <div className="xl:hidden border-t border-gray-200 bg-white shadow-lg">
             <div className="py-2">
-              <Link
-                href={`/${locale}`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("home")}
-              </Link>
-              <Link
-                href={`/${locale}/research`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("research_theme")}
-              </Link>
-              <Link
-                href={`/${locale}/research_proj`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("research_proj")}
-              </Link>
-              <Link
-                href={`/${locale}/member`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("member")}
-              </Link>
-              <Link
-                href={`/${locale}/publication`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("publication")}
-              </Link>
-              <Link
-                href={`/${locale}/activity`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("activity")}
-              </Link>
-              <Link
-                href={`/${locale}/access`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("access")}
-              </Link>
-              <Link
-                href={`/${locale}/links`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("links")}
-              </Link>
-              <Link
-                href={`/${locale}/for_collaborations`}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50"
-              >
-                {t("for_collaborations")}
-              </Link>
-
-              {/* Publication sub-menu */}
-              <Link
-                href={`/${locale}/publication_journal`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("publication_journal")}
-              </Link>
-              <Link
-                href={`/${locale}/publication_international`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("publication_international")}
-              </Link>
-              <Link
-                href={`/${locale}/publication_domestic`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("publication_domestic")}
-              </Link>
-
-              {/* Activity sub-menu */}
-              <Link
-                href={`/${locale}/activity_award`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("activity_award")}
-              </Link>
-              <Link
-                href={`/${locale}/activity_media`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("activity_media")}
-              </Link>
-              <Link
-                href={`/${locale}/activity_talk`}
-                className="block px-4 py-2 pl-8 text-gray-700 hover:bg-gray-50"
-              >
-                {t("activity_talk")}
-              </Link>
-
-              <div className="px-4 py-2">
+              <div className="px-4 py-1">
                 <LanguageSwitcher />
               </div>
+
+              <MobileNavLink
+                href={`/${locale}`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("home")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/research`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("research_theme")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/research_proj`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("research_proj")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/member`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("member")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/publication_journal`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("publication_journal")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/publication_international`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("publication_international")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/publication_domestic`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("publication_domestic")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/activity_award`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("activity_award")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/activity_media`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("activity_media")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/activity_talk`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+                className="pl-8"
+              >
+                {t("activity_talk")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/access`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("access")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/links`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("links")}
+              </MobileNavLink>
+              <MobileNavLink
+                href={`/${locale}/for_collaborations`}
+                onClickAction={() => setIsMobileMenuOpen(false)}
+              >
+                {t("for_collaborations")}
+              </MobileNavLink>
             </div>
           </div>
         )}

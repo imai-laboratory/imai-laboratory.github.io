@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const URL = "http://www.ailab.ics.keio.ac.jp/welcome-junior";
+const URL = "https://www.ailab.ics.keio.ac.jp/welcome-junior";
 
 export default function B3Page() {
   const [count, setCount] = useState(3);

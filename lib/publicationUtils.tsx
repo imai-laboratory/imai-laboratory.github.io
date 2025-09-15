@@ -1,4 +1,3 @@
-import React from "react";
 import type { Paper } from "@/lib/types";
 
 export const getLangText = (elem: any, lang: string): string => {

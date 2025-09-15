@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import React from "react";
 import { PublicationList } from "@/components/shared/PublicationList";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getPublicationData } from "@/lib/serverDataFetchers";

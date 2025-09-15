@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { createPaperText } from "@/lib/publicationUtils";
 import type { Paper, PaperInfo } from "@/lib/types";
 

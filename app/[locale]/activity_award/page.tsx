@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import React from "react";
 import { ActivityList } from "@/components/shared/ActivityList";
 import { fetchJson } from "@/lib/fetchJson";
 import { generateStaticParams } from "@/lib/generateStaticParams";
@@ -16,7 +15,7 @@ async function getActivities(): Promise<ActivityInfo[]> {
   if (!Array.isArray(years)) return [];
 
   return await Promise.all(
-    years.map(async (year, yearIdx) => {
+    years.map(async (year, _yearIdx) => {
       const url = `${JsonBase}award/award_${year}.json`;
       const activityData = await fetchJson(url);
       return {
