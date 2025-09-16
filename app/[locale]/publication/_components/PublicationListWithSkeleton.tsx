@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { WithSkeleton } from "@/components/ui/skeleton/WithSkeleton";
 import type { PaperInfo } from "@/types";
 import { PublicationList } from "./PublicationList";
 import { PublicationListSkeleton } from "./PublicationListSkeleton";
@@ -16,19 +14,12 @@ export const PublicationListWithSkeleton = ({
   lang,
   initialDelay = 800,
 }: PublicationListWithSkeletonProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, initialDelay);
-
-    return () => clearTimeout(timer);
-  }, [initialDelay]);
-
-  if (isLoading) {
-    return <PublicationListSkeleton />;
-  }
-
-  return <PublicationList papers={papers} lang={lang} />;
+  return (
+    <WithSkeleton
+      skeleton={<PublicationListSkeleton />}
+      initialDelay={initialDelay}
+    >
+      <PublicationList papers={papers} lang={lang} />
+    </WithSkeleton>
+  );
 };

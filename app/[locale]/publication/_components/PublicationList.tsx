@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type React from "react";
+import { ItemCard } from "@/components/ui/card/ItemCard";
+import { YearSection } from "@/components/ui/layout/YearSection";
 import type { Paper, PaperInfo } from "@/types";
 import { PaperDisplay } from "./PaperDisplay";
 
@@ -46,34 +48,27 @@ const PaperCard = ({
   totalIndex: number;
 }) => {
   return (
-    <div className="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:-translate-y-1">
-      <div className="flex items-start space-x-4">
-        <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xs group-hover:scale-110 transition-transform duration-300">
-          {totalIndex}
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="mb-3">
-            <PaperDisplay paper={paper} lang={lang} />
-          </div>
-          <div className="flex items-center space-x-2">
-            {paper.draft_pdf_url && (
-              <LinkButton href={paper.draft_pdf_url} variant="primary">
-                📄 PDF
-              </LinkButton>
-            )}
-            {paper.appendix_url && (
-              <LinkButton href={paper.appendix_url} variant="secondary">
-                📎 Appendix
-              </LinkButton>
-            )}
-          </div>
-        </div>
+    <ItemCard index={totalIndex} colorScheme="emerald">
+      <div className="mb-3">
+        <PaperDisplay paper={paper} lang={lang} />
       </div>
-    </div>
+      <div className="flex items-center space-x-2">
+        {paper.draft_pdf_url && (
+          <LinkButton href={paper.draft_pdf_url} variant="primary">
+            📄 PDF
+          </LinkButton>
+        )}
+        {paper.appendix_url && (
+          <LinkButton href={paper.appendix_url} variant="secondary">
+            📎 Appendix
+          </LinkButton>
+        )}
+      </div>
+    </ItemCard>
   );
 };
 
-const YearSection = ({
+const PublicationYearSection = ({
   paperInfo,
   lang,
   startIndex,
@@ -85,26 +80,13 @@ const YearSection = ({
   const year = paperInfo.year;
   const yearPapers = paperInfo.paper || [];
 
-  if (yearPapers.length === 0) {
-    return null;
-  }
-
   return (
-    <div className="mb-12">
-      <div className="flex items-center mb-8">
-        <div className="flex-shrink-0">
-          <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-            {year}
-          </div>
-          <div className="w-12 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mt-1" />
-        </div>
-        <div className="flex-1 ml-6">
-          <div className="text-sm text-gray-500 font-medium">
-            {yearPapers.length} {yearPapers.length === 1 ? "paper" : "papers"}
-          </div>
-        </div>
-      </div>
-
+    <YearSection
+      year={year}
+      itemCount={yearPapers.length}
+      itemLabel="paper"
+      colorScheme="emerald"
+    >
       <div className="grid gap-4">
         {yearPapers.map((paper, index) => {
           const paperKey =
@@ -123,7 +105,7 @@ const YearSection = ({
           );
         })}
       </div>
-    </div>
+    </YearSection>
   );
 };
 
@@ -142,7 +124,7 @@ export const PublicationList = ({ papers, lang }: PublicationListProps) => {
         currentIndex -= yearPaperCount;
 
         return (
-          <YearSection
+          <PublicationYearSection
             key={`year-${paperInfo.year}`}
             paperInfo={paperInfo}
             lang={lang}

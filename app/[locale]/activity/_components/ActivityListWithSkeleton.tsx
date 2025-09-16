@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { WithSkeleton } from "@/components/ui/skeleton/WithSkeleton";
 import type { ActivityInfo } from "@/types";
 import { ActivityList } from "./ActivityList";
 import { ActivityListSkeleton } from "./ActivityListSkeleton";
@@ -14,19 +12,12 @@ export const ActivityListWithSkeleton = ({
   activities,
   initialDelay = 800,
 }: ActivityListWithSkeletonProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, initialDelay);
-
-    return () => clearTimeout(timer);
-  }, [initialDelay]);
-
-  if (isLoading) {
-    return <ActivityListSkeleton />;
-  }
-
-  return <ActivityList activities={activities} />;
+  return (
+    <WithSkeleton
+      skeleton={<ActivityListSkeleton />}
+      initialDelay={initialDelay}
+    >
+      <ActivityList activities={activities} />
+    </WithSkeleton>
+  );
 };
