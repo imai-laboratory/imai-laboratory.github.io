@@ -1,6 +1,6 @@
 "use client";
 
-import { Navigation } from "@/components/elements/navigation";
+import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/layout/Footer";
 
 type ClientLayoutProps = {

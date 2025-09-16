@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type React from "react";
-import { PageHero } from "@/components/features/PageHero";
+import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };

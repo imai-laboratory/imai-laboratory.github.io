@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ContentSection } from "@/components/features/ContentSection";
-import { PageHero } from "@/components/features/PageHero";
+import { ContentSection } from "@/components/shared/ContentSection";
+import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };

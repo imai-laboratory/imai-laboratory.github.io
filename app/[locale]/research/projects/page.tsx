@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { LinkCard } from "@/components/features/LinkCard";
-import { PageHero } from "@/components/features/PageHero";
+import { LinkCard } from "@/components/shared/LinkCard";
+import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };

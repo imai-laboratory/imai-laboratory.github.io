@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { PageHero } from "@/components/features/PageHero";
+import { PageHero } from "@/components/shared/PageHero";
 import {
   getMembersData,
   getPastMembersData,

@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero } from "@/components/features/PageHero";
-import { PublicationList } from "@/components/features/PublicationList";
+import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getPublicationData } from "@/lib/serverDataFetchers";
+import { PublicationList } from "../_components/PublicationList";
 
 export { generateStaticParams };
 type Props = {
