@@ -1,57 +1,79 @@
-# 今井研究室　Webページ
+# 今井研究室 Webページ
 
-URL: http://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
+URL: https://www.ailab.ics.keio.ac.jp
 
-`src`ディレクトリ内の[ReactJS](https://facebook.github.io/react/)で書かれたJSXファイルや、`res`ディレクトリ内の画像・動画ファイルを[Webpack](https://webpack.github.io/)によりまとめ`dist`ディレクトリへ出力、`gh-pages`ブランチへアップロードすることでWebページが公開されます。
+今井研究室の公式Webサイトです。
+
+## 技術スタック
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Internationalization**: next-intl
+- **Code Quality**: Biome
+- **Package Manager**: pnpm
+- **Deployment**: GitHub Pages
 
 ## Commands
-```
-# Install essential packages
-npm install
 
-# Build for development
-npm run develop
-# Build for production
-npm run production
+```bash
+# パッケージのインストール
+pnpm install
 
-# Run server for development (dynamic update)
-npm run server
+# 開発サーバーの起動
+pnpm dev
 
-# Publish to Github-Pages (`master branch`)
-npm run publish
-```
+# 本番環境用ビルド
+pnpm build
 
-## Lint
-LinterとしてESLintを使用します。
-設定ファイルは`.eslintrc.json`です。
-編集後には必ずチェックを行ってください。
+# 本番環境の起動
+pnpm start
 ```
 
-# Check
-npm run lint
+## コード品質管理
 
-# Fix
-npm run lint:fix
+Biomeを使用してリント・フォーマット・import整理を行っています。
+
+```bash
+# Lintチェック
+pnpm lint
+
+# Lint自動修正
+pnpm lint:fix
+
+# フォーマット
+pnpm format
+```
+
+## プロジェクト構造
+
+```
+├── app/[locale]/         # 国際化対応のページ
+├── components/
+│   ├── shared/           # 共通コンポーネント
+│   └── ui/               # UIコンポーネント
+├── i18n/                 # 国際化設定
+├── lib/                  # ユーティリティ関数
+├── messages/             # 翻訳ファイル
+└── public/res/           # 画像・動画リソース
 ```
 
 ## 外部データ
-メンバと論文情報は外部リポジトリから動的に取得されます。
-* メンバ情報　https://github.com/imai-laboratory/members_data
-* 論文情報　https://github.com/imai-laboratory/publications_data
 
-## その他
-ReactJSと共に用いるUI Componentとして[Rebass](https://rebassjs.org/)を使用しています。
+メンバーと論文情報は外部リポジトリから動的に取得されます。
 
-英語・日本語対応のためテキスト情報は`src/texts_general.js`へ記載し、各コンテンツ内でReactJSのプロパティとして参照します。
-すなわち言語切り替えボタンを押すと動的にテキストが更新されます。
+- メンバー情報: https://github.com/imai-laboratory/members_data
+- 論文情報: https://github.com/imai-laboratory/publications_data
+- 活動情報: https://github.com/imai-laboratory/activities_data
 
-## TODO
-- [ ] Citation in research pages.
-- [x] Responsive design for menu bar.
-- [ ] Multiple modes of webpack for uglify-js and source map.
-- [x] URL routing for contents.
-- [ ] URL routing for language switching.
-- [ ] Language switching in publication pages.
-- [ ] Improve responsive design in the member page.
-- [x] Create a link page.
-- [x] Create a link for B3 page.
+## 開発ガイドライン
+
+- TypeScriptの`type`定義を使用（`interface`は避ける）
+- Tailwind CSSによるスタイリング
+- Next.js `Image`コンポーネントの使用（`<img>`タグ禁止）
+- Biomeルールの遵守
+- コンポーネントの再利用を重視
+
+## デプロイメント
+
+GitHub Actionsを使用して自動的にGitHub Pagesへデプロイされます。`main`ブランチへのマージ時に自動実行されます。
