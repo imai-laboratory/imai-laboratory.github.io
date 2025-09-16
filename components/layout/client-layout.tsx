@@ -1,7 +1,7 @@
 "use client";
 
-import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/layout/Footer";
+import { Navigation } from "@/components/ui/navigation";
 
 type ClientLayoutProps = {
   children: React.ReactNode;
