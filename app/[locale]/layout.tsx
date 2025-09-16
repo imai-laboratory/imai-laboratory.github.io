@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { ClientLayout } from "@/components/layout/client-layout";
+import { ClientLayout } from "@/components/layout/ClientLayout";
 
 export const metadata: Metadata = {
   title: "今井研究室 - Imai Laboratory",
