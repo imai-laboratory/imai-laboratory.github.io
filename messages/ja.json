@@ -26,11 +26,14 @@
     "twitter": "今井研究室Twitter"
   },
   "members": {
-    "members_head": "研究室メンバー",
-    "members_past_head": "過去のメンバー",
-    "members_past_grade_doctor": "博士",
-    "members_past_grade_master": "修士",
-    "members_past_grade_bachelor": "学士"
+    "past": {
+      "head": "過去のメンバー"
+    },
+    "grade": {
+      "doctor": "博士",
+      "master": "修士",
+      "bachelor": "学士"
+    }
   },
   "activities": {
     "award": "受賞",

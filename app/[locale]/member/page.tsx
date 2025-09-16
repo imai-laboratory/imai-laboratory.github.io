@@ -113,11 +113,11 @@ function createPastMemberElem(
 
   const gradeMark = member.grade;
   if (gradeMark === "d") {
-    resText += `·(${t("members_past_grade_doctor")})`;
+    resText += `·(${t("members.grade.doctor")})`;
   } else if (gradeMark === "m") {
-    resText += `·(${t("members_past_grade_master")})`;
+    resText += `·(${t("members.grade.master")})`;
   } else if (gradeMark === "b") {
-    resText += `·(${t("members_past_grade_bachelor")})`;
+    resText += `·(${t("members.grade.bachelor")})`;
   } else if (gradeMark) {
     resText += ` (${gradeMark})`;
   }
@@ -154,7 +154,7 @@ export default function MemberPage() {
   const params = useParams();
   const locale = params.locale as string;
   const lang: "en" | "ja" = locale === "en" ? "en" : "ja";
-  const t = useTranslations("members");
+  const t = useTranslations();
 
   useEffect(() => {
     // Fetch current members
@@ -170,11 +170,11 @@ export default function MemberPage() {
 
   return (
     <div id="content_members">
-      <PageHero title={t("members_head")} />
+      <PageHero title={t("navigation.member")} />
       <div className="container mx-auto px-6 py-8">
         {createMemberList(members, lang)}
         <h2 className="text-2xl font-bold mb-6 mt-8">
-          {t("members_past_head")}
+          {t("members.past.head")}
         </h2>
         {createPastMemberList(pastMembers, lang, t)}
       </div>

@@ -26,11 +26,14 @@
     "twitter": "Imai Lab Twitter"
   },
   "members": {
-    "members_head": "Members",
-    "members_past_head": "Past Members",
-    "members_past_grade_doctor": "Doctor",
-    "members_past_grade_master": "Master",
-    "members_past_grade_bachelor": "Bachelor"
+    "past": {
+      "head": "Past Members"
+    },
+    "grade": {
+      "doctor": "Doctor",
+      "master": "Master",
+      "bachelor": "Bachelor"
+    }
   },
   "activities": {
     "award": "Awards",
