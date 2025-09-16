@@ -10,6 +10,7 @@ import { ExternalLink, MobileNavLink, NavLink } from "./nav-link";
 
 export const Navigation = () => {
   const t = useTranslations("navigation");
+  const tExternal = useTranslations("external");
   const locale = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -82,7 +83,7 @@ export const Navigation = () => {
                     variant={link.variant}
                     size={link.size}
                   >
-                    {t(link.key)}
+                    {tExternal(link.key)}
                   </ExternalLink>
                 );
               })}

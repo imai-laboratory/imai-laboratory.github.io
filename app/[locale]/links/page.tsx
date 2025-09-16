@@ -16,7 +16,7 @@ export default async function LinksPage({ params }: Props) {
 
   return (
     <div id="content_links">
-      <PageHero title={t("links.head")} />
+      <PageHero title={t("navigation.links")} />
       <div className="container mx-auto px-6 py-8">
         <LinkCard
           title="Imai Laboratory - GitHub"

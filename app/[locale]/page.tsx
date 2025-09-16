@@ -5,9 +5,10 @@ import { generateStaticParams } from "@/lib/generateStaticParams";
 export { generateStaticParams };
 type ContentHomeProps = {
   t: (key: string) => string;
+  locale: string;
 };
 
-function ContentHome({ t }: ContentHomeProps) {
+function ContentHome({ t, locale }: ContentHomeProps) {
   return (
     <div id="content_home">
       <section className="bg-white py-16 md:py-24">
@@ -27,44 +28,44 @@ function ContentHome({ t }: ContentHomeProps) {
         <div className="py-8">
           <div className="container mx-auto px-6">
             <h2 className="text-2xl font-bold text-left text-white mb-6">
-              {t("research")}:
+              {t("home.keywords")}:
             </h2>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/research#research_section_ai"
+                href={`/${locale}/research#research_section_ai`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                AI研究
+                {t("research.themes.ai.title")}
               </Link>
               <Link
-                href="/research#research_section_si"
+                href={`/${locale}/research#research_section_si`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                状況インタラクション
+                {t("research.themes.si.title")}
               </Link>
               <Link
-                href="/research#research_section_ad"
+                href={`/${locale}/research#research_section_ad`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                対話研究
+                {t("research.themes.ad.title")}
               </Link>
               <Link
-                href="/research#research_section_iu"
+                href={`/${locale}/research#research_section_iu`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                相互理解
+                {t("research.themes.iu.title")}
               </Link>
               <Link
-                href="/research#research_section_ui"
+                href={`/${locale}/research#research_section_ui`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                UI研究
+                {t("research.themes.ui.title")}
               </Link>
               <Link
-                href="/research#research_section_ag"
+                href={`/${locale}/research#research_section_ag`}
                 className="inline-block bg-primary-300 hover:bg-primary-200 text-primary-800 px-4 py-2 rounded font-semibold transition-colors"
               >
-                エージェント技術
+                {t("research.themes.ag.title")}
               </Link>
             </div>
           </div>
@@ -81,7 +82,7 @@ type Props = {
 export default async function Home({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "navigation" });
+  const t = await getTranslations({ locale });
 
-  return <ContentHome t={t} />;
+  return <ContentHome t={t} locale={locale} />;
 }
