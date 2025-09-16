@@ -31,6 +31,36 @@
     "b3": "For B3",
     "twitter": "Imai Lab Twitter"
   },
+  "links": {
+    "github": {
+      "title": "Imai Laboratory - GitHub",
+      "buttonText": "Visit GitHub"
+    },
+    "cognitive_science": {
+      "title": "Mind and Brain - Introduction to Cognitive Science References",
+      "buttonText": "View References"
+    },
+    "robot_interaction": {
+      "title": "Cognitive Robot Interaction References",
+      "buttonText": "View References"
+    }
+  },
+  "researchProjects": {
+    "crest": {
+      "title": "CREST",
+      "description": "Realization of mutual understanding computation based on simultaneous estimation of context and interpretation",
+      "buttonText": "Visit Project"
+    },
+    "sip": {
+      "title": "SIP",
+      "description": "Research and development of evidence-based tailored education",
+      "buttonText": "View Details"
+    },
+    "agventure": {
+      "title": "Norinchukin Bank AgVenture Lab",
+      "buttonText": "Visit Lab"
+    }
+  },
   "members": {
     "past": {
       "head": "Past Members"

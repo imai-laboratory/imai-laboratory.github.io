@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LinkCard } from "@/components/shared/LinkCard";
 import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
+import { RESEARCH_PROJECTS_CONSTANTS } from "./constants/researchProjectsData";
 
 export { generateStaticParams };
 export const dynamic = "force-static";
@@ -13,24 +14,30 @@ export default async function ResearchProjPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
+  const projectKeys = Object.keys(
+    RESEARCH_PROJECTS_CONSTANTS,
+  ) as (keyof typeof RESEARCH_PROJECTS_CONSTANTS)[];
+
   return (
     <div id="content_links">
       <PageHero title={t("navigation.research.proj")} />
       <div className="container mx-auto px-6 py-8">
-        <LinkCard
-          title="CREST"
-          description="文脈と解釈の同時推定に基づく相互理解コンピューテーションの実現"
-          url="http://crest.ailab.ics.keio.ac.jp/context/"
-        />
-        <LinkCard
-          title="SIP"
-          description="エビデンスに基づくテーラーメイド教育の研究開発"
-          url="https://www.nedo.go.jp/activities/ZZJP2_100126.html"
-        />
-        <LinkCard
-          title="農林中央金庫 アグベンチャーラボ"
-          url="https://agventurelab.or.jp/"
-        />
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projectKeys.map((key) => {
+            const projectData = t.raw(`researchProjects.${key}`);
+            const constants = RESEARCH_PROJECTS_CONSTANTS[key];
+
+            return (
+              <LinkCard
+                key={key}
+                title={projectData.title}
+                description={projectData.description}
+                url={constants.url}
+                buttonText={projectData.buttonText}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

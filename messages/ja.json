@@ -31,6 +31,36 @@
     "b3": "B3向け情報",
     "twitter": "今井研究室Twitter"
   },
+  "links": {
+    "github": {
+      "title": "Imai Laboratory - GitHub",
+      "buttonText": "GitHub を見る"
+    },
+    "cognitive_science": {
+      "title": "『心と脳－認知科学入門』コメント・参考文献",
+      "buttonText": "参考文献を見る"
+    },
+    "robot_interaction": {
+      "title": "Cognitive Robot Interaction 参考文献",
+      "buttonText": "参考文献を見る"
+    }
+  },
+  "researchProjects": {
+    "crest": {
+      "title": "CREST",
+      "description": "文脈と解釈の同時推定に基づく相互理解コンピューテーションの実現",
+      "buttonText": "プロジェクトを見る"
+    },
+    "sip": {
+      "title": "SIP",
+      "description": "エビデンスに基づくテーラーメイド教育の研究開発",
+      "buttonText": "詳細を見る"
+    },
+    "agventure": {
+      "title": "農林中央金庫 アグベンチャーラボ",
+      "buttonText": "ラボを見る"
+    }
+  },
   "members": {
     "past": {
       "head": "過去のメンバー"
