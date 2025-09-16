@@ -18,7 +18,7 @@ export const Navigation = () => {
       className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50"
       aria-label="main navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -128,12 +128,15 @@ export const Navigation = () => {
                 if (item.children) {
                   return (
                     <div key={item.key}>
+                      <div className="px-4 py-2 font-semibold text-gray-900 border-b border-gray-100">
+                        {t(item.key)}
+                      </div>
                       {item.children.map((child) => (
                         <MobileNavLink
                           key={child.key}
                           href={`/${locale}${child.href}`}
                           onClickAction={() => setIsMobileMenuOpen(false)}
-                          className={child.indented ? "pl-8" : ""}
+                          className="pl-8"
                         >
                           {t(child.key)}
                         </MobileNavLink>
