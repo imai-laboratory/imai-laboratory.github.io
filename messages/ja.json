@@ -154,8 +154,15 @@
     "accessmap_link": "交通アクセス"
   },
   "for_collaborations": {
+    "subtitle": "企業との共同研究・学術コンサルティングを積極的に推進しています",
     "about": {
-      "title": "慶應義塾大学今井研究室では、企業のみなさまの学術的な活動を支援するための学術コンサルティングや、企業のみなさまが持つ課題を一緒に解決していく共同研究などを積極的に受け入れいています。"
+      "title": "慶應義塾大学今井研究室では、企業のみなさまの学術的な活動を支援するための学術コンサルティングや、企業のみなさまが持つ課題を一緒に解決していく共同研究などを積極的に受け入れいています。",
+      "labName": "今井研究室は、",
+      "description1": "企業・自治体・研究機関の皆さまに向けて、",
+      "consulting": "学術コンサルティング",
+      "description2": "や、課題解決に向けた",
+      "collaboration": "共同研究",
+      "description3": "を積極的に推進しています。"
     },
     "examples": {
       "title": "共同研究の一例",
@@ -163,7 +170,15 @@
     },
     "contact": {
       "title": "問い合わせ先",
-      "desc": "慶應義塾大学　理工学部　教授　今井　倫太\n\nEmail: michita@ailab.ics.keio.ac.jp"
+      "prof_info": "慶應義塾大学　理工学部　教授　今井　倫太",
+      "email": "michita@ailab.ics.keio.ac.jp",
+      "prof_block_title": "教員情報",
+      "prof_block_role": "研究室責任者",
+      "email_title": "連絡先メールアドレス",
+      "cta_button": "メールで問い合わせる",
+      "cta_fallback": "メールでの問い合わせ（メールアドレスをご確認ください）",
+      "mail_subject": "【お問い合わせ】{site} Webより",
+      "mail_body_placeholder": "※このまま送信できますが、以下を追記していただけるとスムーズです。\n企業・団体名：\nご担当者様名：\nご用件（共同研究/ご相談 など）：\nご希望の連絡方法：\n"
     }
   },
   "footer": {

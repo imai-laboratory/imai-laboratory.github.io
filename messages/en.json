@@ -71,16 +71,6 @@
       "bachelor": "Bachelor"
     }
   },
-  "activities": {
-    "award": "Awards",
-    "media": "Media Coverage",
-    "talk": "Talks & Presentations"
-  },
-  "publications": {
-    "journal": "Journal Papers",
-    "international": "International Conference Papers",
-    "domestic": "Domestic Conference Papers"
-  },
   "home": {
     "title": "INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY",
     "message": "We are developing interactive AI algorithms and systems that augment the interaction between people and information systems and the communication between people.",
@@ -138,11 +128,6 @@
         "title": "My Great Agent (ITACO System)",
         "desc": "We study an autonomous agent to support the user's daily life via interaction. The agent is expected to migrate different types of home appliances to help the user, which is difficult for the robot, which has a physical embodiment. We try to propose the agent-based user interface to integrate the services of living environments and home appliances."
       }
-    },
-    "keywords": {
-      "ca": "Cognitive Adaption",
-      "as": "Augmented Society",
-      "cn": "Cognitive Neural Network"
     }
   },
   "access": {
@@ -169,8 +154,15 @@
     "accessmap_link": "Yagami Campus Map (Japanese)"
   },
   "for_collaborations": {
+    "subtitle": "We actively promote collaborative research and academic consulting with companies",
     "about": {
-      "title": "At the Imai Laboratory of Keio University, we actively engage in academic consulting to support the scholarly activities of companies and collaborate on joint research projects to address the challenges faced by businesses."
+      "title": "At the Imai Laboratory of Keio University, we actively engage in academic consulting to support the scholarly activities of companies and collaborate on joint research projects to address the challenges faced by businesses.",
+      "labName": "At Imai Laboratory, ",
+      "description1": "we support companies, local governments, and research institutes through ",
+      "consulting": "academic consulting",
+      "description2": " and promote challenge-driven ",
+      "collaboration": "joint research",
+      "description3": " in an active and collaborative manner."
     },
     "examples": {
       "title": "Examples of Collaborative Research",
@@ -178,7 +170,15 @@
     },
     "contact": {
       "title": "Contact",
-      "desc": "Professor Michita Imai\nFaculty of Science and Technology, Keio University\n\nEmail: michita@ailab.ics.keio.ac.jp"
+      "prof_info": "Professor Michita Imai, Faculty of Science and Technology, Keio University",
+      "email": "michita@ailab.ics.keio.ac.jp",
+      "prof_block_title": "Professor Information",
+      "prof_block_role": "Lab Director",
+      "email_title": "Contact Email",
+      "cta_button": "Contact via Email",
+      "cta_fallback": "Contact via Email (please verify the address)",
+      "mail_subject": "[Inquiry] From {site} website",
+      "mail_body_placeholder": "You can send as-is, but adding details helps:\nOrganization:\nYour Name:\nPurpose (e.g., collaboration / consultation):\nPreferred contact method:\n"
     }
   },
   "footer": {

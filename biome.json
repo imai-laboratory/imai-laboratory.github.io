@@ -10,6 +10,7 @@
     "includes": [
       "app/**",
       "components/**",
+      "hooks/**",
       "i18n/**",
       "lib/**",
       "messages/**",
