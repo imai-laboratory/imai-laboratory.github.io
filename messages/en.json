@@ -111,6 +111,19 @@
     "tel": "TEL: +81-45-566-1515 (Professor's Room)\nTEL: +81-45-566-1749 (Students' Room)",
     "accessmap_link": "Yagami Campus Map (Japanese)"
   },
+  "for_collaborations": {
+    "about": {
+      "desc": "At the Imai Laboratory of Keio University, we actively engage in academic consulting to support the scholarly activities of companies and collaborate on joint research projects to address the challenges faced by businesses."
+    },
+    "examples": {
+      "title": "Examples of Collaborative Research",
+      "desc": "Development of service systems using computer systems, CG agents, and robots that can communicate with humans (via conversation).\nSystem design for emotionally expressive CG characters and robots.\nDevelopment of value-added services for online meeting systems.\nSystem development utilizing large-scale language models.\nAnalysis of communication (conversation) data."
+    },
+    "contact": {
+      "title": "Contact",
+      "desc": "Professor Michita Imai\nFaculty of Science and Technology, Keio University\n\nEmail: michita@ailab.ics.keio.ac.jp"
+    }
+  },
   "footer": {
     "quick_links": "Quick Links",
     "contact": "Contact",
