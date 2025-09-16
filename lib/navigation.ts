@@ -25,10 +25,6 @@ export const navigationItems: NavigationItem[] = [
     ],
   },
   {
-    key: "member",
-    href: "/member",
-  },
-  {
     key: "publication.main",
     children: [
       {
@@ -67,6 +63,10 @@ export const navigationItems: NavigationItem[] = [
         indented: true,
       },
     ],
+  },
+  {
+    key: "member",
+    href: "/member",
   },
   {
     key: "access",

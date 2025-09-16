@@ -10,7 +10,6 @@
       "theme": "Research Themes",
       "proj": "Research Projects"
     },
-    "member": "Members",
     "publication": {
       "main": "Publications",
       "journal": "Journal",
@@ -23,6 +22,7 @@
       "media": "Media",
       "talk": "Talks"
     },
+    "member": "Members",
     "access": "Access",
     "links": "Links",
     "for_collaborations": "For Collaborations and Companies"

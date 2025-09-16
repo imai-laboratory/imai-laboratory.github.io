@@ -10,9 +10,8 @@
       "theme": "研究分野",
       "proj": "研究プロジェクト"
     },
-    "member": "メンバー",
     "publication": {
-      "main": "研究業績",
+      "main": "論文/業績",
       "journal": "ジャーナル",
       "international": "国際会議",
       "domestic": "国内会議(日本)"
@@ -23,6 +22,7 @@
       "media": "メディア",
       "talk": "登壇"
     },
+    "member": "メンバー",
     "access": "アクセス",
     "links": "外部リンク",
     "for_collaborations": "共同研究・企業の方へ"
