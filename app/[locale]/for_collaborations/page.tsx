@@ -31,7 +31,6 @@ export default async function ForCollaborationsPage({ params }: Props) {
 
       <ContactSection
         titleKey="for_collaborations.contact.title"
-        descKey="for_collaborations.contact.desc"
       />
     </div>
   );
