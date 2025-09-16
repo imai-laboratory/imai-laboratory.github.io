@@ -110,7 +110,7 @@ export function HeroSection({
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <button
                 type="button"
-                className="relative bg-white text-blue-900 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-xl"
+                className="relative bg-white text-blue-900 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-xl cursor-pointer"
               >
                 {exploreResearch}
               </button>
@@ -120,7 +120,7 @@ export function HeroSection({
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <button
                 type="button"
-                className="relative bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300"
+                className="relative bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300 cursor-pointer"
               >
                 {viewMembers}
               </button>
