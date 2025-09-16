@@ -29,9 +29,7 @@ export default async function ForCollaborationsPage({ params }: Props) {
         description={t("for_collaborations.examples.desc")}
       />
 
-      <ContactSection
-        titleKey="for_collaborations.contact.title"
-      />
+      <ContactSection titleKey="for_collaborations.contact.title" />
     </div>
   );
 }
