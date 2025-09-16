@@ -64,7 +64,10 @@ export default async function ResearchPage({ params }: Props) {
 
   return (
     <div id="content_research">
-      <PageHero title={t("navigation.research.theme")} />
+      <PageHero
+        title={t("navigation.research.theme")}
+        backgroundImage="/res/hero/crsl_learning_brain.jpg"
+      />
 
       <ResearchSection
         key="isc"

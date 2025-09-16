@@ -6,8 +6,10 @@ type PageHeroProps = {
 export const PageHero = ({ title, backgroundImage }: PageHeroProps) => {
   return (
     <section
-      className={`text-white py-8 ${
-        backgroundImage ? "bg-cover bg-center bg-no-repeat" : "bg-primary-500"
+      className={`text-white ${
+        backgroundImage
+          ? "py-16 md:py-24 bg-cover bg-center bg-no-repeat"
+          : "py-6 bg-primary-500"
       }`}
       style={
         backgroundImage

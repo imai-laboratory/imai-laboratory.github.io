@@ -35,7 +35,10 @@ export default function MemberPage() {
 
   return (
     <div id="content_members">
-      <PageHero title={t("navigation.member")} />
+      <PageHero
+        title={t("navigation.member")}
+        backgroundImage="/res/hero/hero_bbq.jpg"
+      />
       <div className="container mx-auto px-6 py-8">
         <CurrentMembersList members={members} lang={lang} />
         <PastMembersList pastMembers={pastMembers} lang={lang} />
