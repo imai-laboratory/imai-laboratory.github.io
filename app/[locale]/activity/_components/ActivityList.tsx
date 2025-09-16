@@ -1,5 +1,5 @@
 import { SafeHTML } from "@/components/ui/SafeHTML";
-import type { Activity, ActivityInfo } from "@/lib/types";
+import type { Activity, ActivityInfo } from "@/types";
 
 type ActivityListProps = {
   activities: ActivityInfo[];

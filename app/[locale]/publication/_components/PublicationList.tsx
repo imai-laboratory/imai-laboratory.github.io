@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Paper, PaperInfo } from "@/lib/types";
+import type { Paper, PaperInfo } from "@/types";
 import { PaperDisplay } from "./PaperDisplay";
 
 type PublicationListProps = {

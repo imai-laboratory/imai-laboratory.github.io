@@ -1,5 +1,5 @@
 import { fetchJson } from "@/lib/fetchJson";
-import type { ActivityInfo, PaperInfo } from "@/lib/types";
+import type { ActivityInfo, PaperInfo } from "@/types";
 
 // 外部データリポジトリのベースURL
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/imai-laboratory";

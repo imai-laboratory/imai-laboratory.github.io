@@ -1,5 +1,5 @@
 import { formatPaperData } from "@/lib/publicationUtils";
-import type { Paper } from "@/lib/types";
+import type { Paper } from "@/types";
 
 type PaperDisplayProps = {
   paper: Paper;

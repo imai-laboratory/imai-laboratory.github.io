@@ -1,4 +1,4 @@
-import type { Paper } from "@/lib/types";
+import type { Paper } from "@/types";
 
 export const getLangText = (
   elem: string | Record<string, string | string[]>,
