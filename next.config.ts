@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath: '',
   assetPrefix: '',
-  output: "export",
   images: {
     unoptimized: true,
   },

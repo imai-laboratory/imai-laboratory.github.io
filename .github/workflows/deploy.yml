@@ -55,13 +55,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       # Next.js ビルド → 静的エクスポート
-      # ※ next.config.* に { output: 'export' } を設定しておくこと
       - name: Build
         env:
           NEXT_TELEMETRY_DISABLED: 1
         run: |
           pnpm build
-          npx next export --out ./out
 
       # out/ を Pages へアップロード
       - name: Upload artifact
