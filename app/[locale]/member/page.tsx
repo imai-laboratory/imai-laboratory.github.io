@@ -1,152 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { SafeHTML } from "@/components/elements/SafeHTML";
 import { PageHero } from "@/components/features/PageHero";
 import {
-  getMemberImageUrl,
   getMembersData,
   getPastMembersData,
   type MemberInfo,
-  type PastMember,
   type PastMemberInfo,
 } from "@/lib/serverDataFetchers";
-
-function getLangText(
-  elem: Record<string, string> | null | undefined,
-  lang: string,
-): string {
-  if (!elem) return "";
-  const text = elem[lang];
-  if (text !== undefined) {
-    return text;
-  }
-  const arr = Object.values(elem);
-  if (arr.length === 0) {
-    return "";
-  }
-  return arr[0] as string;
-}
-
-type MemberElemProps = {
-  name: string;
-  grade: string;
-  email: string;
-  optionElement?: string;
-  imgUrl: string;
-};
-
-function MemberElem({
-  name,
-  grade,
-  email,
-  optionElement,
-  imgUrl,
-}: MemberElemProps) {
-  return (
-    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-      <div className="bg-white rounded-lg shadow-sm p-6 text-center h-full flex flex-col">
-        <div className="mb-4">
-          <Image
-            className="w-24 h-24 mx-auto rounded-full object-cover"
-            src={imgUrl}
-            alt={name}
-            width={96}
-            height={96}
-          />
-        </div>
-        <div className="flex-grow">
-          <p className="font-semibold text-lg mb-2">{name}</p>
-          <p className="text-gray-600 text-sm">{grade}</p>
-          <p className="text-gray-600 text-sm break-all">{email}</p>
-          {optionElement && (
-            <SafeHTML
-              html={optionElement}
-              className="whitespace-pre-line text-sm text-gray-600 mt-2"
-            />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function createMemberList(members: MemberInfo[], lang: string) {
-  return members.map((memberInfo, _roleIdx) => {
-    const role = memberInfo.role;
-    const membersList = memberInfo.members;
-
-    const roleMemberList = membersList.map((member, i) => (
-      <MemberElem
-        key={`${getLangText(role, "en")}-${getLangText(member.name, "en")}-${i}`}
-        name={getLangText(member.name, lang)}
-        grade={getLangText(member.grade, lang)}
-        email={member.email}
-        optionElement={member.option}
-        imgUrl={getMemberImageUrl(member.img)}
-      />
-    ));
-
-    return (
-      <div key={`role-${getLangText(role, "en")}`}>
-        <h2 className="text-2xl font-bold mb-6 mt-8">
-          {getLangText(role, lang)}
-        </h2>
-        <div className="flex flex-wrap -mx-4">{roleMemberList}</div>
-      </div>
-    );
-  });
-}
-
-function createPastMemberElem(
-  member: PastMember,
-  lang: string,
-  t: (key: string) => string,
-) {
-  let resText = "";
-
-  const name = getLangText(member.name, lang);
-  resText += name;
-
-  const gradeMark = member.grade;
-  if (gradeMark === "d") {
-    resText += `·(${t("members.grade.doctor")})`;
-  } else if (gradeMark === "m") {
-    resText += `·(${t("members.grade.master")})`;
-  } else if (gradeMark === "b") {
-    resText += `·(${t("members.grade.bachelor")})`;
-  } else if (gradeMark) {
-    resText += ` (${gradeMark})`;
-  }
-  return <div>{resText}</div>;
-}
-
-function createPastMemberList(
-  pastMembers: PastMemberInfo[],
-  lang: string,
-  t: (key: string) => string,
-) {
-  return pastMembers.map((memberInfo, _yearIdx) => {
-    const year = memberInfo.year;
-    const membersList = memberInfo.members;
-
-    const yearMemberList = membersList.map((member, memberIdx) => (
-      <div key={`${year}-${getLangText(member.name, "en")}-${memberIdx}`}>
-        {createPastMemberElem(member, lang, t)}
-      </div>
-    ));
-
-    return (
-      <div key={`past-year-${year}-${membersList.length}`}>
-        <h2 className="text-xl font-bold mb-4 mt-6">{year}</h2>
-        {yearMemberList}
-      </div>
-    );
-  });
-}
+import { CurrentMembersList } from "./_components/CurrentMembersList";
+import { PastMembersList } from "./_components/PastMembersList";
 
 export default function MemberPage() {
   const [members, setMembers] = useState<MemberInfo[]>([]);
@@ -172,11 +37,8 @@ export default function MemberPage() {
     <div id="content_members">
       <PageHero title={t("navigation.member")} />
       <div className="container mx-auto px-6 py-8">
-        {createMemberList(members, lang)}
-        <h2 className="text-2xl font-bold mb-6 mt-8">
-          {t("members.past.head")}
-        </h2>
-        {createPastMemberList(pastMembers, lang, t)}
+        <CurrentMembersList members={members} lang={lang} />
+        <PastMembersList pastMembers={pastMembers} lang={lang} />
       </div>
     </div>
   );
