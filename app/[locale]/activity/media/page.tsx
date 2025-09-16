@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ActivityList } from "@/components/features/ActivityList";
+import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getActivityData } from "@/lib/serverDataFetchers";
 
@@ -17,13 +18,7 @@ export default async function ActivityMediaPage({ params }: Props) {
 
   return (
     <div>
-      <section className="bg-primary-500 text-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            {t("activities.media")}
-          </h1>
-        </div>
-      </section>
+      <PageHero title={t("activities.media")} />
       <div className="container mx-auto px-6 py-8">
         <ActivityList activities={activities.filter(Boolean)} />
       </div>

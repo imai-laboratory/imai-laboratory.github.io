@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { SafeHTML } from "@/components/elements/SafeHTML";
+import { PageHero } from "@/components/features/PageHero";
 import {
   getMemberImageUrl,
   getMembersData,
@@ -167,13 +168,7 @@ export default function MemberPage() {
 
   return (
     <div id="content_members">
-      <section id="hero-members" className="bg-gray-800 text-white py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold">
-            {t("members_head")}
-          </h1>
-        </div>
-      </section>
+      <PageHero title={t("members_head")} />
       <div className="container mx-auto px-6 py-8">
         {createMemberList(members, lang)}
         <h2 className="text-2xl font-bold mb-6 mt-8">

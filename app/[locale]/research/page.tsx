@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type React from "react";
+import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
@@ -13,12 +14,13 @@ type ResearchSectionProps = {
 
 function ResearchSection({ id, title, children }: ResearchSectionProps) {
   return (
-    <div id={`research_section_${id}`}>
-      <section className="bg-primary-500 text-white py-16">
-        <div className="container mx-auto px-6">
-          <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
+    <div id={`research_section_${id}`} className="mb-12">
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto px-6 py-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{title}</h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
         </div>
-      </section>
+      </div>
       {children}
     </div>
   );
@@ -59,13 +61,7 @@ export default async function ResearchPage({ params }: Props) {
 
   return (
     <div id="content_research">
-      <section id="hero-research" className="bg-gray-800 text-white py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold">
-            {t("research_theme")}
-          </h1>
-        </div>
-      </section>
+      <PageHero title={t("research_theme")} />
 
       <ResearchSection key="isc" id="isc" title="Interactive Smart Clerk">
         <ResearchSubSection text="スマートクラークシステムの研究">

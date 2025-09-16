@@ -1,4 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
+import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
@@ -10,12 +11,7 @@ export default async function ForCollaborationsPage({ params }: Props) {
   return (
     <div>
       <div id="content_for_collaborations">
-        {/* Hero Section */}
-        <section className="bg-primary-500 text-white py-16">
-          <div className="container mx-auto px-6 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold">共同研究について</h1>
-          </div>
-        </section>
+        <PageHero title="共同研究について" />
 
         {/* About Section */}
         <div className="container mx-auto px-6 py-8">

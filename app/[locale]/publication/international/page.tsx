@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { PageHero } from "@/components/features/PageHero";
 import { PublicationList } from "@/components/features/PublicationList";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getPublicationData } from "@/lib/serverDataFetchers";
@@ -16,13 +17,7 @@ export default async function PublicationInternationalPage({ params }: Props) {
 
   return (
     <div>
-      <section className="bg-primary-500 text-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            {t("publications.international")}
-          </h1>
-        </div>
-      </section>
+      <PageHero title={t("publications.international")} />
       <div className="container mx-auto px-6 py-8">
         <PublicationList
           papers={papers.filter(Boolean)}

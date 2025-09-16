@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LinkCard } from "@/components/features/LinkCard";
+import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
@@ -15,11 +16,7 @@ export default async function LinksPage({ params }: Props) {
 
   return (
     <div id="content_links">
-      <section className="bg-primary-500 text-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold">{t("links.head")}</h1>
-        </div>
-      </section>
+      <PageHero title={t("links.head")} />
       <div className="container mx-auto px-6 py-8">
         <LinkCard
           title="Imai Laboratory - GitHub"

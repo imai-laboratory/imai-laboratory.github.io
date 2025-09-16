@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 
 export { generateStaticParams };
@@ -33,13 +34,7 @@ export default async function AccessPage({ params }: Props) {
   return (
     <div>
       <div id="content_access">
-        <section className="bg-primary-500 text-white py-16">
-          <div className="container mx-auto px-6 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold">
-              {t("navigation.access")}
-            </h1>
-          </div>
-        </section>
+        <PageHero title={t("navigation.access")} />
         <div className="container mx-auto px-6 py-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
