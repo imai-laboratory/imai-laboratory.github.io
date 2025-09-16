@@ -15,7 +15,7 @@ export default async function ResearchProjPage({ params }: Props) {
 
   return (
     <div id="content_links">
-      <PageHero title={t("navigation.research_proj")} />
+      <PageHero title={t("navigation.research.proj")} />
       <div className="container mx-auto px-6 py-8">
         <LinkCard
           title="CREST"

@@ -5,18 +5,24 @@
   },
   "navigation": {
     "home": "ホーム",
-    "research": "研究",
-    "research_theme": "研究分野",
-    "research_proj": "研究プロジェクト",
+    "research": {
+      "main": "研究",
+      "theme": "研究分野",
+      "proj": "研究プロジェクト"
+    },
     "member": "メンバー",
-    "publication": "研究業績",
-    "publication_journal": "ジャーナル",
-    "publication_international": "国際会議",
-    "publication_domestic": "国内会議(日本)",
-    "activity": "活動報告",
-    "activity_award": "受賞",
-    "activity_media": "メディア",
-    "activity_talk": "登壇",
+    "publication": {
+      "main": "研究業績",
+      "journal": "ジャーナル",
+      "international": "国際会議",
+      "domestic": "国内会議(日本)"
+    },
+    "activity": {
+      "main": "活動報告",
+      "award": "受賞",
+      "media": "メディア",
+      "talk": "登壇"
+    },
     "access": "アクセス",
     "links": "外部リンク",
     "for_collaborations": "共同研究・企業の方へ"
@@ -34,16 +40,6 @@
       "master": "修士",
       "bachelor": "学士"
     }
-  },
-  "activities": {
-    "award": "受賞",
-    "media": "メディア掲載",
-    "talk": "講演・発表"
-  },
-  "publications": {
-    "journal": "ジャーナル論文",
-    "international": "国際会議論文",
-    "domestic": "国内会議論文"
   },
   "home": {
     "title": "INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY",
@@ -100,11 +96,6 @@
         "title": "マイグレートエージェント (ITACOシステム）",
         "desc": "人と対話形式で生活支援をするエージェントの研究をしています。ソフトウェアエージェントは、ロボットと異なり、様々な機器に移動しでサービスできるなどより柔軟な支援の提供が期待できます。本研究では、生活環境・家電機器のサービスをエージェントで統一的に扱えるユーザインタフェースの構築を目指し研究しています。"
       }
-    },
-    "keywords": {
-      "ca": "認知適応",
-      "as": "拡張社会",
-      "cn": "認知神経ネットワーク"
     }
   },
   "access": {

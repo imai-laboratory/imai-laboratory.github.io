@@ -64,7 +64,7 @@ export default async function ResearchPage({ params }: Props) {
 
   return (
     <div id="content_research">
-      <PageHero title={t("navigation.research_theme")} />
+      <PageHero title={t("navigation.research.theme")} />
 
       <ResearchSection
         key="isc"

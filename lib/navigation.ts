@@ -11,14 +11,14 @@ export const navigationItems: NavigationItem[] = [
     href: "/",
   },
   {
-    key: "research",
+    key: "research.main",
     children: [
       {
-        key: "research_theme",
+        key: "research.theme",
         href: "/research",
       },
       {
-        key: "research_proj",
+        key: "research.proj",
         href: "/research/projects",
         indented: true,
       },
@@ -29,40 +29,40 @@ export const navigationItems: NavigationItem[] = [
     href: "/member",
   },
   {
-    key: "publication",
+    key: "publication.main",
     children: [
       {
-        key: "publication_journal",
+        key: "publication.journal",
         href: "/publication/journal",
         indented: true,
       },
       {
-        key: "publication_international",
+        key: "publication.international",
         href: "/publication/international",
         indented: true,
       },
       {
-        key: "publication_domestic",
+        key: "publication.domestic",
         href: "/publication/domestic",
         indented: true,
       },
     ],
   },
   {
-    key: "activity",
+    key: "activity.main",
     children: [
       {
-        key: "activity_award",
+        key: "activity.award",
         href: "/activity/award",
         indented: true,
       },
       {
-        key: "activity_media",
+        key: "activity.media",
         href: "/activity/media",
         indented: true,
       },
       {
-        key: "activity_talk",
+        key: "activity.talk",
         href: "/activity/talk",
         indented: true,
       },

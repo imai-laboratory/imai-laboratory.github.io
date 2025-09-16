@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { externalLinks, navigationItems } from "@/lib/navigation";
-import { DropdownMenu } from "./DropdownMenu";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-import { ExternalLink, MobileNavLink, NavLink } from "./NavLink";
+import { DropdownMenu } from "../ui/DropdownMenu";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
+import { ExternalLink, MobileNavLink, NavLink } from "../ui/NavLink";
 
 export const Navigation = () => {
   const t = useTranslations("navigation");

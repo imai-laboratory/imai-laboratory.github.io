@@ -5,18 +5,24 @@
   },
   "navigation": {
     "home": "Home",
-    "research": "Research",
-    "research_theme": "Research Themes",
-    "research_proj": "Research Projects",
-    "publication": "Publications",
-    "publication_journal": "Journal",
-    "publication_international": "International Conference",
-    "publication_domestic": "Domestic Conference(Japan)",
-    "activity": "Activities",
-    "activity_award": "Awards",
-    "activity_media": "Media",
-    "activity_talk": "Talks",
+    "research": {
+      "main": "Research",
+      "theme": "Research Themes",
+      "proj": "Research Projects"
+    },
     "member": "Members",
+    "publication": {
+      "main": "Publications",
+      "journal": "Journal",
+      "international": "International Conference",
+      "domestic": "Domestic Conference(Japan)"
+    },
+    "activity": {
+      "main": "Activities",
+      "award": "Awards",
+      "media": "Media",
+      "talk": "Talks"
+    },
     "access": "Access",
     "links": "Links",
     "for_collaborations": "For Collaborations and Companies"

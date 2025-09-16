@@ -18,7 +18,7 @@ export default async function ActivityMediaPage({ params }: Props) {
 
   return (
     <div>
-      <PageHero title={t("activities.media")} />
+      <PageHero title={t("navigation.activity.media")} />
       <div className="container mx-auto px-6 py-8">
         <ActivityList activities={activities.filter(Boolean)} />
       </div>

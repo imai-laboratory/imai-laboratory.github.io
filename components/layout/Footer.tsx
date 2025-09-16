@@ -84,7 +84,7 @@ export const Footer = () => {
                   className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
-                  {tNav("research")}
+                  {tNav("research.main")}
                 </Link>
               </li>
               <li>

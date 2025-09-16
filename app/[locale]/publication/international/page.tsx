@@ -17,7 +17,7 @@ export default async function PublicationInternationalPage({ params }: Props) {
 
   return (
     <div>
-      <PageHero title={t("publications.international")} />
+      <PageHero title={t("navigation.publication.international")} />
       <div className="container mx-auto px-6 py-8">
         <PublicationList
           papers={papers.filter(Boolean)}

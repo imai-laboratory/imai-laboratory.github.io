@@ -17,7 +17,7 @@ export default async function ActivityTalkPage({ params }: Props) {
 
   return (
     <div>
-      <PageHero title={t("activities.talk")} />
+      <PageHero title={t("navigation.activity.talk")} />
       <div className="container mx-auto px-6 py-8">
         <ActivityList activities={activities.filter(Boolean)} />
       </div>
