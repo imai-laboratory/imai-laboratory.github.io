@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/shared/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
 import { getPublicationData } from "@/lib/serverDataFetchers";
-import { PublicationList } from "../_components/PublicationList";
+import { PublicationListWithSkeleton } from "../_components/PublicationListWithSkeleton";
 
 export { generateStaticParams };
 type Props = {
@@ -19,7 +19,7 @@ export default async function PublicationDomesticPage({ params }: Props) {
     <div>
       <PageHero title={t("navigation.publication.domestic")} />
       <div className="container mx-auto px-6 py-8">
-        <PublicationList
+        <PublicationListWithSkeleton
           papers={papers.filter(Boolean)}
           lang={locale as "en" | "ja"}
         />
