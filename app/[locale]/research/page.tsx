@@ -65,8 +65,8 @@ export default async function ResearchPage({ params }: Props) {
     <div id="content_research">
       <PageHero title={t("research_theme")} />
 
-      <ResearchSection key="isc" id="isc" title="Interactive Smart Clerk">
-        <ResearchSubSection text="スマートクラークシステムの研究">
+      <ResearchSection key="isc" id="isc" title={t("projects.isc.title")}>
+        <ResearchSubSection text={t("projects.isc.desc")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4"

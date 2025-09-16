@@ -50,6 +50,10 @@
   "research": {
     "research_theme": "Research Themes",
     "projects": {
+      "isc": {
+        "title": "A Robot that Recommends Products with Few Samples Interactive-SmartClerk",
+        "desc": "When building a machine learning model, a large number of samples is typically required. Even when fine-tuning a model to match an individual's preferences, a considerable amount of preference data is necessary. On the other hand, a store clerk can recommend products by simply asking about 2 or 3 preferences. This research utilizes a mathematical model revealed through cognitive science experiments that explain how humans infer others' preferences. By asking about preferences for just four dresses, it can recommend a preferred dress."
+      },
       "scains": {
         "title": "Missed Conversation Support System",
         "desc1": "In online meetings such as Zoom, it's easy to miss what others are saying when you're distracted by something else. Many people have experienced the frustration of being asked for their opinion when they weren't paying attention. We developed an algorithm that identifies important missed statements (which we call SCAINs) from the conversation. Additionally, we created the SCAINs Presenter, which presents these important missed statements to help people navigate through situations where they missed parts of the conversation. With the practical application of this research, individuals will be able to participate in multiple meetings or handle multiple tasks more efficiently.",
@@ -57,7 +61,7 @@
       },
       "closer": {
         "title": "Automatic English Cloze Test Generation System CLOZER",
-        "desc": "Q. Fill in the blank with the correct word: \"If you want to go to Keio University, you should ____ hard.\"\\nThis type of fill-in-the-blank question is called a cloze test. In this research, we define a good cloze test as one where no other word fits the context besides the correct answer. We developed an algorithm called CLOZER that automatically generates such questions. CLOZER uses BERT, a large-scale natural language model, to simulate human answer tendencies and calculates a Gap Score based on the Gini coefficient to generate questions. This research aims to determine whether machine learning models can simulate human thought processes when solving problems and whether they can create good questions."
+        "desc": "Q. Fill in the blank with the correct word: \"If you want to go to Keio University, you should ____ hard.\"This type of fill-in-the-blank question is called a cloze test. In this research, we define a good cloze test as one where no other word fits the context besides the correct answer. We developed an algorithm called CLOZER that automatically generates such questions. CLOZER uses BERT, a large-scale natural language model, to simulate human answer tendencies and calculates a Gap Score based on the Gini coefficient to generate questions. This research aims to determine whether machine learning models can simulate human thought processes when solving problems and whether they can create good questions."
       },
       "relbot": {
         "title": "A Robot That Engages in Conversation While Judging Relationships",
