@@ -15,9 +15,10 @@ export const MemberSkeleton = () => (
   <div>
     <div className="h-8 bg-gray-200 rounded mb-6 mt-8 animate-pulse w-48" />
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <MemberCardSkeleton key={i} />
-      ))}
+      <MemberCardSkeleton />
+      <MemberCardSkeleton />
+      <MemberCardSkeleton />
+      <MemberCardSkeleton />
     </div>
   </div>
 );
