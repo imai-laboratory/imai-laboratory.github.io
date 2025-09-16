@@ -48,7 +48,7 @@ function MemberElem({
 }: MemberElemProps) {
   return (
     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-      <div className="bg-white rounded-lg shadow-sm p-6 text-center">
+      <div className="bg-white rounded-lg shadow-sm p-6 text-center h-full flex flex-col">
         <div className="mb-4">
           <Image
             className="w-24 h-24 mx-auto rounded-full object-cover"
@@ -58,15 +58,17 @@ function MemberElem({
             height={96}
           />
         </div>
-        <p className="font-semibold text-lg mb-2">{name}</p>
-        <p className="text-gray-600 text-sm">{grade}</p>
-        <p className="text-gray-600 text-sm">{email}</p>
-        {optionElement && (
-          <SafeHTML
-            html={optionElement}
-            className="whitespace-pre-line text-sm text-gray-600 mt-2"
-          />
-        )}
+        <div className="flex-grow">
+          <p className="font-semibold text-lg mb-2">{name}</p>
+          <p className="text-gray-600 text-sm">{grade}</p>
+          <p className="text-gray-600 text-sm break-all">{email}</p>
+          {optionElement && (
+            <SafeHTML
+              html={optionElement}
+              className="whitespace-pre-line text-sm text-gray-600 mt-2"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
