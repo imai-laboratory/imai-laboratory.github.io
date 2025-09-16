@@ -116,11 +116,15 @@ export const Footer = () => {
             <div className="space-y-3 text-gray-300 text-sm">
               <div className="flex items-start">
                 <span className="inline-block w-2 h-2 bg-indigo-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                <div className="whitespace-pre-line">{tAccess("address")}</div>
+                <div className="whitespace-pre-line">
+                  {tAccess("address.content")}
+                </div>
               </div>
               <div className="flex items-start">
                 <span className="inline-block w-2 h-2 bg-indigo-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                <div className="whitespace-pre-line">{tAccess("tel")}</div>
+                <div className="whitespace-pre-line">
+                  {tAccess("contact.content")}
+                </div>
               </div>
             </div>
           </div>

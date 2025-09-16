@@ -108,10 +108,26 @@
     }
   },
   "access": {
-    "location_exp": "Imai Laboratory is located in Yagami Campus.",
-    "address": "Imai Laboratory, Dept. of Information & Computer Science,\nFaculty of Science & Technology, Keio University\n3-14-1 Hiyoshi, Kohoku-ku, Yokohama-shi, Kanagawa-ken 223-8522 Japan",
-    "rooms": "Professor Michita Imai's Room: 26-208B\nStudents' Room: 26-203\n",
-    "tel": "TEL: +81-45-566-1515 (Professor's Room)\nTEL: +81-45-566-1749 (Students' Room)",
+    "location": {
+      "title": "Location",
+      "content": "Imai Laboratory is located in Yagami Campus."
+    },
+    "address": {
+      "title": "Address",
+      "content": "Imai Laboratory, Dept. of Information & Computer Science,\nFaculty of Science & Technology, Keio University\n3-14-1 Hiyoshi, Kohoku-ku, Yokohama-shi, Kanagawa-ken 223-8522 Japan"
+    },
+    "rooms": {
+      "title": "Rooms",
+      "content": "Professor Michita Imai's Room: 26-208B\nStudents' Room: 26-203\n"
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "TEL: +81-45-566-1515 (Professor's Room)\nTEL: +81-45-566-1749 (Students' Room)"
+    },
+    "map": {
+      "title": "Google Map",
+      "description": "Find the location of Keio University Yagami Campus"
+    },
     "accessmap_link": "Yagami Campus Map (Japanese)"
   },
   "for_collaborations": {
