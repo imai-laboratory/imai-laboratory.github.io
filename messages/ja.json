@@ -74,7 +74,9 @@
   "home": {
     "title": "INTERACTIVE ARTIFICIAL INTELLIGENCE LABORATORY",
     "message": "人と情報システムのインタラクション・人と人のコミュニケーションを拡張するインタラクティブAIについて研究しています。",
-    "keywords": "キーワード"
+    "keywords": "キーワード",
+    "exploreResearch": "研究を探索する",
+    "viewMembers": "メンバーを見る"
   },
   "research": {
     "projects": {
