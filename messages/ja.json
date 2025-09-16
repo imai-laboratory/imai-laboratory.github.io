@@ -7,7 +7,7 @@
     "home": "ホーム",
     "research": "研究",
     "research_theme": "研究分野",
-    "research_proj": "プロジェクト",
+    "research_proj": "研究プロジェクト",
     "member": "メンバー",
     "publication": "研究業績",
     "publication_journal": "ジャーナル",
@@ -19,7 +19,7 @@
     "activity_talk": "登壇",
     "access": "アクセス",
     "links": "外部リンク",
-    "for_collaborations": "共同研究について"
+    "for_collaborations": "共同研究・企業の方へ"
   },
   "external": {
     "b3": "B3向け情報",
@@ -48,7 +48,6 @@
     "keywords": "キーワード"
   },
   "research": {
-    "research_theme": "研究テーマ",
     "projects": {
       "isc": {
         "title": "少ないサンプルで商品を推薦するロボット Interactive-SmartClerk",
@@ -111,5 +110,10 @@
     "rooms": "今井倫太 教授 居室: 26-208B\n学生居室: 26-203\n",
     "tel": "TEL: 045-566-1515 (教授居室)\nTEL: 045-566-1749 (学生居室)\n",
     "accessmap_link": "交通アクセス"
+  },
+  "footer": {
+    "quick_links": "クイックリンク",
+    "contact": "連絡先",
+    "copyright": "今井倫太研究室・慶應義塾大学理工学部情報工学科"
   }
 }

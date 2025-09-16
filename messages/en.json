@@ -48,7 +48,6 @@
     "keywords": "Keywords"
   },
   "research": {
-    "research_theme": "Research Themes",
     "projects": {
       "isc": {
         "title": "A Robot that Recommends Products with Few Samples Interactive-SmartClerk",
@@ -111,5 +110,10 @@
     "rooms": "Professor Michita Imai's Room: 26-208B\nStudents' Room: 26-203\n",
     "tel": "TEL: +81-45-566-1515 (Professor's Room)\nTEL: +81-45-566-1749 (Students' Room)",
     "accessmap_link": "Yagami Campus Map (Japanese)"
+  },
+  "footer": {
+    "quick_links": "Quick Links",
+    "contact": "Contact",
+    "copyright": "Imai Laboratory, Department of Information and Computer Science, Keio University"
   }
 }

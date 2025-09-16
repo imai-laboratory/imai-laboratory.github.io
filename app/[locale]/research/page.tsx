@@ -59,14 +59,19 @@ type Props = {
 export default async function ResearchPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "research" });
+  const t = await getTranslations({ locale });
+  const tResearch = await getTranslations({ locale, namespace: "research" });
 
   return (
     <div id="content_research">
-      <PageHero title={t("research_theme")} />
+      <PageHero title={t("navigation.research_theme")} />
 
-      <ResearchSection key="isc" id="isc" title={t("projects.isc.title")}>
-        <ResearchSubSection text={t("projects.isc.desc")}>
+      <ResearchSection
+        key="isc"
+        id="isc"
+        title={tResearch("projects.isc.title")}
+      >
+        <ResearchSubSection text={tResearch("projects.isc.desc")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4"
@@ -80,9 +85,9 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection
         key="scains"
         id="scains"
-        title={t("projects.scains.title")}
+        title={tResearch("projects.scains.title")}
       >
-        <ResearchSubSection text={t("projects.scains.desc1")}>
+        <ResearchSubSection text={tResearch("projects.scains.desc1")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4"
@@ -91,7 +96,7 @@ export default async function ResearchPage({ params }: Props) {
             />
           </div>
         </ResearchSubSection>
-        <ResearchSubSection text={t("projects.scains.desc2")}>
+        <ResearchSubSection text={tResearch("projects.scains.desc2")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4"
@@ -105,17 +110,17 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection
         key="closer"
         id="closer"
-        title={t("projects.closer.title")}
+        title={tResearch("projects.closer.title")}
       >
-        <ResearchSubSection text={t("projects.closer.desc")} />
+        <ResearchSubSection text={tResearch("projects.closer.desc")} />
       </ResearchSection>
 
       <ResearchSection
         key="relbot"
         id="relbot"
-        title={t("projects.relbot.title")}
+        title={tResearch("projects.relbot.title")}
       >
-        <ResearchSubSection text={t("projects.relbot.desc")}>
+        <ResearchSubSection text={tResearch("projects.relbot.desc")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/RelBot.mp4"
@@ -129,9 +134,9 @@ export default async function ResearchPage({ params }: Props) {
       <ResearchSection
         key="travot"
         id="travot"
-        title={t("projects.travot.title")}
+        title={tResearch("projects.travot.title")}
       >
-        <ResearchSubSection text={t("projects.travot.desc")}>
+        <ResearchSubSection text={tResearch("projects.travot.desc")}>
           <div className="flex justify-center">
             <video
               src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4"
@@ -142,8 +147,8 @@ export default async function ResearchPage({ params }: Props) {
         </ResearchSubSection>
       </ResearchSection>
 
-      <ResearchSection key="ai" id="ai" title={t("themes.ai.title")}>
-        <ResearchSubSection text={t("themes.ai.desc")}>
+      <ResearchSection key="ai" id="ai" title={tResearch("themes.ai.title")}>
+        <ResearchSubSection text={tResearch("themes.ai.desc")}>
           <div className="flex justify-center">
             {locale === "ja" && (
               <Image
@@ -165,8 +170,8 @@ export default async function ResearchPage({ params }: Props) {
         </ResearchSubSection>
       </ResearchSection>
 
-      <ResearchSection key="si" id="si" title={t("themes.si.title")}>
-        <ResearchSubSection text={t("themes.si.desc")}>
+      <ResearchSection key="si" id="si" title={tResearch("themes.si.title")}>
+        <ResearchSubSection text={tResearch("themes.si.desc")}>
           <div className="flex justify-center">
             <Image
               src="/res/research/context-situated.png"
@@ -178,12 +183,12 @@ export default async function ResearchPage({ params }: Props) {
         </ResearchSubSection>
       </ResearchSection>
 
-      <ResearchSection key="ad" id="ad" title={t("themes.ad.title")}>
-        <ResearchSubSection text={t("themes.ad.desc")} />
+      <ResearchSection key="ad" id="ad" title={tResearch("themes.ad.title")}>
+        <ResearchSubSection text={tResearch("themes.ad.desc")} />
       </ResearchSection>
 
-      <ResearchSection key="iu" id="iu" title={t("themes.iu.title")}>
-        <ResearchSubSection text={t("themes.iu.desc")}>
+      <ResearchSection key="iu" id="iu" title={tResearch("themes.iu.title")}>
+        <ResearchSubSection text={tResearch("themes.iu.desc")}>
           <div className="flex justify-center">
             <Image
               src="/res/research/iu.jpg"
@@ -195,8 +200,8 @@ export default async function ResearchPage({ params }: Props) {
         </ResearchSubSection>
       </ResearchSection>
 
-      <ResearchSection key="ui" id="ui" title={t("themes.ui.title")}>
-        <ResearchSubSection text={t("themes.ui.desc")}>
+      <ResearchSection key="ui" id="ui" title={tResearch("themes.ui.title")}>
+        <ResearchSubSection text={tResearch("themes.ui.desc")}>
           <div className="flex justify-center">
             <Image
               src="/res/research/ui.png"
@@ -206,18 +211,10 @@ export default async function ResearchPage({ params }: Props) {
             />
           </div>
         </ResearchSubSection>
-        {/*
-        <ResearchSubSection text={t('ui_exp2')}>
-          <div className='column has-text-centered'>
-            <iframe width='560' height='315' src='https://www.youtube.com/embed/4doyLws0zC0?si=39YIJRieC8d1EIAX' title='YouTube video player' frameBorder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-              allowFullScreen />
-          </div>
-        </ResearchSubSection>
-        */}
       </ResearchSection>
 
-      <ResearchSection key="ag" id="ag" title={t("themes.ag.title")}>
-        <ResearchSubSection text={t("themes.ag.desc")}>
+      <ResearchSection key="ag" id="ag" title={tResearch("themes.ag.title")}>
+        <ResearchSubSection text={tResearch("themes.ag.desc")}>
           <div className="flex justify-center">
             <Image
               src="/res/research/ag.png"

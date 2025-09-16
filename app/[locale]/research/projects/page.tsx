@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LinkCard } from "@/components/features/LinkCard";
 import { PageHero } from "@/components/features/PageHero";
 import { generateStaticParams } from "@/lib/generateStaticParams";
@@ -11,9 +11,11 @@ type Props = { params: Promise<{ locale: string }> };
 export default async function ResearchProjPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale });
+
   return (
     <div id="content_links">
-      <PageHero title="プロジェクト" />
+      <PageHero title={t("navigation.research_proj")} />
       <div className="container mx-auto px-6 py-8">
         <LinkCard
           title="CREST"

@@ -15,10 +15,10 @@ function ContentHome({ t, locale }: ContentHomeProps) {
         <div className="py-8 md:py-16">
           <div className="container mx-auto px-6 text-center">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 text-black">
-              {t("site.title")}
+              {t("home.title")}
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-700">
-              {t("site.description")}
+              {t("home.message")}
             </h2>
           </div>
         </div>
