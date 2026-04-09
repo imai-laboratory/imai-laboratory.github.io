@@ -1,0 +1,9 @@
+<svg width="458" height="75" viewBox="0 0 458 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="458" height="75" fill="white"/>
+  <path d="M0 69V75H458V34H132L86 75H0V69Z" fill="#ECECEC"/>
+  <path d="M0 75L62 75L113 34H0V75Z" fill="#F7F7F7"/>
+  <ellipse cx="76" cy="37" rx="41" ry="20" transform="rotate(-57 76 37)" stroke="#3F78BF" stroke-width="6"/>
+  <ellipse cx="122" cy="28" rx="23" ry="12" transform="rotate(-57 122 28)" stroke="#3F78BF" stroke-width="5"/>
+  <text x="170" y="40" fill="black" font-family="Arial Black, Arial, sans-serif" font-size="32" font-style="italic" font-weight="900">KEIRIN.JP</text>
+  <text x="172" y="58" fill="#3F78BF" font-family="Arial, Helvetica, sans-serif" font-size="16" font-style="italic" font-weight="700">KEIRIN Official Website</text>
+</svg>
