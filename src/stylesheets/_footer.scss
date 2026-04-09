@@ -22,11 +22,18 @@
   display: block;
 }
 
+.imai-footer-banner-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .imai-footer-banner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.25rem;
   background: white;
   border: 1px solid #d6d6d6;
   border-radius: 6px;
@@ -41,8 +48,14 @@
 
 .imai-footer-banner img {
   display: block;
-  width: min(100%, 320px);
+  width: min(100%, 240px);
   height: auto;
+}
+
+.imai-footer-banner-link {
+  font-size: 0.95rem;
+  line-height: 1.2;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 768px) {
@@ -56,6 +69,6 @@
   }
 
   .imai-footer-banner img {
-    width: min(100%, 280px);
+    width: min(100%, 220px);
   }
 }

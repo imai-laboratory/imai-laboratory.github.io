@@ -19,14 +19,25 @@ export class Footer extends React.Component {
               </a>
             </div>
 
-            <a
-              href='https://keirin.jp/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='imai-footer-banner'
-            >
-              <img src={KeirinBannerImg} alt='KEIRIN.JP Official Website' />
-            </a>
+            <div className='imai-footer-banner-block'>
+              <a
+                href='https://keirin.jp/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='imai-footer-banner'
+              >
+                <img src={KeirinBannerImg} alt='KEIRIN.JP Official Website' />
+              </a>
+
+              <a
+                href='https://keirin.jp/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='imai-footer-banner-link'
+              >
+                https://keirin.jp
+              </a>
+            </div>
           </div>
         </div>
       </footer>
