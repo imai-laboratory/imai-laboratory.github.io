@@ -33,22 +33,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
-  background: white;
-  border: 1px solid #d6d6d6;
-  border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  line-height: 0;
+  transition: transform 0.2s ease;
 }
 
 .imai-footer-banner:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .imai-footer-banner img {
   display: block;
-  width: min(100%, 180px);
+  width: min(100%, 160px);
   height: auto;
 }
 
@@ -69,6 +65,6 @@
   }
 
   .imai-footer-banner img {
-    width: min(100%, 170px);
+    width: min(100%, 150px);
   }
 }
