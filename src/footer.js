@@ -2,6 +2,7 @@ import React from 'react';
 
 import MadeWithBulmaImg from '../res/made-with-bulma.png';
 import KeirinBannerImg from '../res/keirin-banner.svg';
+import JkaSocialActionBannerImg from '../res/jka-social-action-banner.svg';
 
 export class Footer extends React.Component {
   render() {
@@ -19,24 +20,46 @@ export class Footer extends React.Component {
               </a>
             </div>
 
-            <div className='imai-footer-banner-block'>
-              <a
-                href='https://keirin.jp/'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='imai-footer-banner'
-              >
-                <img src={KeirinBannerImg} alt='KEIRIN.JP Official Website' />
-              </a>
+            <div className='imai-footer-banners'>
+              <div className='imai-footer-banner-block'>
+                <a
+                  href='https://keirin.jp/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='imai-footer-banner'
+                >
+                  <img src={KeirinBannerImg} alt='KEIRIN.JP Official Website' />
+                </a>
 
-              <a
-                href='https://keirin.jp/'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='imai-footer-banner-link'
-              >
-                https://keirin.jp
-              </a>
+                <a
+                  href='https://keirin.jp/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='imai-footer-banner-link'
+                >
+                  https://keirin.jp
+                </a>
+              </div>
+
+              <div className='imai-footer-banner-block'>
+                <a
+                  href='http://jka-cycle.jp'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='imai-footer-banner'
+                >
+                  <img src={JkaSocialActionBannerImg} alt='JKA Social Action' />
+                </a>
+
+                <a
+                  href='http://jka-cycle.jp'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='imai-footer-banner-link'
+                >
+                  http://jka-cycle.jp
+                </a>
+              </div>
             </div>
           </div>
         </div>

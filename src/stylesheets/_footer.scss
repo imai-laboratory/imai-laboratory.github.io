@@ -29,6 +29,14 @@
   gap: 0.5rem;
 }
 
+.imai-footer-banners {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
 .imai-footer-banner {
   display: inline-flex;
   align-items: center;
@@ -62,6 +70,10 @@
 
   .imai-footer-layout {
     gap: 1.25rem;
+  }
+
+  .imai-footer-banners {
+    gap: 1rem;
   }
 
   .imai-footer-banner img {
