@@ -35,9 +35,10 @@
   align-items: flex-start;
   justify-content: flex-end;
   flex-wrap: nowrap;
-  gap: 1.5rem;
+  gap: 0.75rem;
   grid-column: 3;
   justify-self: end;
+  transform: translateX(0.5rem);
 }
 
 .imai-footer-banner {
@@ -82,6 +83,7 @@
     flex-wrap: wrap;
     grid-column: auto;
     justify-self: auto;
+    transform: none;
     gap: 1rem;
   }
 
