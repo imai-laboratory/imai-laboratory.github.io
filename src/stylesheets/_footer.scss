@@ -28,6 +28,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  justify-content: flex-start;
+  min-height: 5.5rem;
 }
 
 .imai-footer-banners {
@@ -61,9 +63,12 @@
 }
 
 .imai-footer-banner-link {
+  display: block;
   font-size: 0.95rem;
   line-height: 1.2;
+  min-height: 2.3em;
   word-break: break-all;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
