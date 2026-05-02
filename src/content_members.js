@@ -9,18 +9,21 @@ const MembersPastJson = UrlBase + 'past_members.json';
 const MemberImageURL = UrlBase + 'imgs/';
 
 function fetchJson(url) {
-  return new Promise((resolve) => {
-    fetch(url, {cache: 'no-store'}).then((resp) => {
-      return resp.json();
-    }).then((json) => {
-      resolve(json);
-    }).catch((ex) => {
-      console.error(ex);
+  return fetch(url, {cache: 'no-store'})
+    .then((resp) => resp.json())
+    .catch((ex) => {
+      console.error('Failed to fetch member data:', url, ex);
+      return [];
     });
-  });
 }
 
 function getLangText(elem, lang) {
+  if (elem === undefined || elem === null) {
+    return '';
+  }
+  if (typeof elem !== 'object') {
+    return String(elem);
+  }
   var text = elem[lang];
   if (text === undefined) {
     var arr = Object.values(elem);
@@ -39,20 +42,25 @@ function getLangText(elem, lang) {
 function createMemberList(members, lang) {
   // Create current member list
   var membersList = [];
+  if (!Array.isArray(members)) {
+    return membersList;
+  }
+
   members.forEach((memberInfo, roleIdx) => {
     var role = memberInfo['role'];
-    var members = memberInfo['members'];
+    var roleMembers = Array.isArray(memberInfo['members']) ? memberInfo['members'] : [];
 
     // Create member list of each role
     var roleMemberList = [];
-    for (var i = 0; i < members.length; i++) {
+    for (var i = 0; i < roleMembers.length; i++) {
+      var member = roleMembers[i];
       roleMemberList.push(
         <MemberElem
-          name={getLangText(members[i]['name'], lang)}
-          grade={getLangText(members[i]['grade'], lang)}
-          email={members[i]['email']}
-          optionElement={members[i]['option']}
-          imgUrl={MemberImageURL + members[i]['img']}
+          name={getLangText(member['name'], lang)}
+          grade={getLangText(member['grade'], lang)}
+          email={member['email']}
+          optionElement={member['option']}
+          imgUrl={member['img'] ? MemberImageURL + member['img'] : ''}
           key={roleIdx + '_' + i}
         />
       );
@@ -99,9 +107,13 @@ function createPastMemberElem(member, lang, texts) {
 function createPastMemberList(pastMembers, lang, texts) {
   // Create past member list
   var membersList = [];
+  if (!Array.isArray(pastMembers)) {
+    return membersList;
+  }
+
   pastMembers.forEach((memberInfo, yearIdx) => {
     var year = memberInfo['year'];
-    var members = memberInfo['members'];
+    var members = Array.isArray(memberInfo['members']) ? memberInfo['members'] : [];
 
     // Create member list of a year
     var yearMemberList = [];
@@ -182,7 +194,7 @@ class MemberElem extends React.Component {
       <div className='column is-6-mobile is-3-tablet is-3-desktop is-3-widescreen is-3-fullhd'>
         <div className='member-card'>
           <figure className='image'>
-            <img className='is-rounded member-avatar' src={this.props.imgUrl} />
+            <img className='is-rounded member-avatar' src={this.props.imgUrl} alt={this.props.name} />
           </figure>
           <p className='name'>{this.props.name}</p>
           <p className='info'>{this.props.grade}</p>

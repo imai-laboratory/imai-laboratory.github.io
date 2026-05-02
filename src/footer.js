@@ -1,8 +1,8 @@
 import React from 'react';
 
 import MadeWithBulmaImg from '../res/made-with-bulma.png';
-import KeirinBannerImg from '../res/keirin-banner.svg';
-import JkaSocialActionBannerImg from '../res/jka-social-action-banner.svg';
+import JkaSubsidyCompletionBannerImg from '../res/jka-subsidy-completion-banner.png';
+import JkaSocialActionBannerImg from '../res/jka-social-action-banner.png';
 
 export class Footer extends React.Component {
   render() {
@@ -28,7 +28,7 @@ export class Footer extends React.Component {
                   rel='noopener noreferrer'
                   className='imai-footer-banner'
                 >
-                  <img src={KeirinBannerImg} alt='KEIRIN.JP Official Website' />
+                  <img src={JkaSubsidyCompletionBannerImg} alt='JKA subsidy completion notice' />
                 </a>
 
                 <a
