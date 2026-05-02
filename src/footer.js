@@ -22,28 +22,14 @@ export class Footer extends React.Component {
 
             <div className='imai-footer-banners'>
               <div className='imai-footer-banner-block'>
-                <a
-                  href='https://keirin.jp/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='imai-footer-banner'
-                >
+                <div className='imai-footer-banner'>
                   <img src={JkaSubsidyCompletionBannerImg} alt='JKA subsidy completion notice' />
-                </a>
-
-                <a
-                  href='https://keirin.jp/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='imai-footer-banner-link'
-                >
-                  https://keirin.jp
-                </a>
+                </div>
               </div>
 
               <div className='imai-footer-banner-block'>
                 <a
-                  href='http://jka-cycle.jp'
+                  href='https://www.jka-cycle.jp'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='imai-footer-banner'
@@ -52,12 +38,12 @@ export class Footer extends React.Component {
                 </a>
 
                 <a
-                  href='http://jka-cycle.jp'
+                  href='https://www.jka-cycle.jp'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='imai-footer-banner-link'
                 >
-                  http://jka-cycle.jp
+                  https://www.jka-cycle.jp
                 </a>
               </div>
             </div>
