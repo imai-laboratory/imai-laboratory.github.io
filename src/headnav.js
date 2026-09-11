@@ -48,9 +48,9 @@ export class HeadNavBar extends React.Component {
             <div className='navbar-item'>
               <LanguageSwitcher changeLang={this.props.changeLang.bind(this)} langText={this.props.langText} />
               <div className='buttons'>
-                <a href='http://www.ailab.ics.keio.ac.jp/welcome-junior/' className='button is-primary'>
+                <RouteLink to='/b3' className='button is-primary'>
                   <strong>{this.props.texts['menu_b3']}</strong>
-                </a>
+                </RouteLink>
                 <a href='https://twitter.com/imailab' className='button is-info'>
                   <span className='icon'>
                     <i className='fab fa-twitter' />

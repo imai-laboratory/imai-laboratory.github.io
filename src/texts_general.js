@@ -52,6 +52,11 @@ const MULTI_LANG_TEXTS = {
 
   home_keywords: { en: 'Keywords', ja: 'キーワード' },
 
+  // ------------------------------------ B3 -----------------------------------
+  b3_preparing: {
+    en: 'This page is currently being updated. Please check back later.',
+    ja: '現在、ページを準備中です。公開までしばらくお待ちください。' },
+
   // --------------------------------- Research --------------------------------
   research_head: {
     en: 'Interactive Artificial Intelligence',

@@ -1,35 +1,26 @@
 import React from 'react';
-import { Box, Subhead, Link } from 'rebass';
-
-const URL = 'http://www.ailab.ics.keio.ac.jp/welcome-junior';
 
 export class ContentB3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 3
-    };
-    // Initial call
-    setTimeout(this.countDown.bind(this), 1000);
-  }
-  countDown() {
-    var cnt = this.state.count - 1;
-    if (cnt < 0) {
-      // Redirect
-      location.href = URL;
-    } else {
-      this.setState({count: cnt});
-      setTimeout(this.countDown.bind(this), 1000);
-    }
-  }
   render() {
     return (
-      <Box width={1}>
-        <Subhead>
-          <Link href={URL}>Welcome Page</Link>
-        </Subhead>
-        Redirect ({this.state.count} seconds)
-      </Box>
+      <div id='content_b3'>
+        <section className='hero is-small is-primary is-bold'>
+          <div className='hero-body'>
+            <div className='container has-text-centered'>
+              <h1 className='title'>
+                {this.props.texts['menu_b3']}
+              </h1>
+            </div>
+          </div>
+        </section>
+        <div className='container'>
+          <div className='box'>
+            <p className='has-text-centered'>
+              {this.props.texts['b3_preparing']}
+            </p>
+          </div>
+        </div>
+      </div>
     );
   }
 }
