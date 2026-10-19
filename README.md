@@ -1,57 +1,52 @@
-# 今井研究室　Webページ
+# Imai Laboratory Website (Vue migration)
 
-URL: http://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
+React 16 / Webpack 3 から Vue 3 + Vue Router + Vite+ へ移行するための作業ブランチ用プロジェクトです。ページの内容と外部データソースは維持しつつ、Liquid Glass の視覚表現を追加しています。
 
-`src`ディレクトリ内の[ReactJS](https://facebook.github.io/react/)で書かれたJSXファイルや、`res`ディレクトリ内の画像・動画ファイルを[Webpack](https://webpack.github.io/)によりまとめ`dist`ディレクトリへ出力、`gh-pages`ブランチへアップロードすることでWebページが公開されます。
+## Requirements
 
-## Commands
-```
-# Install essential packages
-npm install
+- Node.js 26.10.0 (2026-10-19 時点の最新 Current、mise で固定)
+- Vite+ (`vp`) と pnpm
 
-# Build for development
-npm run develop
-# Build for production
-npm run production
+Vite+ が未導入なら、macOS/Linux で以下を実行します。
 
-# Run server for development (dynamic update)
-npm run server
-
-# Publish to Github-Pages (`master branch`)
-npm run publish
+```sh
+curl -fsSL https://vite.plus | bash
 ```
 
-## Lint
-LinterとしてESLintを使用します。
-設定ファイルは`.eslintrc.json`です。
-編集後には必ずチェックを行ってください。
+プロジェクトルートで依存関係をインストールして起動します。
+
+```sh
+mise install
+vp install
+vp dev
 ```
 
-# Check
-npm run lint
+本番ビルド・チェック:
 
-# Fix
-npm run lint:fix
+```sh
+vp build
+vp check
 ```
 
-## 外部データ
-メンバと論文情報は外部リポジトリから動的に取得されます。
-* メンバ情報　https://github.com/imai-laboratory/members_data
-* 論文情報　https://github.com/imai-laboratory/publications_data
+## Architecture
 
-## その他
-ReactJSと共に用いるUI Componentとして[Rebass](https://rebassjs.org/)を使用しています。
+- `src/App.vue`: navigation, language switcher, shared layout
+- `src/pages/HomePage.vue`: home page
+- `src/pages/ContentPage.vue`: existing routes, member/publication/activity JSON loading
+- `src/texts_general.js`: existing Japanese/English copy retained from the original site
+- `public/res/`: original image and video assets
+- `panda.config.ts`: Panda CSS v2 configuration
+- `mise.toml`: Node.js / pnpm tool versions
+- `.github/workflows/deploy.yml`: GitHub Pages Actions deployment workflow
 
-英語・日本語対応のためテキスト情報は`src/texts_general.js`へ記載し、各コンテンツ内でReactJSのプロパティとして参照します。
-すなわち言語切り替えボタンを押すと動的にテキストが更新されます。
+## Notes before production deployment
 
-## TODO
-- [ ] Citation in research pages.
-- [x] Responsive design for menu bar.
-- [ ] Multiple modes of webpack for uglify-js and source map.
-- [x] URL routing for contents.
-- [ ] URL routing for language switching.
-- [ ] Language switching in publication pages.
-- [ ] Improve responsive design in the member page.
-- [x] Create a link page.
-- [x] Create a link for B3 page.
+1. The members, publications, and activities are still loaded from the original `imai-laboratory/*_data` repositories at runtime.
+2. The Pages workflow deploys on pushes to `main`. Confirm the repository's Pages source is set to **GitHub Actions**.
+3. The original custom-domain `CNAME` is carried into `public/CNAME`.
+4. Verify every legacy route, media URL, and externally hosted JSON endpoint before replacing the live site. In particular, the five legacy research category routes remain supported but should be reviewed against the current production content.
+5. Run `vp install` and commit the generated lockfile before merging, then validate `vp build` and `vp check` in the repository environment.
+
+## Design
+
+The page layout and existing content hierarchy are kept familiar. Liquid Glass styling is applied through translucent surfaces, restrained backdrop blur, hairline borders, layered shadows, soft blue gradients, and responsive navigation. Reduced-motion preferences are respected.

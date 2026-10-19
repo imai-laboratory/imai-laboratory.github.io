@@ -1,0 +1,15 @@
+[tools]
+node = "26.10.0"
+pnpm = "latest"
+
+[tasks.install]
+run = "vp install"
+
+[tasks.dev]
+run = "vp dev"
+
+[tasks.build]
+run = "vp build"
+
+[tasks.check]
+run = "vp check"
