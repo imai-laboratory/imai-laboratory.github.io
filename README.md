@@ -49,7 +49,7 @@ flowchart LR
 
 ## Requirements
 
-- Node.js 26.10.0 (2026-10-19 時点の最新 Current、mise で固定)
+- Node.js 26.10.0（mise で固定）
 - Vite+ (`vp`) と pnpm
 
 Vite+ が未導入なら、macOS/Linux で以下を実行します。
@@ -68,7 +68,7 @@ vp dev
 
 ## 開発手順
 
-日常の変更は `main` に直接 push せず、`feature/` で始まる作業ブランチから Pull Request を作成します。
+日常の変更は、`feature/` で始まる作業ブランチを作成し、Pull Request を経由する運用を推奨します。小さな修正など、状況に応じて直接pushすることもできます。
 
 ```sh
 git switch -c feature/your-change

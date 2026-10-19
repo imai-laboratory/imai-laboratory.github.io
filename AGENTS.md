@@ -25,7 +25,7 @@
 
 - Use `main` as the integration and deployment branch.
 - Create feature branches with the `feature/` prefix, for example `feature/update-home`.
-- Open a Pull Request from the feature branch; do not push implementation changes directly to `main`.
+- Prefer opening a Pull Request from the feature branch. Direct pushes to `main` are acceptable for small, low-risk changes when appropriate.
 
 ## Checks
 
