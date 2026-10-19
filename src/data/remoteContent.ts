@@ -2,6 +2,13 @@ import type { MemberGroup, PastMemberGroup, YearGroup } from "../types/content";
 
 const cache = new Map<string, unknown>();
 
+export const MEMBERS_BASE =
+  "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
+export const PUBLICATIONS_BASE =
+  "https://raw.githubusercontent.com/imai-laboratory/publications_data/master/";
+export const ACTIVITIES_BASE =
+  "https://raw.githubusercontent.com/imai-laboratory/activities_data/master/";
+
 async function fetchJson<T>(url: string): Promise<T> {
   if (cache.has(url)) return cache.get(url) as T;
   const response = await fetch(url, { cache: "no-store" });
@@ -12,10 +19,9 @@ async function fetchJson<T>(url: string): Promise<T> {
 }
 
 export async function loadMembers() {
-  const base = "https://raw.githubusercontent.com/imai-laboratory/members_data/master/";
   const [members, pastMembers] = await Promise.all([
-    fetchJson<MemberGroup[]>(`${base}members.json`),
-    fetchJson<PastMemberGroup[]>(`${base}past_members.json`),
+    fetchJson<MemberGroup[]>(`${MEMBERS_BASE}members.json`),
+    fetchJson<PastMemberGroup[]>(`${MEMBERS_BASE}past_members.json`),
   ]);
   return { members, pastMembers };
 }
@@ -29,8 +35,3 @@ export async function loadYearly<T>(base: string, type: string): Promise<YearGro
     })),
   );
 }
-
-export const PUBLICATIONS_BASE =
-  "https://raw.githubusercontent.com/imai-laboratory/publications_data/master/";
-export const ACTIVITIES_BASE =
-  "https://raw.githubusercontent.com/imai-laboratory/activities_data/master/";
