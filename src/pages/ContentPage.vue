@@ -13,7 +13,7 @@ import {
 } from "../data/siteContent";
 import { useRemoteContent } from "../composables/useRemoteContent";
 import { localized, localizedString } from "../utils/localization";
-import type { Activity, Publication } from "../types/content";
+import type { Publication, YearGroup, ContentItem } from "../types/content";
 const route = useRoute();
 const t = (key: string) => texts.value[key] ?? key;
 const path = computed(() => route.path.replace(/\/+$/, "") || "/");
@@ -33,27 +33,36 @@ const researchAssets = computed<Record<string, string>>(() => ({
   ai: lang.value === "ja" ? "/res/research/scain_ja.png" : "/res/research/scain_en.png",
 }));
 const videos = RESEARCH_VIDEOS;
+/** Convert an author field from the API into the text shown on the page. */
 function authorText(value: Publication["author"]): string {
   const result = localized(value, lang.value);
   return (Array.isArray(result) ? result : result ? [result] : [])
     .map((item) => item.replace(/_/g, " "))
     .join(", ");
 }
-function publicationNumber(yearIndex: number, itemIndex: number) {
-  const total = years.value.reduce((sum, group) => sum + (group.items?.length || 0), 0);
-  const previous = years.value
-    .slice(0, yearIndex)
-    .reduce((sum, group) => sum + (group.items?.length || 0), 0);
+
+/** Count records in a group list while accepting incomplete remote responses. */
+function countItems(groups: YearGroup<ContentItem>[]): number {
+  return groups.reduce((total, group) => total + (group.items?.length ?? 0), 0);
+}
+
+/** Return the reverse-chronological number displayed for a publication. */
+function publicationNumber(yearIndex: number, itemIndex: number): number {
+  const total = countItems(years.value);
+  const previous = countItems(years.value.slice(0, yearIndex));
   return total - previous - itemIndex;
 }
-function pastGrade(grade: string) {
-  return grade === "d"
-    ? t("members_past_grade_doctor")
-    : grade === "m"
-      ? t("members_past_grade_master")
-      : grade === "b"
-        ? t("members_past_grade_bachelor")
-        : grade;
+
+const PAST_GRADE_KEYS: Record<string, string> = {
+  d: "members_past_grade_doctor",
+  m: "members_past_grade_master",
+  b: "members_past_grade_bachelor",
+};
+
+/** Convert the grade codes used by the legacy member data source. */
+function pastGrade(grade: string): string {
+  const translationKey = PAST_GRADE_KEYS[grade];
+  return translationKey ? t(translationKey) : grade;
 }
 const projects = computed(() =>
   PROJECTS.filter((project) => project.titleKey !== "research_proj_agv" || lang.value === "ja").map(

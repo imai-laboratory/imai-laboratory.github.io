@@ -22,6 +22,7 @@ const activityKinds: Record<string, string> = {
   "/activity_talk": "talk",
 };
 
+/** Load remote content required by the current route and language. */
 export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
   const memberGroups = ref<MemberGroup[]>([]);
   const pastGroups = ref<PastMemberGroup[]>([]);
@@ -29,7 +30,8 @@ export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
   const loading = ref(false);
   const errorMessage = ref("");
 
-  async function refresh() {
+  /** Reload the current route's data, including after a failed request. */
+  async function refresh(): Promise<void> {
     loading.value = true;
     errorMessage.value = "";
     try {
