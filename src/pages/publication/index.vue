@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { lang, texts } from "../state";
-import PageHero from "../components/PageHero.vue";
-import RemotePublicationPage from "../components/RemotePublicationPage.vue";
+import { texts } from "../../state";
+import PageHero from "../../components/PageHero.vue";
+import RemotePublicationPage from "../../components/RemotePublicationPage.vue";
 
 const t = (key: string) => texts.value[key] ?? key;
 </script>

@@ -3,7 +3,7 @@
 ## Project structure
 
 - `src/App.vue`: 共通レイアウト、ナビゲーション、言語切り替え、フッター
-- `src/pages/`: ルーティング単位の画面 (`index.vue`, `research.vue`, `member.vue` など)
+- `src/pages/`: ルーティング単位の画面。`research/`、`publication/`、`activity/` のようにURL階層で分ける
 - `src/components/`: ページ内で分割した表示コンポーネント
 - `src/data/`: 編集するサイトデータと外部データ取得。マークアップは置かない
 - `src/composables/`: 外部データの読み込みなど、状態を持つ処理

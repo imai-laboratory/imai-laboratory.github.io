@@ -10,16 +10,16 @@ import type {
 
 const publicationKinds: Record<string, string> = {
   "/publication": "journal",
-  "/publication_journal": "journal",
-  "/publication_international": "international",
-  "/publication_domestic": "domestic",
+  "/publication/journal": "journal",
+  "/publication/international": "international",
+  "/publication/domestic": "domestic",
 };
 
 const activityKinds: Record<string, string> = {
   "/activity": "award",
-  "/activity_award": "award",
-  "/activity_media": "media",
-  "/activity_talk": "talk",
+  "/activity/award": "award",
+  "/activity/media": "media",
+  "/activity/talk": "talk",
 };
 
 /** 現在のルートに必要な外部データを読み込む。 */

@@ -1,26 +1,3 @@
-export const PAGE_TITLE_KEYS: Record<string, string> = {
-  "/research": "menu_research_theme",
-  "/research_hai": "menu_research_hai",
-  "/research_hri": "menu_research_hri",
-  "/research_ca": "menu_research_ca",
-  "/research_as": "menu_research_as",
-  "/research_cn": "menu_research_cn",
-  "/research_proj": "menu_research_proj",
-  "/member": "members_head",
-  "/publication": "publication_journal_head",
-  "/publication_journal": "publication_journal_head",
-  "/publication_international": "publication_international_head",
-  "/publication_domestic": "publication_domestic_head",
-  "/activity": "activity_award_head",
-  "/activity_award": "activity_award_head",
-  "/activity_media": "activity_media_head",
-  "/activity_talk": "activity_talk_head",
-  "/access": "menu_access",
-  "/links": "links_head",
-  "/for_collaborations": "menu_for_collaborations",
-  "/b3": "menu_b3",
-};
-
 export const RESEARCH_KEYS = [
   "relbot",
   "travot",
