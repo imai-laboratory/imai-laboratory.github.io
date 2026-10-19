@@ -4,42 +4,48 @@ Imai Laboratory のWebサイトです。
 
 公開サイト: [www.ailab.ics.keio.ac.jp](https://www.ailab.ics.keio.ac.jp/)
 
-## 関連リンク
+## 外部ソース
 
-- [このサイトのGitHubリポジトリ](https://github.com/imai-laboratory/imai-laboratory.github.io)
-- [Imai Laboratory GitHub Organization](https://github.com/imai-laboratory)
+ページ表示時に、次のリポジトリからデータを読み込みます。
+
 - [メンバーデータ](https://github.com/imai-laboratory/members_data)
 - [論文データ](https://github.com/imai-laboratory/publications_data)
 - [活動データ](https://github.com/imai-laboratory/activities_data)
-- [B3向け情報](https://www.ailab.ics.keio.ac.jp/welcome-junior/)
-- [慶應義塾大学 矢上キャンパス案内](https://www.keio.ac.jp/ja/maps/)
-- [Vite+](https://vite.plus/)
 
-メンバー、論文、活動情報は、上記のデータリポジトリを参照してページ表示時に読み込みます。研究紹介動画の一部も[B3向け情報サイト](https://www.ailab.ics.keio.ac.jp/welcome-junior/)の素材を参照しています。
+研究紹介動画の一部は[B3向け情報サイト](https://www.ailab.ics.keio.ac.jp/welcome-junior/)の素材を参照しています。
 
 ## システム構成
 
 ```mermaid
-flowchart TD
-    visitor[閲覧者のブラウザ]
-    pages[GitHub Pages<br/>www.ailab.ics.keio.ac.jp]
-    app[Vue 3 + Vue Router<br/>Vite+でビルドしたdist]
-    data[外部JSONデータ<br/>members_data / publications_data / activities_data]
-    assets[public/res<br/>画像・動画・CNAME]
-    pr[feature/* のPull Request]
-    ci[GitHub Actions CI<br/>typecheck + build]
-    deploy[GitHub Actions Deploy<br/>mainへのpush]
+flowchart LR
+    visitor[閲覧者]
+
+    subgraph runtime[実行時]
+        pages[GitHub Pages<br/>www.ailab.ics.keio.ac.jp]
+        app[Vue 3 + Vue Router]
+        sources[外部JSON<br/>members / publications / activities]
+        assets[静的アセット<br/>画像・動画・CNAME]
+        pages --> app
+        app --> sources
+        app --> assets
+    end
+
+    subgraph delivery[CI / CD]
+        ci[CI<br/>typecheck + build]
+        cd[CD<br/>GitHub Pagesへdeploy]
+        ci --> cd
+    end
 
     visitor --> pages
-    pages --> app
-    app --> data
-    app --> assets
-    pr --> ci
-    main[main] --> deploy
-    deploy --> pages
+    cd --> pages
+
+    classDef runtimeStyle fill:#e9f7ff,stroke:#2b9dcc,color:#17354a
+    classDef deliveryStyle fill:#fff3df,stroke:#d99027,color:#5a3a0b
+    class runtime,pages,app,sources,assets runtimeStyle
+    class delivery,ci,cd deliveryStyle
 ```
 
-`src/` の画面コードから外部データを直接管理せず、データ取得は `src/data/` と `src/composables/` に集約しています。詳細な変更ルールは [AGENTS.md](AGENTS.md) を参照してください。
+外部ソースのURLと取得処理は `src/data/` に集約しています。
 
 ## Requirements
 
