@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   checks:
-    name: Type and format checks
+    name: Type, format, and build checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,3 +33,5 @@ jobs:
         run: pnpm typecheck
       - name: Format check
         run: pnpm format:check
+      - name: Build
+        run: pnpm build
