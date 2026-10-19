@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { texts } from "../state";
+
 const t = (key: string) => texts.value[key] ?? key;
 const topics = [
   ["research_section_ai", "research_ai_short"],
@@ -11,6 +12,7 @@ const topics = [
   ["research_section_ag", "research_ag_head"],
 ];
 </script>
+
 <template>
   <div class="page-home">
     <section class="hero hero-home glass-panel">

@@ -12,8 +12,9 @@ import {
   LINKS,
 } from "../data/siteContent";
 import { useRemoteContent } from "../composables/useRemoteContent";
-import { localized, localizedString } from "../utils/localization";
-import type { Publication, YearGroup, ContentItem } from "../types/content";
+import { localizedString } from "../utils/localization";
+import { formatAuthor, formatPastGrade, publicationNumber } from "../utils/contentFormatting";
+
 const route = useRoute();
 const t = (key: string) => texts.value[key] ?? key;
 const path = computed(() => route.path.replace(/\/+$/, "") || "/");
@@ -33,37 +34,6 @@ const researchAssets = computed<Record<string, string>>(() => ({
   ai: lang.value === "ja" ? "/res/research/scain_ja.png" : "/res/research/scain_en.png",
 }));
 const videos = RESEARCH_VIDEOS;
-/** Convert an author field from the API into the text shown on the page. */
-function authorText(value: Publication["author"]): string {
-  const result = localized(value, lang.value);
-  return (Array.isArray(result) ? result : result ? [result] : [])
-    .map((item) => item.replace(/_/g, " "))
-    .join(", ");
-}
-
-/** Count records in a group list while accepting incomplete remote responses. */
-function countItems(groups: YearGroup<ContentItem>[]): number {
-  return groups.reduce((total, group) => total + (group.items?.length ?? 0), 0);
-}
-
-/** Return the reverse-chronological number displayed for a publication. */
-function publicationNumber(yearIndex: number, itemIndex: number): number {
-  const total = countItems(years.value);
-  const previous = countItems(years.value.slice(0, yearIndex));
-  return total - previous - itemIndex;
-}
-
-const PAST_GRADE_KEYS: Record<string, string> = {
-  d: "members_past_grade_doctor",
-  m: "members_past_grade_master",
-  b: "members_past_grade_bachelor",
-};
-
-/** Convert the grade codes used by the legacy member data source. */
-function pastGrade(grade: string): string {
-  const translationKey = PAST_GRADE_KEYS[grade];
-  return translationKey ? t(translationKey) : grade;
-}
 const projects = computed(() =>
   PROJECTS.filter((project) => project.titleKey !== "research_proj_agv" || lang.value === "ja").map(
     (project) => ({
@@ -173,7 +143,7 @@ const projects = computed(() =>
         <h3>{{ group.year }}</h3>
         <p v-for="(member, i) in group.members || []" :key="i">
           {{ localizedString(member.name, lang)
-          }}<span v-if="member.grade"> ({{ pastGrade(member.grade) }})</span>
+          }}<span v-if="member.grade">({{ formatPastGrade(member.grade, t) }})</span>
         </p>
       </section>
     </div>
@@ -189,11 +159,11 @@ const projects = computed(() =>
         class="publication-row glass-panel"
       >
         <span class="publication-index">{{
-          publicationNumber(Number(groupIndex), Number(index))
+          publicationNumber(years, Number(groupIndex), Number(index))
         }}</span>
         <div>
           <p v-if="paper.author">
-            <strong>{{ authorText(paper.author) }}</strong>
+            <strong>{{ formatAuthor(paper.author, lang) }}</strong>
           </p>
           <p v-if="paper.title" class="paper-title">
             “{{ localizedString(paper.title, lang).replace(/_/g, " ") }}”
