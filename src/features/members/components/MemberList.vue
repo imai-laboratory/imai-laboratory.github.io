@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { localizedString } from "../utils/localization";
-import type { Language, MemberGroup, PastMemberGroup } from "../types/content";
-import { formatPastGrade } from "../utils/contentFormatting";
-import { useTranslation } from "../composables/useTranslation";
+import { localizedString } from "../../../utils/localization";
+import type { Language, MemberGroup, PastMemberGroup } from "../../../types/content";
+import { formatPastGrade } from "../../../utils/contentFormatting";
+import { useTranslation } from "../../../composables/useTranslation";
+import { MEMBERS_IMAGES_BASE } from "../../../data/remoteContent";
+import LoadingSkeleton from "../../../components/ui/LoadingSkeleton.vue";
 
 defineProps<{
   language: Language;
@@ -18,9 +20,7 @@ const { t } = useTranslation();
 
 <template>
   <section class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">
-      {{ language === "ja" ? "読み込み中…" : "Loading…" }}
-    </p>
+    <LoadingSkeleton v-if="loading" :rows="4" />
     <p v-if="errorMessage" class="status-message">
       {{ errorMessage }}
       <button class="text-link" @click="refresh">
@@ -38,11 +38,7 @@ const { t } = useTranslation();
         >
           <img
             class="member-avatar"
-            :src="
-              member.img
-                ? `https://raw.githubusercontent.com/imai-laboratory/members_data/master/imgs/${member.img}`
-                : '/res/title.png'
-            "
+            :src="member.img ? `${MEMBERS_IMAGES_BASE}${member.img}` : '/res/title.png'"
             :alt="localizedString(member.name, language)"
             loading="lazy"
           />

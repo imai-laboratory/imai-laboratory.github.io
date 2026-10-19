@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp, nextTick } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import HomePage from "./pages/index.vue";
@@ -52,10 +52,11 @@ const router = createRouter({
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
     if (to.hash) {
-      return {
+      return nextTick().then(() => ({
         el: to.hash,
+        top: 0,
         behavior: "smooth",
-      };
+      }));
     }
 
     return {

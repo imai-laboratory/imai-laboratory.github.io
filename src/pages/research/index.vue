@@ -3,10 +3,11 @@ import { computed } from "vue";
 import { lang } from "../../state";
 import { useTranslation } from "../../composables/useTranslation";
 import { RESEARCH_ASSETS, RESEARCH_KEYS, RESEARCH_VIDEOS } from "../../data/siteContent";
-import PageHero from "../../components/PageHero.vue";
-import ResearchSections from "../../components/ResearchSections.vue";
+import PageHero from "../../components/ui/PageHero.vue";
+import ResearchSections from "../../features/research/components/ResearchSections.vue";
 
 const { t } = useTranslation();
+
 const researchAssets = computed(() => ({
   ...RESEARCH_ASSETS,
   ai: lang.value === "ja" ? "/res/research/scain_ja.png" : "/res/research/scain_en.png",

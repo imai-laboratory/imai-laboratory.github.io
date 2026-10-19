@@ -3,9 +3,10 @@ import { computed } from "vue";
 import { lang } from "../../state";
 import { useTranslation } from "../../composables/useTranslation";
 import { PROJECTS } from "../../data/siteContent";
-import PageHero from "../../components/PageHero.vue";
+import PageHero from "../../components/ui/PageHero.vue";
 
 const { t } = useTranslation();
+
 const projects = computed(() =>
   PROJECTS.filter((project) => project.titleKey !== "research_proj_agv" || lang.value === "ja").map(
     (project) => ({

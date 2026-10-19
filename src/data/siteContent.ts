@@ -32,6 +32,8 @@ export const RESEARCH_VIDEOS: Record<string, string> = {
   travot: "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4",
   isc: "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4",
   scains: "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4",
+  scainsAlgorithm:
+    "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4",
 };
 
 export const LINKS = [

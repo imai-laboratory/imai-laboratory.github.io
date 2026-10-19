@@ -23,7 +23,7 @@ const activityKinds: Record<string, string> = {
 };
 
 /** 現在のルートに必要な外部データを読み込む。 */
-export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
+export const useRemoteContent = (path: Ref<string>, language: Ref<Language>) => {
   const memberGroups = ref<MemberGroup[]>([]);
   const pastGroups = ref<PastMemberGroup[]>([]);
   const years = ref<YearGroup<ContentItem>[]>([]);
@@ -31,9 +31,12 @@ export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
   const errorMessage = ref("");
 
   /** 現在のルートのデータを再取得する。 */
-  async function refresh(): Promise<void> {
+  const refresh = async (): Promise<void> => {
     loading.value = true;
     errorMessage.value = "";
+    memberGroups.value = [];
+    pastGroups.value = [];
+    years.value = [];
     try {
       if (path.value === "/member") {
         const result = await loadMembers();
@@ -55,9 +58,10 @@ export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
     } finally {
       loading.value = false;
     }
-  }
+  };
 
   watch([path, language], refresh, { immediate: true });
+
   return {
     memberGroups,
     pastGroups,
@@ -66,4 +70,4 @@ export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
     errorMessage,
     refresh,
   };
-}
+};

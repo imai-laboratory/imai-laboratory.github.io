@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTranslation } from "../composables/useTranslation";
-import PageHero from "../components/PageHero.vue";
+import PageHero from "../components/ui/PageHero.vue";
 
 const { t } = useTranslation();
 </script>

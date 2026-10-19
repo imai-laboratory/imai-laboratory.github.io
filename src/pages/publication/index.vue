@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTranslation } from "../../composables/useTranslation";
-import PageHero from "../../components/PageHero.vue";
-import RemotePublicationPage from "../../components/RemotePublicationPage.vue";
+import PageHero from "../../components/ui/PageHero.vue";
+import RemotePublicationPage from "../../features/publications/components/RemotePublicationPage.vue";
 
 const { t } = useTranslation();
 </script>

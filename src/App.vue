@@ -1,20 +1,34 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { RouterLink, RouterView, useRoute } from "vue-router";
-import { lang, texts, changeLang } from "./state";
+import { lang, changeLang } from "./state";
 import { NAVIGATION } from "./data/navigation";
+import { useTranslation } from "./composables/useTranslation";
 import { css } from "../styled-system/css";
 
 type NavChild = { to: string; label: string };
 type NavItem = { to: string; label: string; children?: NavChild[] };
 
 const route = useRoute();
+
 const mobileMenuOpen = ref(false);
 const openNavGroup = ref<string | null>(null);
-const t = (key: string) => texts.value[key] ?? key;
-function toggleNavGroup(path: string) {
+
+const { t } = useTranslation();
+
+const toggleNavGroup = (path: string): void => {
   openNavGroup.value = openNavGroup.value === path ? null : path;
-}
+};
+const isNavItemActive = (item: NavItem): boolean => {
+  return (
+    route.path === item.to ||
+    Boolean(
+      item.children?.some(
+        (child) => route.path === child.to || route.path.startsWith(`${child.to}/`),
+      ),
+    )
+  );
+};
 
 watch(
   () => route.fullPath,
@@ -24,9 +38,9 @@ watch(
   },
 );
 watch(
-  texts,
+  () => t("title"),
   (value) => {
-    document.title = value.title;
+    document.title = value;
   },
   { immediate: true },
 );
@@ -60,17 +74,18 @@ const mainNav = computed<NavItem[]>(() =>
           <div
             v-if="item.children"
             class="nav-group"
-            :class="{ 'is-open': openNavGroup === item.to }"
+            :class="{ 'is-open': openNavGroup === item.to, 'is-active': isNavItemActive(item) }"
             @mouseenter="openNavGroup = item.to"
             @mouseleave="openNavGroup = null"
           >
             <button
               class="nav-link nav-parent"
+              :class="{ 'is-active': isNavItemActive(item) }"
               type="button"
               :aria-expanded="openNavGroup === item.to"
               @click="toggleNavGroup(item.to)"
             >
-              {{ item.label }} <span class="chevron">⌄</span>
+              {{ item.label }} <span class="chevron" aria-hidden="true"></span>
             </button>
             <div class="nav-dropdown">
               <RouterLink

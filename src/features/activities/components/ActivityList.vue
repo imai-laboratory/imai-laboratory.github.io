@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { ContentItem, Language, YearGroup } from "../types/content";
+import type { ContentItem, Language, YearGroup } from "../../../types/content";
+import LoadingSkeleton from "../../../components/ui/LoadingSkeleton.vue";
 
 defineProps<{
   language: Language;
@@ -11,9 +12,7 @@ defineProps<{
 
 <template>
   <section class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">
-      {{ language === "ja" ? "読み込み中…" : "Loading…" }}
-    </p>
+    <LoadingSkeleton v-if="loading" :rows="4" />
     <p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
 
     <section v-for="group in years" :key="group.year" class="year-section">
