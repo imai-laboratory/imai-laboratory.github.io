@@ -9,7 +9,7 @@ export interface NavItemDefinition {
   children?: NavChildDefinition[];
 }
 
-/** Menu structure. Labels stay in texts_general.js so the menu remains translatable. */
+/** メニュー構造。表示文言は翻訳できるようtexts_general.jsで管理する。 */
 export const NAVIGATION: NavItemDefinition[] = [
   { to: "/", labelKey: "menu_home" },
   {
