@@ -1,5 +1,5 @@
 allowBuilds:
   lefthook: true
-  '@parcel/watcher': false
+  "@parcel/watcher": false
 overrides:
   vite: npm:@voidzero-dev/vite-plus-core@1.3.0

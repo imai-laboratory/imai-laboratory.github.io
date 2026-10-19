@@ -1,6 +1,8 @@
 pre-commit:
-  parallel: true
   commands:
+    format:
+      glob: "*.{js,ts,vue,css,html,json,yml,yaml}"
+      run: pnpm format {staged_files} && git add {staged_files}
     typecheck:
       run: pnpm typecheck
     build:

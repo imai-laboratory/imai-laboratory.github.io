@@ -68,7 +68,7 @@ vp dev
 
 ## 開発手順
 
-日常の変更は、`feature/` で始まる作業ブランチを作成し、Pull Request を経由する運用を推奨します。小さな修正など、状況に応じて直接pushすることもできます。
+変更は、`feature/` で始まる作業ブランチを作成し、Pull Request を経由する運用を推奨します。小さな修正など、状況に応じて直接pushすることもできます。
 
 ```sh
 git switch -c feature/your-change
@@ -89,6 +89,7 @@ pnpm lefthook install
 ```sh
 vp build
 vp check
+pnpm format:check
 ```
 
 ## デプロイ

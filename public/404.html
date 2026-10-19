@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en">
-  <head><meta charset="utf-8"><title>Redirecting…</title></head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+  </head>
   <body>
     <script>
       const path = location.pathname + location.search + location.hash;
-      location.replace('/?p=' + encodeURIComponent(path));
+      location.replace("/?p=" + encodeURIComponent(path));
     </script>
   </body>
 </html>
