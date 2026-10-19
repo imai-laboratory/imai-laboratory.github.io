@@ -21,16 +21,16 @@ vp install
 vp dev
 ```
 
-## Development workflow
+## 開発手順
 
-日常の変更は `main` に直接 push せず、作業ブランチから Pull Request を作成します。
+日常の変更は `main` に直接 push せず、`feature/` で始まる作業ブランチから Pull Request を作成します。
 
 ```sh
-git switch -c codex/your-change
+git switch -c feature/your-change
 vp dev
 vp check
 vp build
-git push -u origin codex/your-change
+git push -u origin feature/your-change
 ```
 
 コミット時には Lefthook が型チェックと本番ビルドを自動実行します。チェックを通過しないコミットは作成されません。依存関係を更新した後など、hook を再登録する場合は次を実行します。
@@ -46,10 +46,10 @@ vp build
 vp check
 ```
 
-## Deployment
+## デプロイ
 
-1. The members, publications, and activities are still loaded from the original `imai-laboratory/*_data` repositories at runtime.
-2. The Pages workflow deploys on pushes to `main`. Confirm the repository's Pages source is set to **GitHub Actions**.
-3. The original custom-domain `CNAME` is carried into `public/CNAME`.
-4. Verify every legacy route, media URL, and externally hosted JSON endpoint before replacing the live site. In particular, the five legacy research category routes remain supported but should be reviewed against the current production content.
-5. Run `vp install` and commit the generated lockfile before merging, then validate `vp build` and `vp check` in the repository environment.
+1. メンバー、論文、活動情報は、実行時に元の `imai-laboratory/*_data` リポジトリから読み込みます。
+2. GitHub Pagesは `main` へのpushでデプロイされます。Pagesの公開元が **GitHub Actions** になっていることを確認してください。
+3. 独自ドメイン設定の `CNAME` は `public/CNAME` に配置しています。
+4. 本番反映前に、既存ルート、メディアURL、外部JSONエンドポイントを確認してください。
+5. マージ前に `vp install` とロックファイルの更新を行い、リポジトリ環境で `vp build` と `vp check` を実行してください。

@@ -21,6 +21,12 @@
 5. Use translation keys for user-facing text; add both Japanese and English strings.
 6. Preserve the existing route paths unless a migration plan explicitly changes them.
 
+## Branches
+
+- Use `main` as the integration and deployment branch.
+- Create feature branches with the `feature/` prefix, for example `feature/update-home`.
+- Open a Pull Request from the feature branch; do not push implementation changes directly to `main`.
+
 ## Checks
 
 Run these before opening a Pull Request:
