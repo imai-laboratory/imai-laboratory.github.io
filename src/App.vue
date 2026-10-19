@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { lang, texts, changeLang } from './state'
+import { NAVIGATION } from './data/navigation'
 import { css } from '../styled-system/css'
 
 type NavChild = { to: string; label: string }
@@ -21,27 +22,11 @@ watch(() => route.fullPath, () => {
 })
 watch(texts, value => { document.title = value.title }, { immediate: true })
 
-const mainNav = computed<NavItem[]>(() => [
-  { to: '/', label: t('menu_home') },
-  { to: '/research', label: t('menu_research'), children: [
-    { to: '/research', label: t('menu_research_theme') },
-    { to: '/research_proj', label: t('menu_research_proj') },
-  ] },
-  { to: '/publication_journal', label: t('menu_publication'), children: [
-    { to: '/publication_journal', label: t('menu_publication_journal') },
-    { to: '/publication_international', label: t('menu_publication_international') },
-    { to: '/publication_domestic', label: t('menu_publication_domestic') },
-  ] },
-  { to: '/activity_award', label: t('menu_activity'), children: [
-    { to: '/activity_award', label: t('menu_activity_award') },
-    { to: '/activity_media', label: t('menu_activity_media') },
-    { to: '/activity_talk', label: t('menu_activity_talk') },
-  ] },
-  { to: '/member', label: t('menu_member') },
-  { to: '/access', label: t('menu_access') },
-  { to: '/links', label: t('menu_links') },
-  { to: '/for_collaborations', label: t('menu_for_collaborations') },
-])
+const mainNav = computed<NavItem[]>(() => NAVIGATION.map(item => ({
+  to: item.to,
+  label: t(item.labelKey),
+  children: item.children?.map(child => ({ to: child.to, label: t(child.labelKey) })),
+})))
 </script>
 
 <template>
@@ -58,7 +43,7 @@ const mainNav = computed<NavItem[]>(() => [
           <div v-if="item.children" class="nav-group" :class="{ 'is-open': openNavGroup === item.to }" @mouseenter="openNavGroup = item.to" @mouseleave="openNavGroup = null">
             <button class="nav-link nav-parent" type="button" :aria-expanded="openNavGroup === item.to" @click="toggleNavGroup(item.to)">{{ item.label }} <span class="chevron">⌄</span></button>
             <div class="nav-dropdown">
-              <RouterLink v-for="child in item.children" :key="child.to" :to="child.to" class="dropdown-link">{{ child.label }}</RouterLink>
+              <RouterLink v-for="child in item.children" :key="child.to" :to="child.to" class="dropdown-link" @click="openNavGroup = null">{{ child.label }}</RouterLink>
             </div>
           </div>
           <RouterLink v-else :to="item.to" class="nav-link">{{ item.label }}</RouterLink>

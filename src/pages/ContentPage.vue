@@ -1,92 +1,28 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { lang, texts } from '../state'
+import { PAGE_TITLE_KEYS, PROJECTS, RESEARCH_ASSETS, RESEARCH_KEYS, RESEARCH_SUBPAGES, RESEARCH_VIDEOS, LINKS } from '../data/siteContent'
+import { useRemoteContent } from '../composables/useRemoteContent'
+import { localized, localizedString } from '../utils/localization'
+import type { Activity, Publication } from '../types/content'
 const route = useRoute()
 const t = (key: string) => texts.value[key] ?? key
 const path = computed(() => route.path.replace(/\/+$/, '') || '/')
-const pageKey: Record<string,string> = {
- '/research':'menu_research_theme','/research_hai':'menu_research_hai','/research_hri':'menu_research_hri',
- '/research_ca':'menu_research_ca','/research_as':'menu_research_as','/research_cn':'menu_research_cn',
- '/research_proj':'menu_research_proj','/member':'members_head','/publication':'publication_journal_head',
- '/publication_journal':'publication_journal_head','/publication_international':'publication_international_head',
- '/publication_domestic':'publication_domestic_head','/activity':'activity_award_head','/activity_award':'activity_award_head',
- '/activity_media':'activity_media_head','/activity_talk':'activity_talk_head','/access':'menu_access',
- '/links':'links_head','/for_collaborations':'menu_for_collaborations','/b3':'menu_b3'
-}
-const title = computed(() => t(pageKey[path.value] || '404 Not Found'))
+const title = computed(() => t(PAGE_TITLE_KEYS[path.value] || '404 Not Found'))
 const researchKeys = computed(() => {
-  if (path.value === '/research') return ['relbot','travot','ag','isc','scains','closer','ai','si','ad','iu','ui']
+  if (path.value === '/research') return RESEARCH_KEYS
   const sub = path.value.replace('/research_','')
-  const prefix: Record<string,string> = { hai:'hai',hri:'hri',ca:'ca',as:'as',cn:'cn' }
-  return prefix[sub] ? [prefix[sub]] : []
+  return RESEARCH_SUBPAGES[sub] ? [RESEARCH_SUBPAGES[sub]] : []
 })
-const researchAssets = computed<Record<string,string>>(() => ({
- ag:'/res/research/ag.png', ai: lang.value === 'ja' ? '/res/research/scain_ja.png' : '/res/research/scain_en.png',
- si:'/res/research/context-situated.png', iu:'/res/research/iu.jpg', ui:'/res/research/ui.png',
-}))
-const videos: Record<string,string> = {
- relbot:'https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/RelBot.mp4',
- travot:'https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/TRAVOT.mp4',
- isc:'https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/Interactive-SmartClerk.mp4',
- scains:'https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4',
+const { memberGroups, pastGroups, years, loading, errorMessage, refresh } = useRemoteContent(path, lang)
+const links = LINKS
+const researchAssets = computed<Record<string, string>>(() => ({ ...RESEARCH_ASSETS, ai: lang.value === 'ja' ? '/res/research/scain_ja.png' : '/res/research/scain_en.png' }))
+const videos = RESEARCH_VIDEOS
+function authorText(value: Publication['author']): string {
+  const result = localized(value, lang.value)
+  return (Array.isArray(result) ? result : result ? [result] : []).map(item => item.replace(/_/g, ' ')).join(', ')
 }
-const memberGroups = ref<any[]>([])
-const pastGroups = ref<any[]>([])
-const years = ref<any[]>([])
-const loading = ref(false)
-const errorMessage = ref('')
-const cache = new Map<string, any>()
-async function json(url:string) {
-  if(cache.has(url)) return cache.get(url)
-  const response = await fetch(url, {cache:'no-store'})
-  if(!response.ok) throw new Error(`${response.status}`)
-  const result = await response.json(); cache.set(url,result); return result
-}
-function authorText(value:any): string {
- const result = localized(value)
- return (Array.isArray(result) ? result : result ? [result] : []).map((item:any)=>String(item).replace(/_/g,' ')).join(', ')
-}
-function localized(value:any):any {
- if(value == null) return ''
- if(typeof value !== 'object') return String(value)
- return value[lang.value] ?? Object.values(value)[0] ?? ''
-}
-async function loadMembers() {
- loading.value=true; errorMessage.value=''
- try {
-   const base='https://raw.githubusercontent.com/imai-laboratory/members_data/master/'
-   const [current,past]=await Promise.all([json(base+'members.json'),json(base+'past_members.json')])
-   memberGroups.value=Array.isArray(current)?current:[]; pastGroups.value=Array.isArray(past)?past:[]
- } catch(e) { errorMessage.value=lang.value==='ja'?'メンバー情報を読み込めませんでした。':'Unable to load member data.'; console.error(e) }
- finally { loading.value=false }
-}
-async function loadYearly(base:string, type:string) {
- loading.value=true; errorMessage.value=''
- try {
-  const list=await json(`${base}${type}/${type}_years.json`)
-  years.value=await Promise.all((Array.isArray(list)?list:[]).map(async (year:string)=>({
-    year, items:await json(`${base}${type}/${type}_${year}.json`).catch(()=>[])
-  })))
- } catch(e) { years.value=[]; errorMessage.value=lang.value==='ja'?'データを読み込めませんでした。':'Unable to load data.'; console.error(e) }
- finally { loading.value=false }
-}
-watch([path,lang], async()=>{
- if(path.value==='/member') await loadMembers()
- else if(['/publication','/publication_journal','/publication_international','/publication_domestic'].includes(path.value)) {
-  const kind=path.value==='/publication_international'?'international':path.value==='/publication_domestic'?'domestic':'journal'
-  await loadYearly('https://raw.githubusercontent.com/imai-laboratory/publications_data/master/',kind)
- } else if(['/activity','/activity_award','/activity_media','/activity_talk'].includes(path.value)) {
-  const kind=path.value==='/activity_media'?'media':path.value==='/activity_talk'?'talk':'award'
-  await loadYearly('https://raw.githubusercontent.com/imai-laboratory/activities_data/master/',kind)
- }
-},{immediate:true})
-const links=[
- {title:'Imai Laboratory - GitHub',url:'https://github.com/imai-laboratory'},
- {title:'計算理論2017 - お魚天国',url:'http://osakana.ailab.ics.keio.ac.jp'},
- {title:'『心と脳－認知科学入門』コメント・参考文献',url:'http://www.ayu.ics.keio.ac.jp/references/cognitivescience/'},
- {title:'Cognitive Robot Interaction 参考文献',url:'http://www.ailab.ics.keio.ac.jp/webpage_personal/cognitive_robot_interaction/'},
-]
 function publicationNumber(yearIndex:number, itemIndex:number) {
  const total = years.value.reduce((sum, group) => sum + (group.items?.length || 0), 0)
  const previous = years.value.slice(0, yearIndex).reduce((sum, group) => sum + (group.items?.length || 0), 0)
@@ -95,15 +31,13 @@ function publicationNumber(yearIndex:number, itemIndex:number) {
 function pastGrade(grade:string) {
  return grade==='d'?t('members_past_grade_doctor'):grade==='m'?t('members_past_grade_master'):grade==='b'?t('members_past_grade_bachelor'):grade
 }
-const projects = computed(()=>[
- {title:t('research_proj_crest'),desc:t('research_proj_crest_desc'),url:'http://crest.ailab.ics.keio.ac.jp/context/'},
- {title:t('research_proj_sip'),desc:t('research_proj_sip_desc'),url:'https://www.nedo.go.jp/activities/ZZJP2_100126.html'},
- ...(lang.value==='ja'?[{title:t('research_proj_agv'),desc:'',url:'https://agventurelab.or.jp/'}]:[])
-])
+const projects = computed(() => PROJECTS
+  .filter(project => project.titleKey !== 'research_proj_agv' || lang.value === 'ja')
+  .map(project => ({ title: t(project.titleKey), desc: project.descKey ? t(project.descKey) : '', url: project.url })))
 </script>
 
 <template>
-  <section v-if="pageKey[path]" class="page-hero">
+  <section v-if="PAGE_TITLE_KEYS[path]" class="page-hero">
     <div class="hero-content"><p class="eyebrow">IMAI LABORATORY</p><h1>{{ title }}</h1></div>
   </section>
   <section v-if="path==='/research'" class="section-wrap content-stack">
@@ -129,27 +63,27 @@ const projects = computed(()=>[
     <article v-for="project in projects" :key="project.title" class="glass-card info-card"><h2>{{ project.title }}</h2><p>{{ project.desc }}</p><a class="button button-primary" :href="project.url" target="_blank" rel="noreferrer">here ↗</a></article>
   </section>
   <section v-else-if="path==='/member'" class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">{{ lang==='ja'?'読み込み中…':'Loading…' }}</p><p v-if="errorMessage" class="status-message">{{ errorMessage }} <button class="text-link" @click="loadMembers">{{ lang==='ja'?'再読み込み':'Retry' }}</button></p>
+    <p v-if="loading" class="status-message">{{ lang==='ja'?'読み込み中…':'Loading…' }}</p><p v-if="errorMessage" class="status-message">{{ errorMessage }} <button class="text-link" @click="refresh">{{ lang==='ja'?'再読み込み':'Retry' }}</button></p>
     <section v-for="(group,index) in memberGroups" :key="index" class="member-group">
-      <h2 class="section-title">{{ localized(group.role) }}</h2>
+      <h2 class="section-title">{{ localizedString(group.role, lang) }}</h2>
       <div class="member-grid">
         <article v-for="(member,i) in (group.members||[])" :key="i" class="member-card glass-panel">
-          <img class="member-avatar" :src="member.img ? `https://raw.githubusercontent.com/imai-laboratory/members_data/master/imgs/${member.img}` : '/res/title.png'" :alt="localized(member.name)" loading="lazy" />
-          <h3>{{ localized(member.name) }}</h3><p>{{ localized(member.grade) }}</p><a v-if="member.email" :href="`mailto:${member.email}`">{{ member.email }}</a><div v-if="member.option" class="member-option" v-html="member.option"></div>
+          <img class="member-avatar" :src="member.img ? `https://raw.githubusercontent.com/imai-laboratory/members_data/master/imgs/${member.img}` : '/res/title.png'" :alt="localizedString(member.name, lang)" loading="lazy" />
+          <h3>{{ localizedString(member.name, lang) }}</h3><p>{{ localizedString(member.grade, lang) }}</p><a v-if="member.email" :href="`mailto:${member.email}`">{{ member.email }}</a><div v-if="member.option" class="member-option" v-html="member.option"></div>
         </article>
       </div>
     </section>
     <h2 class="section-title">{{ t('members_past_head') }}</h2>
-    <div class="past-member-list"><section v-for="(group,index) in pastGroups" :key="index"><h3>{{ group.year }}</h3><p v-for="(member,i) in (group.members||[])" :key="i">{{ localized(member.name) }}<span v-if="member.grade"> ({{ pastGrade(member.grade) }})</span></p></section></div>
+    <div class="past-member-list"><section v-for="(group,index) in pastGroups" :key="index"><h3>{{ group.year }}</h3><p v-for="(member,i) in (group.members||[])" :key="i">{{ localizedString(member.name, lang) }}<span v-if="member.grade"> ({{ pastGrade(member.grade) }})</span></p></section></div>
   </section>
   <section v-else-if="path.startsWith('/publication')" class="section-wrap content-stack">
     <p v-if="loading" class="status-message">{{ lang==='ja'?'読み込み中…':'Loading…' }}</p><p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
     <section v-for="(group,groupIndex) in years" :key="group.year" class="year-section"><h2 class="year-heading">{{ group.year }}</h2>
       <div v-for="(paper,index) in (group.items||[])" :key="index" class="publication-row glass-panel"><span class="publication-index">{{ publicationNumber(Number(groupIndex), Number(index)) }}</span><div>
         <p v-if="paper.author"><strong>{{ authorText(paper.author) }}</strong></p>
-        <p v-if="paper.title" class="paper-title">“{{ localized(paper.title).replace(/_/g,' ') }}”</p>
-        <p class="paper-meta">{{ [paper.book&&localized(paper.book),paper.vol,paper.no,paper.page,paper.year].filter(Boolean).join(', ').replace(/_/g,' ') }}</p>
-        <p class="paper-meta">{{ [paper.host_city&&localized(paper.host_city),paper.host_country&&localized(paper.host_country)].filter(Boolean).join(lang==='ja'?'・':', ') }}</p>
+        <p v-if="paper.title" class="paper-title">“{{ localizedString(paper.title, lang).replace(/_/g,' ') }}”</p>
+        <p class="paper-meta">{{ [paper.book&&localizedString(paper.book, lang),paper.vol,paper.no,paper.page,paper.year].filter(Boolean).join(', ').replace(/_/g,' ') }}</p>
+        <p class="paper-meta">{{ [paper.host_city&&localizedString(paper.host_city, lang),paper.host_country&&localizedString(paper.host_country, lang)].filter(Boolean).join(lang==='ja'?'・':', ') }}</p>
         <p v-if="paper.event_duration" class="paper-meta">{{ lang==='ja'?'開催期間: ':'Event duration: ' }}{{ paper.event_duration }}</p>
         <p v-if="paper.presentation_date" class="paper-meta">{{ lang==='ja'?'発表日: ':'Presentation date: ' }}{{ paper.presentation_date }}</p>
         <div class="paper-links"><a v-if="paper.draft_pdf_url" :href="paper.draft_pdf_url" target="_blank" rel="noreferrer">[PDF]</a><a v-if="paper.appendix_url" :href="paper.appendix_url" target="_blank" rel="noreferrer">[Appendix]</a></div>

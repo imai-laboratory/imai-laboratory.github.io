@@ -49,8 +49,14 @@ vp check
 ## Architecture
 
 - `src/App.vue`: navigation, language switcher, shared layout
+- `src/data/navigation.ts`: navigation paths and translation-key mapping
 - `src/pages/HomePage.vue`: home page
-- `src/pages/ContentPage.vue`: existing routes, member/publication/activity JSON loading
+- `src/pages/ContentPage.vue`: route-specific UI only
+- `src/data/siteContent.ts`: fixed site content such as links, research assets, and project links
+- `src/data/remoteContent.ts`: typed access to the external members/publications/activities repositories
+- `src/composables/useRemoteContent.ts`: loading state and route-to-endpoint mapping
+- `src/types/content.ts`: content shapes shared by data loaders and UI
+- `src/utils/localization.ts`: Japanese/English value selection
 - `src/texts_general.js`: existing Japanese/English copy retained from the original site
 - `public/res/`: original image and video assets
 - `panda.config.ts`: Panda CSS v2 configuration
@@ -58,6 +64,19 @@ vp check
 - `lefthook.yml`: pre-commit type checking and production build
 - `.github/workflows/ci.yml`: CI for every branch push and Pull Request to `main`
 - `.github/workflows/deploy.yml`: GitHub Pages Actions deployment workflow
+
+### Where to make a change
+
+| Change | File to edit |
+| --- | --- |
+| Navigation label or translation | `src/texts_general.js` |
+| Link, image, video, or project URL | `src/data/siteContent.ts` |
+| External JSON endpoint or response shape | `src/data/remoteContent.ts` and `src/types/content.ts` |
+| Loading/error behavior | `src/composables/useRemoteContent.ts` |
+| Page layout and markup | `src/pages/` or `src/App.vue` |
+| Global colors and responsive layout | `src/styles.css` |
+
+New external data should be given a type in `src/types/content.ts` before it is used in a template. This keeps data fetching separate from rendering and lets TypeScript point to the affected code when the upstream JSON changes.
 
 ## Notes before production deployment
 
