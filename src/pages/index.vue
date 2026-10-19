@@ -21,6 +21,7 @@ const topics = [
         <p class="hero-lead">{{ t("home_message") }}</p>
       </div>
     </section>
+
     <section class="section-wrap home-research glass-panel">
       <h2>{{ t("menu_research") }} {{ t("home_keywords") }}:</h2>
       <div class="topic-grid">
