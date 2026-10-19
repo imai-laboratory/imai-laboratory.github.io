@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { useTranslation } from "../../../composables/useTranslation";
+import {
+  researchBlock,
+  researchContent,
+  researchDescription,
+  researchMedia,
+  subsectionHeading,
+} from "../styles";
 
 defineProps<{
   researchKeys: string[];
@@ -16,41 +23,41 @@ const { t } = useTranslation();
       v-for="key in researchKeys"
       :id="'research_section_' + key"
       :key="key"
-      class="research-block"
+      :class="researchBlock"
     >
-      <div class="subsection-heading">
+      <div :class="subsectionHeading">
         <h2>{{ t(`research_${key}_head`) }}</h2>
         <span>↗</span>
       </div>
 
       <template v-if="key === 'scains'">
-        <div class="research-content">
-          <div class="research-media">
+        <div :class="researchContent">
+          <div :class="researchMedia">
             <video :src="videos.scains" controls preload="metadata"></video>
           </div>
-          <div class="research-description">
+          <div :class="researchDescription">
             <p>{{ t("research_scains1_exp") }}</p>
           </div>
         </div>
 
-        <div class="research-content">
-          <div class="research-media">
+        <div :class="researchContent">
+          <div :class="researchMedia">
             <video :src="videos.scainsAlgorithm" controls preload="metadata"></video>
           </div>
-          <div class="research-description">
+          <div :class="researchDescription">
             <p>{{ t("research_scains2_exp") }}</p>
           </div>
         </div>
       </template>
-      <div v-else class="research-content">
-        <div v-if="researchAssets[key]" class="research-media">
+      <div v-else :class="researchContent">
+        <div v-if="researchAssets[key]" :class="researchMedia">
           <img :src="researchAssets[key]" :alt="t(`research_${key}_head`)" loading="lazy" />
         </div>
-        <div v-else-if="videos[key]" class="research-media">
+        <div v-else-if="videos[key]" :class="researchMedia">
           <video :src="videos[key]" controls preload="metadata"></video>
         </div>
 
-        <div class="research-description">
+        <div :class="researchDescription">
           <p>{{ t(`research_${key}_exp`) }}</p>
         </div>
       </div>

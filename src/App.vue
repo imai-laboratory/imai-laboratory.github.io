@@ -5,6 +5,24 @@ import { lang, changeLang } from "./state";
 import { NAVIGATION } from "./data/navigation";
 import { useTranslation } from "./composables/useTranslation";
 import { css } from "../styled-system/css";
+import {
+  brand,
+  b3Button,
+  button,
+  chevron,
+  dropdownLink,
+  glassPanel,
+  languageSelect,
+  mainNav as mainNavClass,
+  menuToggle,
+  navActions,
+  navDropdown,
+  navGroup,
+  navLink,
+  primaryButton,
+  siteHeader,
+  socialButton,
+} from "./design-system/styles";
 
 type NavChild = { to: string; label: string };
 type NavItem = { to: string; label: string; children?: NavChild[] };
@@ -56,12 +74,12 @@ const mainNav = computed<NavItem[]>(() =>
 
 <template>
   <div :class="['site-shell', css({ minHeight: '100vh' })]">
-    <header class="site-header glass-panel">
-      <RouterLink class="brand" to="/" aria-label="Imai Laboratory home">
+    <header :class="['site-header', siteHeader, 'glass-panel', glassPanel]">
+      <RouterLink :class="['brand', brand]" to="/" aria-label="Imai Laboratory home">
         <img src="/res/title.png" alt="Imai Laboratory" />
       </RouterLink>
       <button
-        class="menu-toggle"
+        :class="['menu-toggle', menuToggle]"
         type="button"
         :aria-expanded="mobileMenuOpen"
         aria-label="Toggle navigation"
@@ -69,42 +87,53 @@ const mainNav = computed<NavItem[]>(() =>
       >
         <span></span><span></span><span></span>
       </button>
-      <nav class="main-nav" :class="{ 'is-open': mobileMenuOpen }" aria-label="Main navigation">
+      <nav
+        :class="['main-nav', mainNavClass, { 'is-open': mobileMenuOpen }]"
+        aria-label="Main navigation"
+      >
         <template v-for="item in mainNav" :key="item.to + item.label">
           <div
             v-if="item.children"
-            class="nav-group"
-            :class="{ 'is-open': openNavGroup === item.to, 'is-active': isNavItemActive(item) }"
+            :class="[
+              'nav-group',
+              navGroup,
+              { 'is-open': openNavGroup === item.to, 'is-active': isNavItemActive(item) },
+            ]"
             @mouseenter="openNavGroup = item.to"
             @mouseleave="openNavGroup = null"
           >
             <button
-              class="nav-link nav-parent"
-              :class="{ 'is-active': isNavItemActive(item) }"
+              :class="['nav-link nav-parent', navLink, { 'is-active': isNavItemActive(item) }]"
               type="button"
               :aria-expanded="openNavGroup === item.to"
               @click="toggleNavGroup(item.to)"
             >
-              {{ item.label }} <span class="chevron" aria-hidden="true"></span>
+              {{ item.label }}
+              <span
+                :class="[chevron, { 'is-open': openNavGroup === item.to }]"
+                aria-hidden="true"
+              ></span>
             </button>
-            <div class="nav-dropdown">
+            <div :class="['nav-dropdown', navDropdown, { 'is-open': openNavGroup === item.to }]">
               <RouterLink
                 v-for="child in item.children"
                 :key="child.to"
                 :to="child.to"
-                class="dropdown-link"
+                :class="['dropdown-link', dropdownLink]"
                 @click="openNavGroup = null"
                 >{{ child.label }}</RouterLink
               >
             </div>
           </div>
-          <RouterLink v-else :to="item.to" class="nav-link">{{ item.label }}</RouterLink>
+          <RouterLink v-else :to="item.to" :class="['nav-link', navLink]">{{
+            item.label
+          }}</RouterLink>
         </template>
-        <div class="nav-actions">
+        <div :class="['nav-actions', navActions]">
           <label class="sr-only" for="language">{{ t("language") }}</label>
           <select
             id="language"
-            class="language-select"
+            :class="['language-select', languageSelect]"
             :value="lang"
             @change="changeLang(($event.target as HTMLSelectElement).value)"
           >
@@ -112,12 +141,12 @@ const mainNav = computed<NavItem[]>(() =>
             <option value="en">English</option>
           </select>
           <a
-            class="button button-primary"
+            :class="['button button-primary', button, primaryButton, b3Button]"
             href="https://www.ailab.ics.keio.ac.jp/welcome-junior/"
             >{{ t("menu_b3") }}</a
           >
           <a
-            class="social-button"
+            :class="['social-button', socialButton]"
             href="https://twitter.com/imailab"
             aria-label="Imai Laboratory on X"
             target="_blank"
@@ -133,7 +162,7 @@ const mainNav = computed<NavItem[]>(() =>
         <component :is="Component" />
       </RouterView>
     </main>
-    <footer class="site-footer glass-panel">
+    <footer :class="['site-footer', 'glass-panel', glassPanel]">
       <div class="footer-copy">{{ t("footer") }}</div>
       <div class="footer-banners">
         <img src="/res/jka-subsidy-completion-banner.png" alt="JKA subsidy completion notice" />

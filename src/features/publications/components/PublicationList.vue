@@ -3,6 +3,7 @@ import { localizedString } from "../../../utils/localization";
 import { formatAuthor, publicationNumber } from "../../../utils/contentFormatting";
 import type { ContentItem, Language, YearGroup } from "../../../types/content";
 import LoadingSkeleton from "../../../components/ui/LoadingSkeleton.vue";
+import { paperLinks, paperMeta, paperTitle, publicationIndex, publicationRow } from "../styles";
 
 defineProps<{
   language: Language;
@@ -22,19 +23,19 @@ defineProps<{
       <div
         v-for="(paper, index) in group.items || []"
         :key="index"
-        class="publication-row glass-panel"
+        :class="[publicationRow, 'glass-panel']"
       >
-        <span class="publication-index">
+        <span :class="publicationIndex">
           {{ publicationNumber(years, Number(groupIndex), Number(index)) }}
         </span>
         <div>
           <p v-if="paper.author">
             <strong>{{ formatAuthor(paper.author, language) }}</strong>
           </p>
-          <p v-if="paper.title" class="paper-title">
+          <p v-if="paper.title" :class="paperTitle">
             “{{ localizedString(paper.title, language).replace(/_/g, " ") }}”
           </p>
-          <p class="paper-meta">
+          <p :class="paperMeta">
             {{
               [
                 paper.book && localizedString(paper.book, language),
@@ -48,7 +49,7 @@ defineProps<{
                 .replace(/_/g, " ")
             }}
           </p>
-          <p class="paper-meta">
+          <p :class="paperMeta">
             {{
               [
                 paper.host_city && localizedString(paper.host_city, language),
@@ -58,14 +59,14 @@ defineProps<{
                 .join(language === "ja" ? "・" : ", ")
             }}
           </p>
-          <p v-if="paper.event_duration" class="paper-meta">
+          <p v-if="paper.event_duration" :class="paperMeta">
             {{ language === "ja" ? "開催期間: " : "Event duration: " }}{{ paper.event_duration }}
           </p>
-          <p v-if="paper.presentation_date" class="paper-meta">
+          <p v-if="paper.presentation_date" :class="paperMeta">
             {{ language === "ja" ? "発表日: " : "Presentation date: "
             }}{{ paper.presentation_date }}
           </p>
-          <div class="paper-links">
+          <div :class="paperLinks">
             <a
               v-if="paper.draft_pdf_url"
               :href="paper.draft_pdf_url"

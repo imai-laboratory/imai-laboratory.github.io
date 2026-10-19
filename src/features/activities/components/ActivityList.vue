@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ContentItem, Language, YearGroup } from "../../../types/content";
 import LoadingSkeleton from "../../../components/ui/LoadingSkeleton.vue";
+import { activityRow } from "../styles";
 
 defineProps<{
   language: Language;
@@ -20,7 +21,7 @@ defineProps<{
       <article
         v-for="(item, index) in group.items || []"
         :key="index"
-        class="activity-row glass-panel"
+        :class="[activityRow, 'glass-panel']"
       >
         <strong>{{ item.title }}</strong>
         <div v-if="item.description" v-html="item.description"></div>

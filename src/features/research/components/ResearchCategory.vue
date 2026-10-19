@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useTranslation } from "../../../composables/useTranslation";
+import { glassCard } from "../../../design-system/styles";
+import { researchContent, researchImageShell, researchMedia, researchSkeleton } from "../styles";
 
 const props = defineProps<{
   researchKey: string;
@@ -26,9 +28,9 @@ const finishImageLoading = (): void => {
 
 <template>
   <section class="section-wrap content-stack">
-    <div class="glass-card research-content">
-      <div v-if="researchAssets[researchKey]" class="research-media research-image-shell">
-        <div v-if="imageLoading" class="research-skeleton" aria-hidden="true"></div>
+    <div :class="[glassCard, researchContent]">
+      <div v-if="researchAssets[researchKey]" :class="[researchMedia, researchImageShell]">
+        <div v-if="imageLoading" :class="researchSkeleton" aria-hidden="true"></div>
         <img
           :key="researchKey"
           :class="{ 'is-loading': imageLoading }"

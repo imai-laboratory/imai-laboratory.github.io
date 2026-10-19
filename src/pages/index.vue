@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { useTranslation } from "../composables/useTranslation";
+import { glassPanel } from "../design-system/styles";
+import {
+  hero,
+  heroContent,
+  heroHome,
+  heroLead,
+  homeResearch,
+  topicArrow,
+  topicCard,
+  topicGrid,
+  topicMark,
+} from "./homeStyles";
 
 const { t } = useTranslation();
 const topics = [
@@ -15,25 +27,25 @@ const topics = [
 
 <template>
   <div class="page-home">
-    <section class="hero hero-home glass-panel">
-      <div class="hero-content">
+    <section :class="[hero, heroHome, glassPanel]">
+      <div :class="heroContent">
         <h1>{{ t("home_imailab") }}</h1>
-        <p class="hero-lead">{{ t("home_message") }}</p>
+        <p :class="heroLead">{{ t("home_message") }}</p>
       </div>
     </section>
 
-    <section class="section-wrap home-research glass-panel">
+    <section :class="['section-wrap', homeResearch]">
       <h2>{{ t("menu_research") }} {{ t("home_keywords") }}:</h2>
-      <div class="topic-grid">
+      <div :class="topicGrid">
         <RouterLink
           v-for="topic in topics"
           :key="topic[0]"
           :to="{ path: '/research', hash: '#' + topic[0] }"
-          class="topic-card"
+          :class="topicCard"
         >
-          <span class="topic-mark"></span>
+          <span :class="topicMark"></span>
           <strong>{{ t(topic[1]) }}</strong>
-          <span class="topic-arrow">↗</span>
+          <span :class="topicArrow">↗</span>
         </RouterLink>
       </div>
     </section>
