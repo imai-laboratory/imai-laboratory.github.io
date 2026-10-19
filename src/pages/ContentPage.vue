@@ -12,8 +12,10 @@ import {
   LINKS,
 } from "../data/siteContent";
 import { useRemoteContent } from "../composables/useRemoteContent";
-import { localizedString } from "../utils/localization";
-import { formatAuthor, formatPastGrade, publicationNumber } from "../utils/contentFormatting";
+import ResearchSections from "../components/ResearchSections.vue";
+import MemberList from "../components/MemberList.vue";
+import PublicationList from "../components/PublicationList.vue";
+import ActivityList from "../components/ActivityList.vue";
 
 const route = useRoute();
 const t = (key: string) => texts.value[key] ?? key;
@@ -52,37 +54,13 @@ const projects = computed(() =>
       <h1>{{ title }}</h1>
     </div>
   </section>
-  <section v-if="path === '/research'" class="section-wrap content-stack">
-    <div
-      v-for="key in researchKeys"
-      :id="'research_section_' + key"
-      :key="key"
-      class="research-block"
-    >
-      <div class="subsection-heading">
-        <h2>{{ t(`research_${key}_head`) }}</h2>
-        <span>↗</span>
-      </div>
-      <div class="research-content">
-        <div v-if="researchAssets[key]" class="research-media">
-          <img :src="researchAssets[key]" :alt="t(`research_${key}_head`)" loading="lazy" />
-        </div>
-        <div v-else-if="videos[key]" class="research-media">
-          <video :src="videos[key]" controls preload="metadata"></video>
-        </div>
-        <div class="research-description">
-          <p>{{ t(`research_${key === "scains" ? "scains1" : key}_exp`) }}</p>
-          <p v-if="key === 'scains'">{{ t("research_scains2_exp") }}</p>
-          <video
-            v-if="key === 'scains'"
-            src="https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4"
-            controls
-            preload="metadata"
-          ></video>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ResearchSections
+    v-if="path === '/research'"
+    :research-keys="researchKeys"
+    :research-assets="researchAssets"
+    :videos="videos"
+    :translate="t"
+  />
   <section
     v-else-if="path.startsWith('/research_') && path !== '/research_proj'"
     class="section-wrap content-stack"
@@ -104,134 +82,30 @@ const projects = computed(() =>
       >
     </article>
   </section>
-  <section v-else-if="path === '/member'" class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">{{ lang === "ja" ? "読み込み中…" : "Loading…" }}</p>
-    <p v-if="errorMessage" class="status-message">
-      {{ errorMessage }}
-      <button class="text-link" @click="refresh">
-        {{ lang === "ja" ? "再読み込み" : "Retry" }}
-      </button>
-    </p>
-    <section v-for="(group, index) in memberGroups" :key="index" class="member-group">
-      <h2 class="section-title">{{ localizedString(group.role, lang) }}</h2>
-      <div class="member-grid">
-        <article
-          v-for="(member, i) in group.members || []"
-          :key="i"
-          class="member-card glass-panel"
-        >
-          <img
-            class="member-avatar"
-            :src="
-              member.img
-                ? `https://raw.githubusercontent.com/imai-laboratory/members_data/master/imgs/${member.img}`
-                : '/res/title.png'
-            "
-            :alt="localizedString(member.name, lang)"
-            loading="lazy"
-          />
-          <h3>{{ localizedString(member.name, lang) }}</h3>
-          <p>{{ localizedString(member.grade, lang) }}</p>
-          <a v-if="member.email" :href="`mailto:${member.email}`">{{ member.email }}</a>
-          <div v-if="member.option" class="member-option" v-html="member.option"></div>
-        </article>
-      </div>
-    </section>
-    <h2 class="section-title">{{ t("members_past_head") }}</h2>
-    <div class="past-member-list">
-      <section v-for="(group, index) in pastGroups" :key="index">
-        <h3>{{ group.year }}</h3>
-        <p v-for="(member, i) in group.members || []" :key="i">
-          {{ localizedString(member.name, lang)
-          }}<span v-if="member.grade">({{ formatPastGrade(member.grade, t) }})</span>
-        </p>
-      </section>
-    </div>
-  </section>
-  <section v-else-if="path.startsWith('/publication')" class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">{{ lang === "ja" ? "読み込み中…" : "Loading…" }}</p>
-    <p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
-    <section v-for="(group, groupIndex) in years" :key="group.year" class="year-section">
-      <h2 class="year-heading">{{ group.year }}</h2>
-      <div
-        v-for="(paper, index) in group.items || []"
-        :key="index"
-        class="publication-row glass-panel"
-      >
-        <span class="publication-index">{{
-          publicationNumber(years, Number(groupIndex), Number(index))
-        }}</span>
-        <div>
-          <p v-if="paper.author">
-            <strong>{{ formatAuthor(paper.author, lang) }}</strong>
-          </p>
-          <p v-if="paper.title" class="paper-title">
-            “{{ localizedString(paper.title, lang).replace(/_/g, " ") }}”
-          </p>
-          <p class="paper-meta">
-            {{
-              [
-                paper.book && localizedString(paper.book, lang),
-                paper.vol,
-                paper.no,
-                paper.page,
-                paper.year,
-              ]
-                .filter(Boolean)
-                .join(", ")
-                .replace(/_/g, " ")
-            }}
-          </p>
-          <p class="paper-meta">
-            {{
-              [
-                paper.host_city && localizedString(paper.host_city, lang),
-                paper.host_country && localizedString(paper.host_country, lang),
-              ]
-                .filter(Boolean)
-                .join(lang === "ja" ? "・" : ", ")
-            }}
-          </p>
-          <p v-if="paper.event_duration" class="paper-meta">
-            {{ lang === "ja" ? "開催期間: " : "Event duration: " }}{{ paper.event_duration }}
-          </p>
-          <p v-if="paper.presentation_date" class="paper-meta">
-            {{ lang === "ja" ? "発表日: " : "Presentation date: " }}{{ paper.presentation_date }}
-          </p>
-          <div class="paper-links">
-            <a
-              v-if="paper.draft_pdf_url"
-              :href="paper.draft_pdf_url"
-              target="_blank"
-              rel="noreferrer"
-              >[PDF]</a
-            ><a
-              v-if="paper.appendix_url"
-              :href="paper.appendix_url"
-              target="_blank"
-              rel="noreferrer"
-              >[Appendix]</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
-  <section v-else-if="path.startsWith('/activity')" class="section-wrap content-stack">
-    <p v-if="loading" class="status-message">{{ lang === "ja" ? "読み込み中…" : "Loading…" }}</p>
-    <p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
-    <section v-for="group in years" :key="group.year" class="year-section">
-      <h2 class="year-heading">{{ group.year }}</h2>
-      <article
-        v-for="(item, index) in group.items || []"
-        :key="index"
-        class="activity-row glass-panel"
-      >
-        <strong>{{ item.title }}</strong>
-        <div v-if="item.description" v-html="item.description"></div>
-      </article>
-    </section>
-  </section>
+  <MemberList
+    v-else-if="path === '/member'"
+    :language="lang"
+    :groups="memberGroups"
+    :past-groups="pastGroups"
+    :loading="loading"
+    :error-message="errorMessage"
+    :translate="t"
+    :refresh="refresh"
+  />
+  <PublicationList
+    v-else-if="path.startsWith('/publication')"
+    :language="lang"
+    :years="years"
+    :loading="loading"
+    :error-message="errorMessage"
+  />
+  <ActivityList
+    v-else-if="path.startsWith('/activity')"
+    :language="lang"
+    :years="years"
+    :loading="loading"
+    :error-message="errorMessage"
+  />
   <section v-else-if="path === '/access'" class="section-wrap access-layout">
     <div class="glass-card access-copy">
       <p>{{ t("access_location_exp") }}</p>

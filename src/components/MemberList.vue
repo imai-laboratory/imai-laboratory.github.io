@@ -1,0 +1,67 @@
+<script setup lang="ts">
+import { localizedString } from "../utils/localization";
+import type { Language, MemberGroup, PastMemberGroup } from "../types/content";
+import type { Translator } from "../types/ui";
+import { formatPastGrade } from "../utils/contentFormatting";
+
+defineProps<{
+  language: Language;
+  groups: MemberGroup[];
+  pastGroups: PastMemberGroup[];
+  loading: boolean;
+  errorMessage: string;
+  translate: Translator;
+  refresh: () => Promise<void>;
+}>();
+</script>
+
+<template>
+  <section class="section-wrap content-stack">
+    <p v-if="loading" class="status-message">
+      {{ language === "ja" ? "読み込み中…" : "Loading…" }}
+    </p>
+    <p v-if="errorMessage" class="status-message">
+      {{ errorMessage }}
+      <button class="text-link" @click="refresh">
+        {{ language === "ja" ? "再読み込み" : "Retry" }}
+      </button>
+    </p>
+
+    <section v-for="(group, index) in groups" :key="index" class="member-group">
+      <h2 class="section-title">{{ localizedString(group.role, language) }}</h2>
+      <div class="member-grid">
+        <article
+          v-for="(member, memberIndex) in group.members || []"
+          :key="memberIndex"
+          class="member-card glass-panel"
+        >
+          <img
+            class="member-avatar"
+            :src="
+              member.img
+                ? `https://raw.githubusercontent.com/imai-laboratory/members_data/master/imgs/${member.img}`
+                : '/res/title.png'
+            "
+            :alt="localizedString(member.name, language)"
+            loading="lazy"
+          />
+          <h3>{{ localizedString(member.name, language) }}</h3>
+          <p>{{ localizedString(member.grade, language) }}</p>
+          <a v-if="member.email" :href="`mailto:${member.email}`">{{ member.email }}</a>
+          <div v-if="member.option" class="member-option" v-html="member.option"></div>
+        </article>
+      </div>
+    </section>
+
+    <h2 class="section-title">{{ translate("members_past_head") }}</h2>
+    <div class="past-member-list">
+      <section v-for="(group, index) in pastGroups" :key="index">
+        <h3>{{ group.year }}</h3>
+        <p v-for="(member, memberIndex) in group.members || []" :key="memberIndex">
+          {{ localizedString(member.name, language) }}
+          <span v-if="member.grade">({{ formatPastGrade(member.grade, translate) }})</span>
+        </p>
+      </section>
+    </div>
+  </section>
+</template>

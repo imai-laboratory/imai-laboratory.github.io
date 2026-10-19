@@ -1,7 +1,7 @@
 import { localized } from "./localization";
 import type { ContentItem, Language, LocalizedText, YearGroup } from "../types/content";
 
-/** Format the author value returned by the publication data source. */
+/** 論文データの著者名を表示用の文字列に整形する。 */
 export function formatAuthor(
   value: LocalizedText | LocalizedText[] | undefined,
   language: Language,
@@ -12,12 +12,12 @@ export function formatAuthor(
   return authors.map((author) => author.replace(/_/g, " ")).join(", ");
 }
 
-/** Count all records in a year-grouped remote content response. */
+/** 年別データに含まれるレコード数を合計する。 */
 export function countYearItems(groups: YearGroup<ContentItem>[]): number {
   return groups.reduce((total, group) => total + (group.items?.length ?? 0), 0);
 }
 
-/** Calculate the reverse-chronological number displayed for a publication. */
+/** 論文一覧に表示する逆順の番号を計算する。 */
 export function publicationNumber(
   groups: YearGroup<ContentItem>[],
   yearIndex: number,
@@ -35,7 +35,7 @@ const PAST_GRADE_KEYS: Record<string, string> = {
   b: "members_past_grade_bachelor",
 };
 
-/** Translate the grade codes used by the legacy member data source. */
+/** 過去メンバーデータの学年コードを翻訳する。 */
 export function formatPastGrade(grade: string, translate: (key: string) => string): string {
   const translationKey = PAST_GRADE_KEYS[grade];
   return translationKey ? translate(translationKey) : grade;

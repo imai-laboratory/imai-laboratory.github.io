@@ -1,10 +1,10 @@
-/** Languages supported by the site. */
+/** サイトで対応する言語。 */
 export type Language = "ja" | "en";
 
-/** A value that can be shared by the Japanese and English views. */
+/** 日本語・英語で共通して使う値。 */
 export type LocalizedText = string | Partial<Record<Language, string>>;
 
-/** A current member returned by members_data. */
+/** members_dataから取得する在籍メンバー。 */
 export interface Member {
   name: LocalizedText;
   grade?: LocalizedText;
@@ -13,25 +13,25 @@ export interface Member {
   option?: string;
 }
 
-/** A group of current members, such as professors or students. */
+/** 教員・学生などの在籍メンバーグループ。 */
 export interface MemberGroup {
   role: LocalizedText;
   members?: Member[];
 }
 
-/** A group of former members organized by year. */
+/** 年別にまとめた過去メンバー。 */
 export interface PastMemberGroup {
   year: string | number;
   members?: Array<{ name: LocalizedText; grade?: string }>;
 }
 
-/** A remote content list grouped by year. */
+/** 年別にまとめた外部コンテンツ。 */
 export interface YearGroup<T> {
   year: string;
   items: T[];
 }
 
-/** Publication fields used by publications_data. */
+/** publications_dataで使う論文項目。 */
 export interface Publication {
   author?: LocalizedText | LocalizedText[];
   title?: LocalizedText;
@@ -48,13 +48,13 @@ export interface Publication {
   appendix_url?: string;
 }
 
-/** Activity fields used by activities_data. */
+/** activities_dataで使う活動項目。 */
 export interface Activity {
   title?: string;
   description?: string;
 }
 
-/** Combined view model used by the publication and activity list views. */
+/** 論文・活動一覧の表示で共通して扱う項目。 */
 export interface ContentItem {
   author?: LocalizedText | LocalizedText[];
   title?: LocalizedText;
