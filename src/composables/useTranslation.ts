@@ -6,5 +6,7 @@ export function useTranslation() {
     return texts.value[key] ?? key;
   }
 
-  return { t };
+  return {
+    t,
+  };
 }

@@ -23,7 +23,10 @@ export async function loadMembers() {
     fetchJson<MemberGroup[]>(`${MEMBERS_BASE}members.json`),
     fetchJson<PastMemberGroup[]>(`${MEMBERS_BASE}past_members.json`),
   ]);
-  return { members, pastMembers };
+  return {
+    members,
+    pastMembers,
+  };
 }
 
 export async function loadYearly<T>(base: string, type: string): Promise<YearGroup<T>[]> {

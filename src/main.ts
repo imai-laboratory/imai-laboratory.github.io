@@ -51,8 +51,16 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
-    if (to.hash) return { el: to.hash, behavior: "smooth" };
-    return { top: 0 };
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    }
+
+    return {
+      top: 0,
+    };
   },
 });
 router.beforeEach((to) => {
@@ -60,7 +68,12 @@ router.beforeEach((to) => {
   if (fallbackPath) {
     const normalized = fallbackPath.startsWith("/") ? fallbackPath : `/${fallbackPath}`;
     if (normalized !== to.path)
-      return { path: normalized, query: {}, hash: to.hash, replace: true };
+      return {
+        path: normalized,
+        query: {},
+        hash: to.hash,
+        replace: true,
+      };
   }
 });
 createApp(App).use(router).mount("#app");

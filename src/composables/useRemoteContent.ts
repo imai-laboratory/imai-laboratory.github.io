@@ -58,5 +58,12 @@ export function useRemoteContent(path: Ref<string>, language: Ref<Language>) {
   }
 
   watch([path, language], refresh, { immediate: true });
-  return { memberGroups, pastGroups, years, loading, errorMessage, refresh };
+  return {
+    memberGroups,
+    pastGroups,
+    years,
+    loading,
+    errorMessage,
+    refresh,
+  };
 }
