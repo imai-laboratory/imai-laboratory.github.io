@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { texts } from "../state";
+import { useTranslation } from "../composables/useTranslation";
 
-const t = (key: string) => texts.value[key] ?? key;
+const { t } = useTranslation();
 </script>
 
 <template>

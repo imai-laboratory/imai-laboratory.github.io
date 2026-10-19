@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { texts } from "../state";
+import { useTranslation } from "../composables/useTranslation";
 import PageHero from "../components/PageHero.vue";
 
-const t = (key: string) => texts.value[key] ?? key;
+const { t } = useTranslation();
 </script>
 
 <template>
-  <PageHero :title="t('menu_for_collaborations')" :translate="t" />
+  <PageHero :title="t('menu_for_collaborations')" />
   <section class="section-wrap content-stack">
     <article class="glass-card info-card">
       <h2>{{ t("for_collaborations_about") }}</h2>

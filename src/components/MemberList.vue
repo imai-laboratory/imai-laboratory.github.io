@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { localizedString } from "../utils/localization";
 import type { Language, MemberGroup, PastMemberGroup } from "../types/content";
-import type { Translator } from "../types/ui";
 import { formatPastGrade } from "../utils/contentFormatting";
+import { useTranslation } from "../composables/useTranslation";
 
 defineProps<{
   language: Language;
@@ -10,9 +10,10 @@ defineProps<{
   pastGroups: PastMemberGroup[];
   loading: boolean;
   errorMessage: string;
-  translate: Translator;
   refresh: () => Promise<void>;
 }>();
+
+const { t } = useTranslation();
 </script>
 
 <template>
@@ -53,13 +54,13 @@ defineProps<{
       </div>
     </section>
 
-    <h2 class="section-title">{{ translate("members_past_head") }}</h2>
+    <h2 class="section-title">{{ t("members_past_head") }}</h2>
     <div class="past-member-list">
       <section v-for="(group, index) in pastGroups" :key="index">
         <h3>{{ group.year }}</h3>
         <p v-for="(member, memberIndex) in group.members || []" :key="memberIndex">
           {{ localizedString(member.name, language) }}
-          <span v-if="member.grade">({{ formatPastGrade(member.grade, translate) }})</span>
+          <span v-if="member.grade">({{ formatPastGrade(member.grade, t) }})</span>
         </p>
       </section>
     </div>

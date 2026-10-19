@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Translator } from "../types/ui";
+import { useTranslation } from "../composables/useTranslation";
 
 defineProps<{
   researchKey: string;
   researchAssets: Record<string, string>;
-  translate: Translator;
 }>();
+
+const { t } = useTranslation();
 </script>
 
 <template>
@@ -14,11 +15,11 @@ defineProps<{
       <img
         v-if="researchAssets[researchKey]"
         :src="researchAssets[researchKey]"
-        :alt="translate(`research_${researchKey}_head`)"
+        :alt="t(`research_${researchKey}_head`)"
       />
       <div>
-        <h2>{{ translate(`research_${researchKey}_head`) }}</h2>
-        <p>{{ translate(`research_${researchKey}_exp`) }}</p>
+        <h2>{{ t(`research_${researchKey}_head`) }}</h2>
+        <p>{{ t(`research_${researchKey}_exp`) }}</p>
       </div>
     </div>
   </section>

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { lang, texts } from "../../state";
+import { lang } from "../../state";
+import { useTranslation } from "../../composables/useTranslation";
 import { RESEARCH_ASSETS, RESEARCH_SUBPAGES } from "../../data/siteContent";
 import PageHero from "../../components/PageHero.vue";
 import ResearchCategory from "../../components/ResearchCategory.vue";
 
 const route = useRoute();
-const t = (key: string) => texts.value[key] ?? key;
+const { t } = useTranslation();
 const category = computed(() => String(route.params.category));
 const researchKey = computed(() => RESEARCH_SUBPAGES[category.value] ?? category.value);
 const researchAssets = computed(() => ({
@@ -17,6 +18,6 @@ const researchAssets = computed(() => ({
 </script>
 
 <template>
-  <PageHero :title="t(`menu_research_${researchKey}`)" :translate="t" />
-  <ResearchCategory :research-key="researchKey" :research-assets="researchAssets" :translate="t" />
+  <PageHero :title="t(`menu_research_${researchKey}`)" />
+  <ResearchCategory :research-key="researchKey" :research-assets="researchAssets" />
 </template>

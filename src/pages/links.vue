@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { texts } from "../state";
+import { useTranslation } from "../composables/useTranslation";
 import { LINKS } from "../data/siteContent";
 import PageHero from "../components/PageHero.vue";
 
-const t = (key: string) => texts.value[key] ?? key;
+const { t } = useTranslation();
 </script>
 
 <template>
-  <PageHero :title="t('links_head')" :translate="t" />
+  <PageHero :title="t('links_head')" />
   <section class="section-wrap card-list">
     <article v-for="link in LINKS" :key="link.url" class="glass-card info-card">
       <h2>{{ link.title }}</h2>

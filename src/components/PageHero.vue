@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import type { Translator } from "../types/ui";
-
-defineProps<{
-  title: string;
-  translate: Translator;
-}>();
+defineProps<{ title: string }>();
 </script>
 
 <template>

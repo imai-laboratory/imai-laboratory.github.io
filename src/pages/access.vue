@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { texts } from "../state";
+import { useTranslation } from "../composables/useTranslation";
 import PageHero from "../components/PageHero.vue";
 
-const t = (key: string) => texts.value[key] ?? key;
+const { t } = useTranslation();
 </script>
 
 <template>
-  <PageHero :title="t('menu_access')" :translate="t" />
+  <PageHero :title="t('menu_access')" />
   <section class="section-wrap access-layout">
     <div class="glass-card access-copy">
       <p>{{ t("access_location_exp") }}</p>
