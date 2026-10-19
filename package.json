@@ -21,26 +21,23 @@
     "lint": "vp lint",
     "format": "vp fmt",
     "check": "vp check",
-    "prepare": "panda codegen"
+    "prepare": "panda codegen && lefthook install"
   },
   "dependencies": {
-    "vue": "^3.5.44",
-    "vue-router": "^5.4.0"
+    "vue": "3.5.44",
+    "vue-router": "5.4.0"
   },
   "devDependencies": {
     "@pandacss/dev": "^2.2.0",
     "@pandacss/preset-base": "^2.2.0",
     "@pandacss/preset-panda": "^2.2.0",
     "@pandacss/vite": "^2.2.0",
-    "@types/node": "latest",
-    "@vitejs/plugin-vue": "latest",
-    "typescript": "latest",
-    "vite-plus": "1.3.0",
-    "vue-tsc": "latest"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:@voidzero-dev/vite-plus-core@1.3.0"
-    }
+    "@types/node": "^26.6.5",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "lefthook": "^2.2.2",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4",
+    "vite-plus": "^1.3.0",
+    "vue-tsc": "^3.3.13"
   }
 }

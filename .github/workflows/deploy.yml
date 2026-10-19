@@ -18,14 +18,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 26
-      - name: Install pnpm
-        run: npm install --global pnpm@latest
+          version: 12.14.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '26.10.0'
+          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm build
       - uses: actions/upload-pages-artifact@v4

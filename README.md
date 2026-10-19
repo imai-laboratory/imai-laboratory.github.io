@@ -13,12 +13,30 @@ Vite+ が未導入なら、macOS/Linux で以下を実行します。
 curl -fsSL https://vite.plus | bash
 ```
 
-プロジェクトルートで依存関係をインストールして起動します。
+プロジェクトルートで依存関係をインストールして起動します。依存関係のバージョンは、実行時依存を固定し、開発用依存は同一メジャーバージョン内で更新できるようにしています。
 
 ```sh
 mise install
 vp install
 vp dev
+```
+
+## Development workflow
+
+日常の変更は `main` に直接 push せず、作業ブランチから Pull Request を作成します。
+
+```sh
+git switch -c codex/your-change
+vp dev
+vp check
+vp build
+git push -u origin codex/your-change
+```
+
+コミット時には Lefthook が型チェックと本番ビルドを自動実行します。チェックを通過しないコミットは作成されません。依存関係を更新した後など、hook を再登録する場合は次を実行します。
+
+```sh
+pnpm lefthook install
 ```
 
 本番ビルド・チェック:
@@ -37,6 +55,8 @@ vp check
 - `public/res/`: original image and video assets
 - `panda.config.ts`: Panda CSS v2 configuration
 - `mise.toml`: Node.js / pnpm tool versions
+- `lefthook.yml`: pre-commit type checking and production build
+- `.github/workflows/ci.yml`: CI for every branch push and Pull Request to `main`
 - `.github/workflows/deploy.yml`: GitHub Pages Actions deployment workflow
 
 ## Notes before production deployment

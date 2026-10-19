@@ -145,7 +145,7 @@ const projects = computed(()=>[
   <section v-else-if="path.startsWith('/publication')" class="section-wrap content-stack">
     <p v-if="loading" class="status-message">{{ lang==='ja'?'読み込み中…':'Loading…' }}</p><p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
     <section v-for="(group,groupIndex) in years" :key="group.year" class="year-section"><h2 class="year-heading">{{ group.year }}</h2>
-      <div v-for="(paper,index) in (group.items||[])" :key="index" class="publication-row glass-panel"><span class="publication-index">{{ publicationNumber(groupIndex,index) }}</span><div>
+      <div v-for="(paper,index) in (group.items||[])" :key="index" class="publication-row glass-panel"><span class="publication-index">{{ publicationNumber(Number(groupIndex), Number(index)) }}</span><div>
         <p v-if="paper.author"><strong>{{ authorText(paper.author) }}</strong></p>
         <p v-if="paper.title" class="paper-title">“{{ localized(paper.title).replace(/_/g,' ') }}”</p>
         <p class="paper-meta">{{ [paper.book&&localized(paper.book),paper.vol,paper.no,paper.page,paper.year].filter(Boolean).join(', ').replace(/_/g,' ') }}</p>
