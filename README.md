@@ -49,7 +49,7 @@ flowchart LR
 
 ## Requirements
 
-- Node.js 26.10.0（mise で固定）
+- Node.js 26.12.1（mise で固定）
 - Vite+ (`vp`) と pnpm
 
 Vite+ が未導入なら、macOS/Linux で以下を実行します。
