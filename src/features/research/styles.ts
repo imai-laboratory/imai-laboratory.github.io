@@ -17,7 +17,7 @@ export const subsectionHeading = css({
   "& h2": {
     width: "100%",
     margin: 0,
-    textAlign: "center",
+    textAlign: "left",
     fontSize: "clamp(1.2rem, 2.5vw, 1.65rem)",
   },
 });
