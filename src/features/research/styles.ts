@@ -14,8 +14,12 @@ export const subsectionHeading = css({
   color: "white",
   background: "linear-gradient(120deg, rgba(35, 153, 199, 0.95), rgba(39, 190, 245, 0.88))",
   boxShadow: "0 10px 28px rgba(37, 149, 193, 0.16)",
-  "& h2": { margin: 0, fontSize: "clamp(1.2rem, 2.5vw, 1.65rem)" },
-  "& > span": { fontSize: "1.3rem", opacity: 0.8 },
+  "& h2": {
+    width: "100%",
+    margin: 0,
+    textAlign: "center",
+    fontSize: "clamp(1.2rem, 2.5vw, 1.65rem)",
+  },
 });
 
 export const researchContent = css({

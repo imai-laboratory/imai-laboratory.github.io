@@ -27,7 +27,6 @@ const { t } = useTranslation();
     >
       <div :class="subsectionHeading">
         <h2>{{ t(`research_${key}_head`) }}</h2>
-        <span>↗</span>
       </div>
 
       <template v-if="key === 'scains'">
@@ -59,6 +58,15 @@ const { t } = useTranslation();
 
         <div :class="researchDescription">
           <p>{{ t(`research_${key}_exp`) }}</p>
+        </div>
+      </div>
+
+      <div v-if="key === 'ui' && videos.teroos" :class="researchContent">
+        <div :class="researchMedia">
+          <video :src="videos.teroos" controls preload="metadata"></video>
+        </div>
+        <div :class="researchDescription">
+          <p>{{ t("research_ui_exp2") }}</p>
         </div>
       </div>
     </div>

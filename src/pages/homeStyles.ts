@@ -91,5 +91,3 @@ export const topicMark = css({
   background: "#30b8e9",
   boxShadow: "0 0 0 5px rgba(48, 184, 233, 0.12)",
 });
-
-export const topicArrow = css({ marginLeft: "auto", color: "#4aaed6" });

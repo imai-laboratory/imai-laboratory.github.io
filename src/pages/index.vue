@@ -8,7 +8,6 @@ import {
   heroHome,
   heroLead,
   homeResearch,
-  topicArrow,
   topicCard,
   topicGrid,
   topicMark,
@@ -45,7 +44,6 @@ const topics = [
         >
           <span :class="topicMark"></span>
           <strong>{{ t(topic[1]) }}</strong>
-          <span :class="topicArrow">↗</span>
         </RouterLink>
       </div>
     </section>

@@ -34,6 +34,7 @@ export const RESEARCH_VIDEOS: Record<string, string> = {
   scains: "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINsPresenter.mp4",
   scainsAlgorithm:
     "https://www.ailab.ics.keio.ac.jp/welcome-junior/images/demos_2024/SCAINs_algo.mp4",
+  teroos: "/res/research/as_teroos_demo.mp4",
 };
 
 export const LINKS = [
