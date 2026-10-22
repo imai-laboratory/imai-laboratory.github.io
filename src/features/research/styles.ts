@@ -10,6 +10,7 @@ export const subsectionHeading = css({
   justifyContent: "space-between",
   gap: "16px",
   padding: "19px 24px",
+  marginBottom: "12px",
   borderRadius: "18px",
   color: "white",
   background: "linear-gradient(120deg, rgba(35, 153, 199, 0.95), rgba(39, 190, 245, 0.88))",
@@ -33,6 +34,10 @@ export const researchContent = css({
     gap: "14px",
     padding: "16px 2px",
   },
+});
+
+export const researchContentFull = css({
+  gridTemplateColumns: "1fr",
 });
 
 export const researchMedia = css({

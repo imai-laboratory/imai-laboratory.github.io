@@ -52,11 +52,18 @@ const router = createRouter({
   scrollBehavior(to, from, saved) {
     if (saved) return saved;
     if (to.hash) {
-      return nextTick().then(() => ({
-        el: to.hash,
-        top: 0,
-        behavior: "smooth",
-      }));
+      return nextTick().then(
+        () =>
+          new Promise((resolve) => {
+            window.setTimeout(() => {
+              resolve({
+                el: to.hash,
+                top: -128,
+                behavior: "smooth",
+              });
+            }, 0);
+          }),
+      );
     }
 
     return {

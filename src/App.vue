@@ -79,7 +79,7 @@ const mainNav = computed<NavItem[]>(() =>
         <img src="/res/title.png" alt="Imai Laboratory" />
       </RouterLink>
       <button
-        :class="['menu-toggle', menuToggle]"
+        :class="['menu-toggle', menuToggle, { 'is-open': mobileMenuOpen }]"
         type="button"
         :aria-expanded="mobileMenuOpen"
         aria-label="Toggle navigation"

@@ -36,6 +36,19 @@ export const siteHeader = css({
   display: "flex",
   alignItems: "center",
   gap: "22px",
+  "@media (max-width: 1220px)": {
+    display: "grid",
+    gridTemplateColumns: "1fr auto",
+    top: "8px",
+    width: "calc(100% - 20px)",
+    margin: "10px auto 0",
+    padding: "16px 18px",
+    borderRadius: "22px",
+    background: "rgba(255, 255, 255, 0.62)",
+    border: "1px solid rgba(255, 255, 255, 0.86)",
+    boxShadow: "0 18px 52px rgba(52, 102, 134, 0.11), 0 2px 8px rgba(47, 88, 114, 0.05)",
+    backdropFilter: "blur(22px) saturate(150%)",
+  },
 });
 
 export const brand = css({
@@ -47,6 +60,12 @@ export const brand = css({
     maxHeight: "46px",
     objectFit: "contain",
   },
+  "@media (max-width: 1220px)": {
+    gridColumn: "1",
+    gridRow: "1",
+    justifySelf: "start",
+    "& img": { width: "150px" },
+  },
 });
 
 export const mainNav = css({
@@ -54,6 +73,22 @@ export const mainNav = css({
   flex: 1,
   alignItems: "center",
   gap: "2px",
+  "@media (max-width: 1220px)": {
+    display: "none",
+    flex: "0 0 100%",
+    width: "100%",
+    gridColumn: "1 / -1",
+    gridRow: "2",
+    flexDirection: "column",
+    alignItems: "stretch",
+    paddingTop: "18px",
+    "&.is-open": {
+      display: "flex",
+      borderTop: "1px solid rgba(255, 255, 255, 0.55)",
+      marginTop: "10px",
+      paddingTop: "12px",
+    },
+  },
 });
 
 export const navLink = css({
@@ -69,6 +104,19 @@ export const navLink = css({
   borderRadius: "12px",
   whiteSpace: "nowrap",
   cursor: "pointer",
+  "@media (max-width: 1220px)": {
+    width: "100%",
+    justifyContent: "flex-start",
+    padding: "13px 0",
+    fontSize: "1.05rem",
+    textAlign: "left",
+    borderRadius: "12px",
+    "&:hover, &.is-active, &.router-link-exact-active": {
+      background: "rgba(255, 255, 255, 0.24)",
+      color: "primaryDeep",
+      boxShadow: "none",
+    },
+  },
   "&:hover, &.is-active, &.router-link-exact-active": {
     background: "rgba(215, 239, 249, 0.72)",
     color: "primaryDeep",
@@ -109,6 +157,18 @@ export const navDropdown = css({
   backdropFilter: "blur(22px)",
   "&.is-open": {
     display: "grid",
+  },
+  "@media (max-width: 1220px)": {
+    position: "static",
+    minWidth: 0,
+    margin: "0 0 8px 18px",
+    padding: "4px 0",
+    border: "1px solid rgba(255, 255, 255, 0.7)",
+    borderRadius: "14px",
+    boxShadow: "0 10px 26px rgba(52, 102, 134, 0.08)",
+    background: "rgba(255, 255, 255, 0.3)",
+    backdropFilter: "blur(18px) saturate(140%)",
+    "&.is-open": { display: "grid" },
   },
 });
 
@@ -185,11 +245,45 @@ export const socialButton = css({
   width: "38px",
   height: "38px",
   borderRadius: "12px",
-  color: "ink",
-  background: "rgba(255, 255, 255, 0.58)",
+  color: "#1767a5",
+  background: "rgba(255, 255, 255, 0.92)",
+  border: "2px solid #1767a5",
+  boxShadow: "0 2px 8px rgba(23, 103, 165, 0.16)",
+  fontSize: "1.3rem",
+  lineHeight: 1,
   fontWeight: 700,
+  transition: "background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease",
+  "&:hover": {
+    color: "white",
+    background: "#1767a5",
+    boxShadow: "0 4px 12px rgba(23, 103, 165, 0.28)",
+  },
 });
 
 export const menuToggle = css({
   display: "none",
+  "@media (max-width: 1220px)": {
+    display: "grid",
+    gridColumn: "1 / -1",
+    gridRow: "1",
+    justifySelf: "end",
+    gap: "5px",
+    width: "42px",
+    height: "42px",
+    marginLeft: "auto",
+    placeContent: "center",
+    border: 0,
+    borderRadius: 0,
+    background: "transparent",
+    cursor: "pointer",
+    "& span": {
+      width: "28px",
+      height: "1px",
+      borderRadius: "3px",
+      background: "#333",
+    },
+    "&.is-open span:nth-child(1)": { transform: "translateY(7px) rotate(45deg)" },
+    "&.is-open span:nth-child(2)": { opacity: 0 },
+    "&.is-open span:nth-child(3)": { transform: "translateY(-7px) rotate(-45deg)" },
+  },
 });

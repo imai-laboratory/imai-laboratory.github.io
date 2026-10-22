@@ -1,16 +1,19 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { localizedString } from "../../../utils/localization";
 import { formatAuthor, publicationNumber } from "../../../utils/contentFormatting";
 import type { ContentItem, Language, YearGroup } from "../../../types/content";
 import LoadingSkeleton from "../../../components/ui/LoadingSkeleton.vue";
 import { paperLinks, paperMeta, paperTitle, publicationIndex, publicationRow } from "../styles";
 
-defineProps<{
+const props = defineProps<{
   language: Language;
   years: YearGroup<ContentItem>[];
   loading: boolean;
   errorMessage: string;
 }>();
+
+const visibleYears = computed(() => props.years.filter((group) => group.items?.length));
 </script>
 
 <template>
@@ -18,7 +21,7 @@ defineProps<{
     <LoadingSkeleton v-if="loading" :rows="5" />
     <p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
 
-    <section v-for="(group, groupIndex) in years" :key="group.year" class="year-section">
+    <section v-for="(group, groupIndex) in visibleYears" :key="group.year" class="year-section">
       <h2 class="year-heading">{{ group.year }}</h2>
       <div
         v-for="(paper, index) in group.items || []"
@@ -26,7 +29,7 @@ defineProps<{
         :class="[publicationRow, 'glass-panel']"
       >
         <span :class="publicationIndex">
-          {{ publicationNumber(years, Number(groupIndex), Number(index)) }}
+          {{ publicationNumber(visibleYears, Number(groupIndex), Number(index)) }}
         </span>
         <div>
           <p v-if="paper.author">

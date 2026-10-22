@@ -3,6 +3,7 @@ import { useTranslation } from "../../../composables/useTranslation";
 import {
   researchBlock,
   researchContent,
+  researchContentFull,
   researchDescription,
   researchMedia,
   subsectionHeading,
@@ -48,7 +49,10 @@ const { t } = useTranslation();
           </div>
         </div>
       </template>
-      <div v-else :class="researchContent">
+      <div
+        v-else
+        :class="!researchAssets[key] && !videos[key] ? researchContentFull : researchContent"
+      >
         <div v-if="researchAssets[key]" :class="researchMedia">
           <img :src="researchAssets[key]" :alt="t(`research_${key}_head`)" loading="lazy" />
         </div>
