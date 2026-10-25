@@ -57,7 +57,7 @@ watch(
 );
 watch(
   () => t("title"),
-  (value) => {
+  (value: string) => {
     document.title = value;
   },
   { immediate: true },
