@@ -65,6 +65,6 @@ Lefthookはコミット時に型チェックと本番ビルドを実行する。
 ### デプロイ確認
 
 - 本番のGitHub Pages設定は、移行確認中は現在の公開元を変更しない。
-- Pull RequestではCIが型チェック・フォーマット・ビルドを実行する。PRごとのPagesプレビューは作成しない。
+- Pull RequestではCIが型チェック・フォーマット・ビルドを実行する。
 - GitHub Pagesはリポジトリごとに公開先が1つで、`main`へのpush時に`deploy.yml`が本番へデプロイする。
 - 本番のGitHub Pages設定は、Pagesの公開元をGitHub Actionsにした状態で維持する。
