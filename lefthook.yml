@@ -4,6 +4,6 @@ pre-commit:
       glob: "*.{js,ts,vue,css,html,json,yml,yaml}"
       run: pnpm format {staged_files} && git add {staged_files}
     typecheck:
-      run: pnpm typecheck
+      run: vp run typecheck
     build:
-      run: pnpm build
+      run: vp run cached-build

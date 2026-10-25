@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Type check
-        run: pnpm typecheck
+        run: vp run typecheck
       - name: Format check
         run: pnpm format:check
       - name: Build
-        run: pnpm build
+        run: vp run cached-build

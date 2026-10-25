@@ -7,4 +7,19 @@ export default defineConfig({
   base: "/",
   build: { outDir: "dist", sourcemap: true },
   server: { port: 5173 },
+  run: {
+    cache: {
+      scripts: true,
+      tasks: true,
+    },
+    tasks: {
+      "cached-build": {
+        command: "vp build",
+        cache: {
+          input: [{ auto: true }, "!dist/**", "!node_modules/**"],
+          output: ["dist/**"],
+        },
+      },
+    },
+  },
 });

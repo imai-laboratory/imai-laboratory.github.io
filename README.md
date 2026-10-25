@@ -84,7 +84,7 @@ vp dev
 git switch -c feature/your-change
 vp dev
 vp check
-vp build
+vp run cached-build
 git push -u origin feature/your-change
 ```
 
@@ -97,7 +97,7 @@ pnpm lefthook install
 本番ビルド・チェック:
 
 ```sh
-vp build
+vp run cached-build
 vp check
 pnpm format:check
 ```
