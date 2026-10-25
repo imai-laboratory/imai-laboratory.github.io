@@ -4,6 +4,16 @@ Imai Laboratory のWebサイトです。
 
 公開サイト: [www.ailab.ics.keio.ac.jp](https://www.ailab.ics.keio.ac.jp/)
 
+## 技術スタック
+
+- **フロントエンド**: Vue 3 / TypeScript
+- **ルーティング**: Vue Router
+- **スタイリング**: Panda CSS
+- **ビルド・開発サーバー**: Vite+ (`vp`)
+- **開発環境**: Node.js 26.12.1 / pnpm 12.14.0 / mise
+- **コード品質**: Vite+ の型チェック・Lint・Formatter / Lefthook
+- **ホスティング・デプロイ**: GitHub Pages / GitHub Actions
+
 ## 外部ソース
 
 ページ表示時に、次のリポジトリからデータを読み込みます。
