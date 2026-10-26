@@ -1,0 +1,2 @@
+/* Panda CSSの生成レイヤーをアプリへ読み込むためのエントリポイント。 */
+@layer reset, base, tokens, recipes, utilities;

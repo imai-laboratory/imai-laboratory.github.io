@@ -1,57 +1,109 @@
-# 今井研究室　Webページ
+# Imai Laboratory Website
 
-URL: http://www.ailab.ics.keio.ac.jp or https://imai-laboratory.github.io/webpage
+Imai Laboratory のWebサイトです。
 
-`src`ディレクトリ内の[ReactJS](https://facebook.github.io/react/)で書かれたJSXファイルや、`res`ディレクトリ内の画像・動画ファイルを[Webpack](https://webpack.github.io/)によりまとめ`dist`ディレクトリへ出力、`gh-pages`ブランチへアップロードすることでWebページが公開されます。
+公開サイト: [www.ailab.ics.keio.ac.jp](https://www.ailab.ics.keio.ac.jp/)
 
-## Commands
+## 技術スタック
+
+- **フロントエンド**: Vue 3 / TypeScript
+- **ルーティング**: Vue Router
+- **スタイリング**: Panda CSS
+- **ビルド・開発サーバー**: Vite+ (`vp`)
+- **開発環境**: Node.js / pnpm / mise
+- **コード品質**: Vite+ の型チェック・Lint・Formatter / Lefthook
+- **ホスティング・デプロイ**: GitHub Pages / GitHub Actions
+
+## 外部ソース
+
+ページ表示時に、次のリポジトリからデータを読み込みます。
+
+- [メンバーデータ](https://github.com/imai-laboratory/members_data)
+- [論文データ](https://github.com/imai-laboratory/publications_data)
+- [活動データ](https://github.com/imai-laboratory/activities_data)
+
+研究紹介動画の一部は[B3向け情報サイト](https://www.ailab.ics.keio.ac.jp/welcome-junior/)の素材を参照しています。
+
+## システム構成
+
+```mermaid
+flowchart LR
+    visitor[閲覧者]
+
+    subgraph runtime[実行時]
+        pages[GitHub Pages<br/>www.ailab.ics.keio.ac.jp]
+        app[Vue 3 + Vue Router]
+        sources[外部JSON<br/>members / publications / activities]
+        assets[静的アセット<br/>画像・動画・CNAME]
+        pages --> app
+        app --> sources
+        app --> assets
+    end
+
+    subgraph delivery[CI / CD]
+        ci[CI<br/>typecheck + format + build]
+        cd[CD<br/>GitHub Pagesへdeploy]
+        ci --> cd
+    end
+
+    visitor --> pages
+    cd --> pages
+
+    classDef runtimeStyle fill:#e9f7ff,stroke:#2b9dcc,color:#17354a
+    classDef deliveryStyle fill:#fff3df,stroke:#d99027,color:#5a3a0b
+    class runtime,pages,app,sources,assets runtimeStyle
+    class delivery,ci,cd deliveryStyle
 ```
-# Install essential packages
-npm install
 
-# Build for development
-npm run develop
-# Build for production
-npm run production
+外部ソースのURLと取得処理は `src/data/` に集約しています。
 
-# Run server for development (dynamic update)
-npm run server
+## セットアップ
 
-# Publish to Github-Pages (`master branch`)
-npm run publish
+- Node.js 26.12.1（mise で固定）
+- Vite+ (`vp`) と pnpm
+
+Vite+ が未導入なら、macOS/Linux で以下を実行します。
+
+```sh
+curl -fsSL https://vite.plus | bash
 ```
 
-## Lint
-LinterとしてESLintを使用します。
-設定ファイルは`.eslintrc.json`です。
-編集後には必ずチェックを行ってください。
+プロジェクトルートで依存関係をインストールして起動します。
+
+```sh
+mise install
+vp install
+vp dev
 ```
 
-# Check
-npm run lint
+## 開発手順
 
-# Fix
-npm run lint:fix
+変更は、`feature/` で始まる作業ブランチを作成し、Pull Requestを経由します。
+
+```sh
+git switch -c feature/your-change
+vp dev
+git push -u origin feature/your-change
 ```
 
-## 外部データ
-メンバと論文情報は外部リポジトリから動的に取得されます。
-* メンバ情報　https://github.com/imai-laboratory/members_data
-* 論文情報　https://github.com/imai-laboratory/publications_data
+コミット時には Lefthook が型チェックと本番ビルドを自動実行します。チェックを通過しないコミットは作成されません。依存関係を更新した後など、hook を再登録する場合は次を実行します。
 
-## その他
-ReactJSと共に用いるUI Componentとして[Rebass](https://rebassjs.org/)を使用しています。
+```sh
+pnpm lefthook install
+```
 
-英語・日本語対応のためテキスト情報は`src/texts_general.js`へ記載し、各コンテンツ内でReactJSのプロパティとして参照します。
-すなわち言語切り替えボタンを押すと動的にテキストが更新されます。
+変更の検証:
 
-## TODO
-- [ ] Citation in research pages.
-- [x] Responsive design for menu bar.
-- [ ] Multiple modes of webpack for uglify-js and source map.
-- [x] URL routing for contents.
-- [ ] URL routing for language switching.
-- [ ] Language switching in publication pages.
-- [ ] Improve responsive design in the member page.
-- [x] Create a link page.
-- [x] Create a link for B3 page.
+```sh
+vp run cached-build
+vp check
+pnpm format:check
+```
+
+## デプロイ
+
+1. メンバー、論文、活動情報は、実行時に元の `imai-laboratory/*_data` リポジトリから読み込みます。
+2. GitHub Pagesは `main` へのpushでデプロイされます。Pagesの公開元が **GitHub Actions** になっていることを確認してください。
+3. 独自ドメイン設定の `CNAME` は `public/CNAME` に配置しています。
+4. 本番反映前に、既存ルート、メディアURL、外部JSONエンドポイントを確認してください。
+5. マージ前に `vp install` とロックファイルを確認し、リポジトリ環境で「変更の検証」を実行してください。

@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Type, format, and build checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          version: "1.4.0"
+          node-version: "26.12.1"
+          cache: true
+      - name: Type check
+        run: vp run typecheck
+      - name: Format check
+        run: pnpm format:check
+      - name: Build
+        run: vp run cached-build
